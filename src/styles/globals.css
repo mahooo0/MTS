@@ -1,27 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: #f7f7f8;
+    font-family: 'DM Sans', sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+swiper-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem; /* Rounded corners */
+}
+
+.swiper-container::before,
+.swiper-container::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 117px;
+    left: -10%;
+    z-index: 100;
+    background: #131e41; /* Adjust background color */
+    border-radius: 100%;
+}
+
+.swiper-container::before {
+    top: -70px;
+}
+
+.swiper-container::after {
+    bottom: -60px;
+}
+.demo span {
+    background: #000;
 }
