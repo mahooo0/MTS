@@ -50,3 +50,23 @@ swiper-container {
 .demo span {
     background: #000;
 }
+.bigger_bg {
+    background-size: 120%;
+}
+@media (max-width: 640px) {
+    .swiper-container::before,
+    .swiper-container::after {
+        width: 140%; /* Adjust width */
+        height: 100px; /* Adjust height */
+        left: -20%; /* Adjust positioning */
+        background: #0f1b3a; /* Optional: change background color */
+    }
+
+    .swiper-container::before {
+        top: -50px; /* Adjust top position */
+    }
+
+    .swiper-container::after {
+        bottom: -40px; /* Adjust bottom position */
+    }
+}

@@ -10,28 +10,45 @@ import location from '../../public/svg/location.svg';
 export default function () {
     return (
         <div className=" w-full h-[477px] bg-[#131E41]">
-            <div className="pt-[48px] px-20 flex flex-row justify-between">
-                <div className="flex flex-col gap-5 ">
-                    <div className="w-[90px] h-[90px] bg-[#FFFFFFE5] rounded-full flex justify-center items-center">
-                        <Image src={logo} alt="logo" />
-                    </div>
-                    <p className="w-[295px] text-white text-[16px] font-normal">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                    </p>
-                </div>
-                <div className=" flex flex-row gap-11 ">
-                    <div className="flex flex-col text-[16px] text-white font-normal gap-[14px]">
+            <div className="pt-[48px] lg:px-20 px-5 flex flex-row justify-between">
+                <div className=" flex lg:flex-row md:flex-row flex-col-reverse gap-[55px]  ">
+                    <div className="lg:flex hidden  flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Vacib keçidlər
+                            Haqqımızda{' '}
                         </h4>
-                        <p>Haqqımızda</p>
-                        <p>Xidmətlərimiz</p>
-                        <p>Stuktur</p>
+                        <p>Şirkət tarixçəsi</p>
                         <p>Sertifikatlar</p>
-                        <p>Tərəftaşlar</p>
+                        <p>Stuktur</p>
+                    </div>
+                    <div className="lg:flex hidden md:hidden flex-col text-[16px] w-[210px] text-white font-normal gap-[14px]">
+                        <h4 className="mb-[16px] text-[18px] font-semibold">
+                            Xidmətlərimiz{' '}
+                        </h4>
+                        <p>Soyutma sahəsi üzrə</p>
+                        <p>Hidravlika sahəsi üzrə</p>
+                        <p>Mexanika sahəsi üzrə</p>
+                        <p>Avtomatika sahəsi üzrə</p>
+                        <p>
+                            Elektrik avadanlıqlarının diaqnostikası və
+                            tarirovkası
+                        </p>
+                        <p>Digər</p>
+                    </div>
+                    <div className="lg:flex hidden md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
+                        <h4 className="mb-[16px] text-[18px] font-semibold">
+                            Media{' '}
+                        </h4>
+                        <p>Xəbərlər</p>
                         <p>Qalereya</p>
-                        <p>Əlaqə</p>
+                        <p>Video</p>
+                    </div>
+                    <div className="lg:flex hidden md:flex flex-col text-[16px] text-white font-normal gap-[14px]">
+                        <h4 className="mb-[16px] text-[18px] font-semibold">
+                            Karyera
+                        </h4>
+                        <p>Vakansiyalar</p>
+                        <p>Peşəkar inkişaf və təlim</p>
+                        <p>Müraciət blankı.</p>
                     </div>
                     <div className="text-white">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
@@ -63,9 +80,9 @@ export default function () {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-col text-white">
+                    <div className="flex  flex-col text-white">
                         <h4 className="mb-[20px] text-[18px] font-semibold">
-                            Bizi izlə
+                            Bizi izlə Əlaqə
                         </h4>
                         <div className="flex flex-row gap-[16px] ">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">

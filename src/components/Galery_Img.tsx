@@ -11,7 +11,7 @@ export default function Galery_Img() {
                 height: '255px',
                 // or any height you need
             }}
-            className="w-[295px] h-[255px] rounded-lg overflow-hidden"
+            className="w-[295px] h-[255px] rounded-lg overflow-hidden hover:scale-105   ransition-transform duration-500 o"
         >
             <div
                 className="w-full h-full relative "

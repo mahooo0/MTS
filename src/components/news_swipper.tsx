@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import layner_png from '../../public/images/layner2.png';
 import { White_to_blue } from './btns';
+import CustomPagination from './slider_custom pagiation';
+import News_bunner from './News_bunner';
 export const NewsSwiper = () => {
+    const swiperRef = useRef<any>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const handleSlideChange = (index: number) => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideTo(index);
+            setCurrentSlide(index);
+        }
+    };
+
+    const handleSwiperChange = (swiper: any) => {
+        setCurrentSlide(swiper.activeIndex);
+    };
     return (
         <div className="relative w-full">
             <Swiper
-                modules={[Pagination]}
+                ref={swiperRef}
                 spaceBetween={20}
                 slidesPerView={1}
                 centeredSlides={true}
@@ -26,203 +40,23 @@ export const NewsSwiper = () => {
             >
                 <SwiperSlide>
                     <div className="w-full flex justify-around flex-row">
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg  ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
+                        <News_bunner />
 
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
-
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
-
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
+                        <News_bunner />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="w-full flex justify-around flex-row">
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg  ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
+                        <News_bunner />
 
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
-
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
-
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
+                        <News_bunner />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="w-full flex justify-around flex-row">
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg  ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
+                        <News_bunner />
 
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
-
-                        <div className="relative w-[610px] h-[320px]  overflow-hidden rounded-lg ">
-                            <div
-                                className="bg-cover bg-center  overflow-hidden  transition-transform duration-500 hover:scale-110 text-white "
-                                style={{
-                                    backgroundImage: `url('/images/layner2.png')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    width: '610px',
-                                    height: '320px',
-                                    // or any height you need
-                                }}
-                            >
-                                {/* <Image ca/> */}
-
-                                {/* <button></button> */}
-                            </div>
-                            <div className="text-white absolute top-[92px] left-8 ">
-                                <p className="text-[14px] font-normal mb-[16px]">
-                                    12 iyul 2024
-                                </p>
-                                <h5 className="text-[20px] font-semibold mb-[12px]">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing.
-                                </h5>
-                                <p className="text-4 font-normal">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry.
-                                </p>
-                                <White_to_blue text="Ətraflı bax" />
-                            </div>
-                        </div>
+                        <News_bunner />
                     </div>
                 </SwiperSlide>
 
@@ -230,7 +64,13 @@ export const NewsSwiper = () => {
             </Swiper>
 
             {/* Custom Pagination */}
-            <div className="custom-pagination flex justify-center gap-2 mt-4  mb-4"></div>
+            <div className="mt-10">
+                <CustomPagination
+                    totalSlides={3} // Set this to the number of slides you have
+                    currentSlide={currentSlide}
+                    onSlideChange={handleSlideChange}
+                />
+            </div>
         </div>
     );
 };

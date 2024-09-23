@@ -1,22 +1,26 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import Logo_Icon from '../../public/svg/Logo.svg';
+import menu_Icon from '../../public/svg/menu.svg';
+import close_Icon from '../../public/svg/close_black.svg';
 import { useRouter } from 'next/router';
+import Header_select from './Header_select';
 interface Props {
     active: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 }
 export default function Header({ active }: Props) {
     const router = useRouter();
+    const [show, setshow] = useState<boolean>(false);
     return (
-        <div className="px-[100px] w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
+        <div className="lg:px-[100px] md:px-[100px] px-[30px]   w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
             <Image src={Logo_Icon} alt="Logo_Icon" />
-            <ul className="flex flex-row gap-[28px] h-full  items-center cursor-pointer">
+            <ul className="lg:flex hidden  flex-row gap-[28px] h-full  items-center cursor-pointer">
                 <li
                     onClick={() => router.push('/')}
                     className={
                         active === 1
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] '
+                            : '  font-medium'
                     }
                 >
                     Ana səhifə
@@ -24,73 +28,48 @@ export default function Header({ active }: Props) {
                 <li
                     className={
                         active === 2
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
                     }
                 >
-                    Haqqımızda
+                    <Header_select text="Haqqımızda" />
                 </li>
                 <li
                     className={
                         active === 3
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
                     }
                 >
-                    Xidmətlərimiz
+                    <Header_select text="Xidmətlərimiz" />
                 </li>
-                <li
-                    className={
-                        active === 4
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
-                    }
-                >
-                    Stuktur
-                </li>
-                <li
-                    className={
-                        active === 5
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
-                    }
-                >
-                    Sertifikatlar
-                </li>
+
                 <li
                     className={
                         active === 6
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
                     }
                 >
-                    Tərəftaşlar
+                    <Header_select text="Media" />
                 </li>
                 <li
                     onClick={() => router.push('/news')}
                     className={
                         active === 7
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
                     }
                 >
-                    Xəbərlər
+                    <Header_select text="Karyera" />
                 </li>
-                <li
-                    className={
-                        active === 8
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
-                    }
-                >
-                    Qalereya
-                </li>
+
                 <li
                     onClick={() => router.push('/contact')}
                     className={
                         active === 9
-                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1] border-b '
-                            : ' text-[15px] font-medium'
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
                     }
                 >
                     Əlaqə
@@ -103,6 +82,87 @@ export default function Header({ active }: Props) {
                 <button className="rounded-full bg-white bg-opacity-60 h-10 w-10 flex justify-center items-center">
                     Ru
                 </button>
+                <Image
+                    src={menu_Icon}
+                    alt="menu_Icon"
+                    className="lg:hidden w-[30px]"
+                    onClick={() => setshow(true)}
+                />
+            </div>
+            <div
+                className="lg:hidden  bg-[#E7EDF8] flex-col  fixed right-0 top-0 h-[100vh] w-[300px] rounded-l-lg
+                p-6"
+                style={show ? { display: 'flex' } : { display: 'none' }}
+            >
+                <div className="flex w-full justify-end">
+                    <Image
+                        src={close_Icon}
+                        alt="close_Icon"
+                        width={30}
+                        onClick={() => setshow(false)}
+                    />
+                </div>
+                <ul className="flex flex-col  lg:flex-row gap-[28px] h-full w-full text-[30px]  items-start justify-start cursor-pointer">
+                    <li
+                        onClick={() => router.push('/')}
+                        className={
+                            active === 1
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1] '
+                                : '  font-medium'
+                        }
+                    >
+                        Ana səhifə
+                    </li>
+                    <li
+                        className={
+                            active === 2
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        Haqqımızda
+                    </li>
+                    <li
+                        className={
+                            active === 3
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        Xidmətlərimiz
+                    </li>
+
+                    <li
+                        className={
+                            active === 6
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        Media
+                    </li>
+                    <li
+                        onClick={() => router.push('/news')}
+                        className={
+                            active === 7
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        Karyera
+                    </li>
+
+                    <li
+                        onClick={() => router.push('/contact')}
+                        className={
+                            active === 9
+                                ? 'lg:h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        Əlaqə
+                    </li>
+                </ul>
             </div>
         </div>
     );

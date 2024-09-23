@@ -1,11 +1,25 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import kater_png from '../../public/images/kater.png';
 import strelka2 from '../../public/svg/strelka2.svg';
 export default function News_card() {
+    const [ison, setison] = useState<boolean>(false);
     return (
-        <div className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden  flex flex-col">
-            <Image src={kater_png} alt="kater_png" className="w-full" />
+        <div
+            className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden  flex flex-col "
+            onMouseEnter={() => setison(true)}
+            onMouseLeave={() => setison(false)}
+        >
+            <div className="h-[226px] overflow-hidden">
+                <Image
+                    src={kater_png}
+                    alt="kater_png"
+                    className={`w-full  ${
+                        ison ? 'scale-110' : ''
+                    }  transition-transform duration-500 rounded-lg`}
+                />
+            </div>
+
             <h6 className="text-[18px] my-4 px-3 font-[500] text-[#050B20]">
                 156 evakuasiya xidmətinin nə kimi üstünlüyü var?
             </h6>

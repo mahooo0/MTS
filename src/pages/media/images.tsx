@@ -36,11 +36,21 @@ export default function id() {
                     <div className="w-full flex  justify-end">
                         <div className="flex flex-row gap-3">
                             <Image
+                                className={
+                                    grid_cols === 2
+                                        ? ' border-b border-black '
+                                        : ''
+                                }
                                 src={grid2}
                                 alt="grid2"
                                 onClick={() => setgrid_cols(2)}
                             />
                             <Image
+                                className={
+                                    grid_cols === 4
+                                        ? ' border-b border-black '
+                                        : ''
+                                }
                                 src={grid4}
                                 alt="grid4"
                                 onClick={() => setgrid_cols(4)}
