@@ -1,8 +1,17 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import strelka from '../../public/svg/option_strelka.svg';
-
-export default function Header_select({ text }: { text: string }) {
+interface ARRE {
+    title: string;
+    action: () => void;
+}
+export default function Header_select({
+    text,
+    ARR,
+}: {
+    text: string;
+    ARR?: ARRE[];
+}) {
     const [show, setshow] = useState<Boolean>(true);
     return (
         <div className="flex flex-col relative">
@@ -18,18 +27,17 @@ export default function Header_select({ text }: { text: string }) {
                 />
             </div>
             <div
-                className="flex flex-col absolute  -bottom-[120px] w-full  justify-end text-right bg-white  "
+                className="flex flex-col absolute  -bottom-[100px] w-full  justify-end text-right bg-white  "
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
-                <p className="text-right bg-white border rounded-lg border-black border-opacity-40 p-2">
-                    option1
-                </p>
-                <p className="text-right bg-white  border rounded-lg border-black border-opacity-40 p-2">
-                    option2
-                </p>
-                <p className="text-right bg-white  border rounded-lg border-black border-opacity-40 p-2 ">
-                    option3
-                </p>
+                {ARR?.map((item: ARRE) => (
+                    <p
+                        onClick={item.action}
+                        className="text-right bg-white border rounded-lg border-black border-opacity-40 p-1"
+                    >
+                        {item.title}
+                    </p>
+                ))}
             </div>
         </div>
     );

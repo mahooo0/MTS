@@ -51,7 +51,29 @@ export default function Header({ active }: Props) {
                             : '  font-medium'
                     }
                 >
-                    <Header_select text="Media" />
+                    <Header_select
+                        text="Media"
+                        ARR={[
+                            {
+                                title: 'Qalereya',
+                                action: () => {
+                                    router.push('/media');
+                                },
+                            },
+                            {
+                                title: 'vidiolar',
+                                action: () => {
+                                    router.push('/media/videos/');
+                                },
+                            },
+                            {
+                                title: 'Media_id',
+                                action: () => {
+                                    router.push('/media/images/');
+                                },
+                            },
+                        ]}
+                    />
                 </li>
                 <li
                     onClick={() => router.push('/news')}
