@@ -58,7 +58,11 @@ export default function id() {
                         </div>
                     </div>
                     <div
-                        className={` grid flex-row justify-between w-full grid-cols-${grid_cols} gap-5 mt-7 mb-[100px] `}
+                        className={
+                            grid_cols === 2
+                                ? ` grid flex-row justify-between w-full grid-cols-2 gap-5 mt-7 mb-[100px] `
+                                : ` grid flex-row justify-between w-full grid-cols-4 gap-5 mt-7 mb-[100px] `
+                        }
                     >
                         <div
                             className={

@@ -72,6 +72,18 @@ export default function Header({ active }: Props) {
                                     router.push('/media/images/');
                                 },
                             },
+                            {
+                                title: 'xəbərlər',
+                                action: () => {
+                                    router.push('/news');
+                                },
+                            },
+                            {
+                                title: 'xəbərlər_id',
+                                action: () => {
+                                    router.push('/news/aaa');
+                                },
+                            },
                         ]}
                     />
                 </li>

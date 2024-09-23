@@ -27,7 +27,7 @@ export default function Header_select({
                 />
             </div>
             <div
-                className="flex flex-col absolute  -bottom-[100px] w-full  justify-end text-right bg-white  "
+                className="flex flex-col absolute  -bottom-[170px] w-full  justify-end text-right bg-white  "
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
                 {ARR?.map((item: ARRE) => (
