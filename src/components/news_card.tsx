@@ -2,13 +2,16 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import kater_png from '../../public/images/kater.png';
 import strelka2 from '../../public/svg/strelka2.svg';
+import { useRouter } from 'next/router';
 export default function News_card() {
     const [ison, setison] = useState<boolean>(false);
+    const rounter = useRouter();
     return (
         <div
             className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden  flex flex-col "
             onMouseEnter={() => setison(true)}
             onMouseLeave={() => setison(false)}
+            onClick={() => rounter.push('news/sss')}
         >
             <div className="h-[226px] overflow-hidden">
                 <Image

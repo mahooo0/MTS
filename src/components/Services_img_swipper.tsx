@@ -7,7 +7,7 @@ import container_png from '../../public/images/container.png';
 import Image from 'next/image';
 import CustomPagination from './slider_custom pagiation';
 
-const CustomSwiper = () => {
+const Services_img_swipper = () => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -35,7 +35,7 @@ const CustomSwiper = () => {
     };
 
     return (
-        <div className="relative lg:px-[205px] md:px-[100px] px-[0px] mt-10">
+        <div className="relative lg:w-[75%] w-full  mt-10">
             <Swiper
                 ref={swiperRef}
                 onSlideChange={handleSwiperChange}
@@ -47,26 +47,26 @@ const CustomSwiper = () => {
                     <Image
                         src={container_png}
                         alt="container_png"
-                        className="w-full"
+                        className="w-full lg:h-[486px] h-fit"
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Image
                         src={container_png}
                         alt="container_png"
-                        className="w-full"
+                        className="w-full lg:h-[486px] h-fit"
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Image
                         src={container_png}
                         alt="container_png"
-                        className="w-full"
+                        className="w-full lg:h-[486px] h-fit"
                     />
                 </SwiperSlide>
             </Swiper>
 
-            <div className="flex flex-row  absolute bottom-0 lg:right-[205px] md:right-[105px]  right-0 gap-3">
+            <div className="flex flex-row  absolute lg:bottom-0 md:bottom-0 -bottom-[40%] right-0  gap-3">
                 <button
                     onClick={handlePrev}
                     style={{ transform: 'rotate(180deg)' }}
@@ -81,7 +81,7 @@ const CustomSwiper = () => {
                     <Image src={strelka2} alt="strelka2" />
                 </button>
             </div>
-            <div className="mt-10 lg:block ">
+            <div className="mt-10 lg:block md:block hidden ">
                 <CustomPagination
                     totalSlides={3} // Set this to the number of slides you have
                     currentSlide={currentSlide}
@@ -92,4 +92,4 @@ const CustomSwiper = () => {
     );
 };
 
-export default CustomSwiper;
+export default Services_img_swipper;

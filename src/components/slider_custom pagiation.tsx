@@ -13,7 +13,7 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({
     onSlideChange,
 }) => {
     return (
-        <div className="flex justify-center space-x-2 mt-4">
+        <div className="flex justify-center space-x-2 mt-10">
             {Array.from({ length: totalSlides }).map((_, index) => (
                 <button
                     key={index}

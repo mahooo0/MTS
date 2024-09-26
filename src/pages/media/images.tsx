@@ -14,7 +14,7 @@ export default function id() {
             <Header active={6} />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main>
-                <div className="flex flex-row text-[18px] gap-3 mt-[41px]  ml-[100px]">
+                <div className="flex flex-row lg:text-[18px] md:text-[18px] text-[12px] items-center gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     <h5>Ana səhifə</h5>
                     <Image
                         src={strelka}
@@ -29,11 +29,11 @@ export default function id() {
                     />
                     <h6 className=" opacity-60">name</h6>
                 </div>
-                <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] ml-[100px]">
+                <h1 className="lg:text-[48px] md:text-[36px] text-[24px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     Qalereya
                 </h1>
-                <div className="px-[100px]">
-                    <div className="w-full flex  justify-end">
+                <div className="lg:px-[100px] md:px-[60px] px-[30px]">
+                    <div className="w-full lg:flex  hidden   justify-end">
                         <div className="flex flex-row gap-3">
                             <Image
                                 className={
@@ -60,7 +60,7 @@ export default function id() {
                     <div
                         className={
                             grid_cols === 2
-                                ? ` grid flex-row justify-between w-full grid-cols-2 gap-5 mt-7 mb-[100px] `
+                                ? ` grid flex-row justify-between w-full lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-5 mt-7 mb-[100px] `
                                 : ` grid flex-row justify-between w-full grid-cols-4 gap-5 mt-7 mb-[100px] `
                         }
                     >

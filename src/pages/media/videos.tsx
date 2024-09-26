@@ -14,7 +14,7 @@ export default function id() {
             <Header active={6} />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main>
-                <div className="flex flex-row text-[18px] gap-3 mt-[41px]  ml-[100px]">
+                <div className="flex flex-row text-[18px] gap-3 mt-[41px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     <h5>Ana səhifə</h5>
                     <Image
                         src={strelka}
@@ -24,10 +24,10 @@ export default function id() {
 
                     <h6 className=" opacity-60">Vidiolar</h6>
                 </div>
-                <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] ml-[100px]">
+                <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     Videolar
                 </h1>
-                <div className="px-[100px]  flex flex-col">
+                <div className="lg:px-[100px]  md:px-[60px] px-[30px]  flex flex-col">
                     <video
                         controls={true}
                         width="600"
@@ -37,7 +37,7 @@ export default function id() {
                     >
                         <source src="/videos/vid.mp4" type="video/mp4" />
                     </video>
-                    <div className="grid flex-row grid-cols-4  gap-5 mt-5">
+                    <div className="grid flex-row lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-5">
                         <div className=" aspect-square">
                             <video
                                 controls={false}

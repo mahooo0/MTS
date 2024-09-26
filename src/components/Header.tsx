@@ -32,7 +32,39 @@ export default function Header({ active }: Props) {
                             : '  font-medium'
                     }
                 >
-                    <Header_select text="Haqqımızda" />
+                    <Header_select
+                        action={() => router.push('/about_us')}
+                        text="Haqqımızda"
+                        ARR={[
+                            {
+                                title: 'Şirkət tarixçəsi',
+                                action: () => {
+                                    router.push('/about_us');
+                                },
+                            },
+                            {
+                                title: 'Sertifikatlar',
+                                action: () => {
+                                    router.push('/about_us');
+                                    localStorage.setItem(
+                                        'scrollto',
+                                        'sertificatlar'
+                                    );
+                                },
+                            },
+
+                            {
+                                title: 'Stuktur',
+                                action: () => {
+                                    router.push('/about_us');
+                                    localStorage.setItem(
+                                        'scrollto',
+                                        'structure'
+                                    );
+                                },
+                            },
+                        ]}
+                    />
                 </li>
                 <li
                     className={
@@ -41,7 +73,49 @@ export default function Header({ active }: Props) {
                             : '  font-medium'
                     }
                 >
-                    <Header_select text="Xidmətlərimiz" />
+                    <Header_select
+                        action={() => router.push('/services')}
+                        text="Xidmətlərimiz"
+                        ARR={[
+                            {
+                                title: 'Soyutma sahəsi üzrə',
+                                action: () => {
+                                    router.push('/services/aaaa');
+                                },
+                            },
+                            {
+                                title: 'Hidravlika sahəsi üzrə',
+                                action: () => {
+                                    router.push('/services/sss');
+                                },
+                            },
+
+                            {
+                                title: 'Mexanika sahəsi üzrə',
+                                action: () => {
+                                    router.push('/services/sss');
+                                },
+                            },
+                            {
+                                title: 'Avtomatika sahəsi üzrə',
+                                action: () => {
+                                    router.push('/services/sss');
+                                },
+                            },
+                            {
+                                title: 'Elektrik avadanlıqlarının diaqnostikası və tarirovkası',
+                                action: () => {
+                                    router.push('/services/sss');
+                                },
+                            },
+                            {
+                                title: 'Digər',
+                                action: () => {
+                                    router.push('/services/sss');
+                                },
+                            },
+                        ]}
+                    />
                 </li>
 
                 <li
@@ -52,6 +126,7 @@ export default function Header({ active }: Props) {
                     }
                 >
                     <Header_select
+                        action={() => router.push('/media')}
                         text="Media"
                         ARR={[
                             {
@@ -66,36 +141,48 @@ export default function Header({ active }: Props) {
                                     router.push('/media/videos/');
                                 },
                             },
+
                             {
-                                title: 'Media_id',
-                                action: () => {
-                                    router.push('/media/images/');
-                                },
-                            },
-                            {
-                                title: 'xəbərlər',
+                                title: 'Xəbərlər',
                                 action: () => {
                                     router.push('/news');
-                                },
-                            },
-                            {
-                                title: 'xəbərlər_id',
-                                action: () => {
-                                    router.push('/news/aaa');
                                 },
                             },
                         ]}
                     />
                 </li>
                 <li
-                    onClick={() => router.push('/news')}
                     className={
                         active === 7
                             ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
                             : '  font-medium'
                     }
                 >
-                    <Header_select text="Karyera" />
+                    <Header_select
+                        action={() => router.push('/karyera')}
+                        text="Karyera"
+                        ARR={[
+                            {
+                                title: 'Vakansiyalar',
+                                action: () => {
+                                    router.push('/karyera');
+                                },
+                            },
+                            {
+                                title: 'Peşəkar inkişaf və təlim',
+                                action: () => {
+                                    router.push('/karyera/cours');
+                                },
+                            },
+
+                            {
+                                title: 'Müraciət blankı.',
+                                action: () => {
+                                    router.push('/karyera/request_blanck');
+                                },
+                            },
+                        ]}
+                    />
                 </li>
 
                 <li

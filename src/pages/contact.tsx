@@ -13,20 +13,20 @@ type Props = {};
 
 export default function contact({}: Props) {
     return (
-        <div>
+        <div className="bg-white">
             <Header active={9} />
 
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
-            <div className="flex flex-row text-[18px] gap-3 mt-[41px]  ml-[100px]">
+            <div className="flex flex-row text-[18px] gap-3 mt-[41px]   lg:ml-[100px] md:ml-[60px] ml-[30px]">
                 <h5>Ana səhifə</h5>
                 <Image src={strelka} alt="strelka" className=" opacity-60" />
                 <h6 className=" opacity-60">Əlaqə</h6>
             </div>
-            <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] ml-[100px]">
+            <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                 Bizimlə əlaqə
             </h1>
-            <div className="flex flex-row px-[100px] justify-between">
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#e0e1e1] rounded-lg">
+            <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
                     <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
                         <Image src={location} alt="location" />
                     </div>
@@ -34,7 +34,7 @@ export default function contact({}: Props) {
                         AZ1023, Bakı Səbail ray., Salyan şosesi 12
                     </p>
                 </div>
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#e0e1e1] rounded-lg">
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
                     <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
                         <Image src={phone} alt="phone" />
                     </div>
@@ -42,7 +42,7 @@ export default function contact({}: Props) {
                         +99412 525 85 42 / +99410 250 94 94
                     </p>
                 </div>
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#e0e1e1] rounded-lg">
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
                     <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
                         <Image src={mail} alt="mail" />
                     </div>
@@ -51,10 +51,16 @@ export default function contact({}: Props) {
                     </p>
                 </div>
             </div>
-            <div className="h-[655px]  overflow-hidden mt-[100px] rounded-lg relative mb-[100px] ">
-                <Image src={map_png} alt="map_png " className="w-full" />
+            <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[100px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">
+                <iframe
+                    className="w-full lg:h-full lg:mt-0 mt-10"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6836.025529021591!2d49.85315080154546!3d40.380998971825385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d0a3ea7028d%3A0xac9d73dbd66392c8!2s28%20May!5e0!3m2!1sru!2saz!4v1726840557089!5m2!1sru!2saz"
+                    width="600"
+                    height="450"
+                    loading="lazy"
+                ></iframe>
 
-                <div className="w-[455px] h-[94%] bg-white rounded-lg absolute top-[26px] left-[100px] bottom-5  z-30 pt-7 pl-6 pr-[14px] flex flex-col">
+                <div className="lg:w-[455px] w-full lg:h-[94%] h-fit bg-white rounded-lg lg:absolute  top-[26px] left-[100px] bottom-5  z-30 pt-7 pl-6 pr-[14px] flex flex-col">
                     <h3 className="text-[#050B20] text-[28px] font-semibold mb-3">
                         Sualın var? Biz zəng edək
                     </h3>
@@ -98,11 +104,6 @@ export default function contact({}: Props) {
                         </button>
                     </div>
                 </div>
-                <Image
-                    src={locationREd}
-                    alt="locationREd"
-                    className=" absolute top-[311px] right-[525px]"
-                />
             </div>
             <Footer />
         </div>

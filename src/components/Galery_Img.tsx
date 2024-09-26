@@ -1,8 +1,11 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 export default function Galery_Img() {
+    const router = useRouter();
     return (
         <div
+            onClick={() => router.push('media/images')}
             style={{
                 backgroundImage: `url('/images/sea.png')`,
                 backgroundSize: 'cover',
@@ -11,7 +14,7 @@ export default function Galery_Img() {
                 height: '255px',
                 // or any height you need
             }}
-            className="w-[295px] h-[255px] rounded-lg overflow-hidden hover:scale-105   ransition-transform duration-500 o"
+            className="w-[295px] h-[255px] rounded-lg overflow-hidden hover:scale-105   ransition-transform duration-500 "
         >
             <div
                 className="w-full h-full relative "

@@ -6,34 +6,34 @@ interface ARRE {
     action: () => void;
 }
 export default function Header_select({
+    action,
     text,
     ARR,
 }: {
+    action: () => void;
     text: string;
     ARR?: ARRE[];
 }) {
     const [show, setshow] = useState<Boolean>(true);
     return (
-        <div className="flex flex-col relative">
-            <div
-                className="flex flex-row gap-[9px]"
-                onClick={() => setshow((prew) => !prew)}
-            >
-                <h5>{text}</h5>
+        <div className="flex flex-col relative ">
+            <div className="flex flex-row gap-[9px]">
+                <h5 onClick={() => action()}>{text}</h5>
                 <Image
+                    onClick={() => setshow((prew) => !prew)}
                     src={strelka}
                     alt="strelka"
                     style={!show ? { transform: 'rotate(180deg)' } : {}}
                 />
             </div>
             <div
-                className="flex flex-col absolute  -bottom-[170px] w-full  justify-end text-right bg-white  "
+                className="flex flex-col absolute  top-[100%] w-fit  justify-end text-right right-0 "
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
                 {ARR?.map((item: ARRE) => (
                     <p
                         onClick={item.action}
-                        className="text-right bg-white border rounded-lg border-black border-opacity-40 p-1"
+                        className="text-right bg-white border rounded-lg border-black border-opacity-40 p-1  justify-start text-black flex   overflow-hidden text-nowrap max-w-[200px]"
                     >
                         {item.title}
                     </p>

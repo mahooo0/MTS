@@ -14,7 +14,7 @@
 body {
     color: var(--foreground);
     background: #f7f7f8;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif !important;
 }
 
 @layer utilities {

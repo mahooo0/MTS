@@ -12,13 +12,15 @@ import link_icon from '../../../public/svg/link.svg';
 import News_img_Swiper from '@/components/News_img_swipper';
 import News_card from '@/components/news_card';
 import { Blue_to_blue, White_to_blue } from '@/components/btns';
+import { useRouter } from 'next/router';
 export default function id() {
+    const router = useRouter();
     return (
         <div>
             <Header active={6} />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main>
-                <div className="flex flex-row text-[18px] gap-3 mt-[41px]  ml-[100px]">
+                <div className="flex flex-row  flex-wrap text-[18px] gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     <h5>Ana səhifə</h5>
                     <Image
                         src={strelka}
@@ -33,10 +35,10 @@ export default function id() {
                     />
                     <h6 className=" opacity-60">Xəbərlərin adı</h6>
                 </div>
-                <div className="px-[100px] mt-12 flex  flex-col items-center">
+                <div className="lg:px-[100px] md:px-[60px] px-[30px] mt-12 flex  flex-col items-center">
                     <Image src={container_pn} alt="container_pn" />
-                    <div className="h-[172px] w-[80%] bg-white bg-opacity-80 p-6 flex flex-col gap-4 -mt-[110px] z-20 rounded-lg">
-                        <h4 className=" text-[32px] font-semibold">
+                    <div className="lg:h-[172px] md:h-[150px] h-[100px] lg:w-[80%] md:w-[80%] w-full bg-white bg-opacity-80 lg:p-6 md:p-6 p-0 flex flex-col lg:gap-4 md:gap-4 gap-2 lg:-mt-[110px] md:-mt-[110px] mt-0 z-20 rounded-lg">
+                        <h4 className=" lg:text-[32px] md:text-[24px] text-[16px] font-semibold">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. 
                         </h4>
@@ -56,7 +58,7 @@ export default function id() {
                         </div>
                     </div>
                 </div>
-                <div className="px-[100px] mt-[52px]">
+                <div className="lg:px-[100px] md:px-[60px] px-[30px] mt-[52px]">
                     <h6 className="text-[20px] font-semibold mb-4">
                         Lorem Ipsum is simply dummy text of the printing and
                         typesetting industry.
@@ -88,7 +90,7 @@ export default function id() {
                     </p>
                 </div>
                 <News_img_Swiper />
-                <p className="text-[16px] mt-[53px] font-normal top-[53px] px-[100px]">
+                <p className="text-[16px] mt-[53px] font-normal top-[53px] lg:px-[100px] md:px-[60px] px-[30px] ">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been the industry's
                     standard dummy text ever since the 1500s, when an unknown
@@ -110,8 +112,8 @@ export default function id() {
                     sheets containing Lorem Ipsum passages, and more recently
                     with desktop publishing software like Aldus PageMaker
                     including versions of Lorem Ipsum
-                </p>
-                <div className="flex flex-col pl-[100px]">
+                </p>{' '}
+                <div className="flex flex-col lg:pl-[100px] md:pl-[60px] pl-[30px]">
                     <p className="mt-12 mb-4 text-[12px] font-normal">
                         Paylaş:
                     </p>
@@ -126,15 +128,18 @@ export default function id() {
                             <Image src={link_icon} alt="copy_linck" />
                         </div>
                     </div>
-                </div>
-                <div className="px-[100px]   mt-[100px] mb-[100px]">
-                    <div className="flex flex-row justify-between items-center">
-                        <h3 className="text-[48px] font-semibold">
+                </div>{' '}
+                <div className="lg:px-[100px] md:px-[60px] px-[30px]    mt-[100px] mb-[100px]">
+                    <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center">
+                        <h3 className="lg:text-[48px] md:text-[48px] text-[28px] font-semibold">
                             Xəbərlər və yeniliklər
                         </h3>
-                        <Blue_to_blue text=" Bizimlə əlaq" />
+                        <Blue_to_blue
+                            action={() => router.push('/contact')}
+                            text=" Bizimlə əlaq"
+                        />
                     </div>
-                    <div className="flex flex-row   justify-between mt-12">
+                    <div className="flex lg:flex-row md:flex-row flex-col gap-3   justify-between mt-12">
                         <News_card />
                         <News_card />
                         <News_card />

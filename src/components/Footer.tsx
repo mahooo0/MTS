@@ -9,10 +9,10 @@ import wp from '../../public/svg/wp.svg';
 import location from '../../public/svg/location.svg';
 export default function () {
     return (
-        <div className=" w-full h-[477px] bg-[#131E41]">
+        <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41]">
             <div className="pt-[48px] lg:px-20 px-5 flex flex-row justify-between">
-                <div className=" flex lg:flex-row md:flex-row flex-col-reverse gap-[55px]  ">
-                    <div className="lg:flex hidden  flex-col text-[16px] text-white font-normal gap-[14px]">
+                <div className=" flex lg:flex-row md:flex-column flex-col-reverse flex-wrap gap-[55px]  ">
+                    <div className="lg:flex   flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             Haqqımızda{' '}
                         </h4>
@@ -20,7 +20,7 @@ export default function () {
                         <p>Sertifikatlar</p>
                         <p>Stuktur</p>
                     </div>
-                    <div className="lg:flex hidden md:hidden flex-col text-[16px] w-[210px] text-white font-normal gap-[14px]">
+                    <div className="lg:flex   flex-col text-[16px] w-[210px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             Xidmətlərimiz{' '}
                         </h4>
@@ -34,7 +34,7 @@ export default function () {
                         </p>
                         <p>Digər</p>
                     </div>
-                    <div className="lg:flex hidden md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
+                    <div className="lg:flex  md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             Media{' '}
                         </h4>
@@ -42,7 +42,7 @@ export default function () {
                         <p>Qalereya</p>
                         <p>Video</p>
                     </div>
-                    <div className="lg:flex hidden md:flex flex-col text-[16px] text-white font-normal gap-[14px]">
+                    <div className="lg:flex  md:flex flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             Karyera
                         </h4>
@@ -58,7 +58,7 @@ export default function () {
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={phone} alt="phone" />
                             </div>
-                            <p className=" text-[16px] font-medium">
+                            <p className=" text-[16px] font-medium lg:w-fit w-[200px]">
                                 +99412 525 85 42 / +99410 250 94 94
                             </p>
                         </div>
@@ -66,7 +66,7 @@ export default function () {
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={location} alt="location" />
                             </div>
-                            <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                            <p className=" text-[16px] font-medium flex flex-wrap lg:w-[291px]  w-[200px]">
                                 AZ1023, Azərbaycan, Bakı Səbail ray., Salyan
                                 şosesi 12
                             </p>
@@ -80,8 +80,8 @@ export default function () {
                             </p>
                         </div>
                     </div>
-                    <div className="flex  flex-col text-white">
-                        <h4 className="mb-[20px] text-[18px] font-semibold">
+                    <div className="flex  flex-col text-white w-fit ">
+                        <h4 className="mb-[20px] text-[18px] font-semibold ">
                             Bizi izlə Əlaqə
                         </h4>
                         <div className="flex flex-row gap-[16px] ">
