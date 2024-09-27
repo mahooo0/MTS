@@ -31,6 +31,9 @@ import Rounded_Swipper from '@/components/Rounded_Swipper';
 import News_card from '@/components/news_card';
 import Footer from '@/components/Footer';
 import Companies_logo from '@/components/companies_logo';
+import { Blue_to_blue, White_to_blue } from '@/components/btns';
+import { useRouter } from 'next/router';
+
 const geistSans = localFont({
     src: './fonts/GeistVF.woff',
     variable: '--font-geist-sans',
@@ -43,6 +46,7 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+    const router = useRouter();
     return (
         <div
             className="relative flex flex-col justify-center bg-[#F7F7F8]
@@ -50,7 +54,7 @@ export default function Home() {
         >
             <Header active={1} />
             <div className="bg-slate-500 lg:h-[700px] h-[280px] w-full overflow-hidden relative">
-                <div className="lg:w-1/2 w-full bg-white lg:bg-opacity-90 bg-opacity-60 h-full flex pt-[70px] lg:items-center absolute top-0 left-0">
+                <div className="lg:w-1/2 w-full bg-white lg:bg-opacity-90 bg-opacity-60 h-full z-40 flex pt-[70px] lg:items-center absolute top-0 left-0">
                     <div className="md:ml-[100px] ml-[30px]  flex flex-col ">
                         <h1 className="font-bold  lg:text-[48px]  text-[26px] text-[#050B20]">
                             Lorem Ipsum is simply dummy text of the printing.
@@ -60,9 +64,12 @@ export default function Home() {
                             <br />
                             typesetting industry.
                         </p>
-                        <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] text-white text-[20px] font-[500px] justify-center rounded-lg lg:mt-12 mt-[10px]">
-                            Bizimlə əlaqə <Image src={strelka} alt="strelka" />
-                        </button>
+                        <Blue_to_blue
+                            text=" Bizimlə əlaqə "
+                            action={() => {
+                                router.push('/contact');
+                            }}
+                        />
                     </div>
                 </div>
                 <video
@@ -76,14 +83,14 @@ export default function Home() {
                     <source src="/videos/vid.mp4" type="video/mp4" />
                 </video>
             </div>
-            <div className="lg:px-[100px] px-[30px] flex flex-row justify-between mt-[40px]">
-                <Companies_logo img={layner} colorImg={delta_color} />
+            <div className="lg:px-[100px] px-[30px] flex flex-row justify-between mt-[40px] z-30">
+                <Companies_logo img={delta_color} />
 
-                <Companies_logo img={novelty} colorImg={novelty_color} />
-                <Companies_logo img={leabhear} colorImg={leabhear} />
-                <Companies_logo img={ddla} colorImg={ddla_color} />
-                <Companies_logo img={cms} colorImg={cms_color} />
-                <Companies_logo img={asc} colorImg={asc_color} />
+                <Companies_logo img={novelty_color} />
+                <Companies_logo img={leabhear} />
+                <Companies_logo img={ddla_color} />
+                <Companies_logo img={cms_color} />
+                <Companies_logo img={asc_color} />
             </div>
             <div className="lg:mt-[100px] mt-[50px] flex justify-center ">
                 <div className="w-[744px] h-[209px] flex flex-col justify-center">
@@ -95,7 +102,7 @@ export default function Home() {
                         <button className="px-4 py-2 rounded-lg border border-black border-opacity-10 hover:bg-[#2961B1] hover:text-white hover:border-none">
                             Valkom və Praxis
                         </button>
-                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
+                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  bg-[#2961B1] text-white border-none">
                             Mexanika
                         </button>
                         <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
@@ -121,9 +128,12 @@ export default function Home() {
                         nasoslarının, Baş mühərrikin pnevmatik (DAU) məsafədən
                         idarəetmə sisteminin təmiri işləri
                     </p>
-                    <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-white text-[#2961B1] text-[20px] font-[500px] justify-center rounded-lg lg:mt-12 mt-6">
-                        Daha ətraflı <Image src={strelka2} alt="strelka" />
-                    </button>
+                    <White_to_blue
+                        text="Daha ətraflı "
+                        action={() => {
+                            router.push('/services');
+                        }}
+                    />
                 </div>
                 <Image src={trubı_png} alt="trubı_png" className="w-full" />
             </div>
@@ -145,9 +155,12 @@ export default function Home() {
                         daim inkişafa meyilli olan peşəkar və təcrübəli komanda
                         fəaliyyət göstərir.
                     </p>
-                    <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] text-white text-[20px] font-[500px] justify-center rounded-lg mt-12">
-                        Bizimlə əlaqə <Image src={strelka} alt="strelka" />
-                    </button>
+                    <Blue_to_blue
+                        text="Bizimlə əlaqə"
+                        action={() => {
+                            router.push('/contact');
+                        }}
+                    />
                 </div>
                 <Image
                     src={layner_png}
@@ -220,17 +233,30 @@ export default function Home() {
                     Qalereya
                 </h3>
                 <Rounded_Swipper />
-                <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-white text-[#2961B1] text-[20px] font-[500px] justify-center rounded-lg  absolute  bottom-[78px] z-[10333]">
+                <div className=" absolute  bottom-[78px]  z-[10333]">
+                    <White_to_blue
+                        text="Daha ətraflı"
+                        action={() => router.push('/media')}
+                    />
+                </div>
+
+                {/* <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-white text-[#2961B1] text-[20px] font-[500px] justify-center rounded-lg  absolute  bottom-[78px] z-[10333]">
                     Daha ətraflı <Image src={strelka2} alt="strelka" />
-                </button>
+                </button> */}
             </div>
-            <div className="px-[30px]   mt-[100px]">
+            <div className="lg:px-[100px] md:px-[60px] px-[30px]   mt-[100px]">
                 <div className="flex lg:flex-row flex-col justify-between gap-[20px] items-center">
                     <h3 className=" lg:text-[48px] text-[32px] font-semibold">
                         Xəbərlər və yeniliklər
                     </h3>
-                    <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] text-white text-[20px] font-[500px] justify-center rounded-lg ">
-                        Bizimlə əlaqə <Image src={strelka} alt="strelka" />
+                    <button
+                        onClick={() => {
+                            router.push('/news');
+                        }}
+                        className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97] z-[999999999999999] text-white text-[20px] font-[500px] justify-center rounded-lg "
+                    >
+                        Bütün xəbərlər
+                        <Image src={strelka} alt="strelka" />
                     </button>
                 </div>
                 <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">

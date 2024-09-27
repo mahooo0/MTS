@@ -53,7 +53,7 @@ export default function index() {
                                 onClick={() =>
                                     router.push('/karyera/request_blanck')
                                 }
-                                className="px-4 py-2 rounded-lg border border-black border-opacity-10 hover:bg-[#2961B1] hover:text-white hover:border-none"
+                                className="px-4 py-2 rounded-lg border border-black border-opacity-10 bg-[#2961B1] text-white hover:border-none"
                             >
                                 Müraciət blankı
                             </button>

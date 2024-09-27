@@ -1,9 +1,11 @@
 import React from 'react';
 import whiteStrelka from '../../public/svg/strelka1.svg';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 export default function Services_card() {
+    const router = useRouter();
     return (
-        <div className="mb-9">
+        <div className="mb-9 " onClick={() => router.push('/services/aa')}>
             <div
                 className="rounded-lg overflow-hidden w-[295px] h-[250px]  hover:scale-105  ransition-transform duration-500 lg:p-2 flex items-end "
                 style={{

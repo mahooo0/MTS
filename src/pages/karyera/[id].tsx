@@ -33,7 +33,7 @@ export default function vakancyid() {
                     />
                     <h6 className=" opacity-60">vakansiya adi</h6>
                 </div>
-                <div className="flex lg:flex-row flex-col lg:justify-between justify-start w-full flex-wrap lg:h-[204px] h-fit px-10 lg:p-0 p-5 bg-[#F7F8FA] rounded-lg lg:items-center items-start mt-7">
+                <div className="flex lg:flex-row flex-col  lg:justify-between justify-start w-full flex-wrap lg:h-[204px] h-fit px-10 lg:p-0 p-10 bg-[#F7F8FA] rounded-lg lg:items-center items-start lg:px-10 mt-7">
                     <div className="flex flex-col">
                         <h2 className="lg:text-[32px] md:text-[28px] text-[20px] font-semibold text-[#050B20] lg:w-[900px] w-fit">
                             İşə qəbul və qiymətləndirmə şöbəsində Menecer/Şöbə

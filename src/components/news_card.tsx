@@ -13,7 +13,7 @@ export default function News_card() {
             onMouseLeave={() => setison(false)}
             onClick={() => rounter.push('news/sss')}
         >
-            <div className="h-[226px] overflow-hidden">
+            <div className="h-[226px] overflow-hidden relative">
                 <Image
                     src={kater_png}
                     alt="kater_png"
@@ -21,6 +21,9 @@ export default function News_card() {
                         ison ? 'scale-110' : ''
                     }  transition-transform duration-500 rounded-lg`}
                 />
+                <div className="w-[134px] h-[36px] text-white flex justify-center items-center rounded-lg bg-black bg-opacity-15 top-3 left-3 text-[14px] font-medium  absolute ">
+                    12 Oktyabr 2024
+                </div>
             </div>
 
             <h6 className="text-[18px] my-4 px-3 font-[500] text-[#050B20]">

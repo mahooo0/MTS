@@ -14,7 +14,7 @@ export default function index() {
 
     return (
         <div className="bg-white">
-            <Header active={3} />
+            <Header active={6} />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="">
                 <div className="flex flex-row lg:px-[100px] md:px-[60px] px-[30px]">
@@ -45,7 +45,7 @@ export default function index() {
                             </button>
                             <button
                                 onClick={() => router.push('/karyera/cours')}
-                                className="px-4 py-2 rounded-lg border border-black border-opacity-10 hover:bg-[#2961B1] hover:text-white hover:border-none"
+                                className="px-4 py-2 rounded-lg border border-black border-opacity-10 bg-[#2961B1] text-white hover:border-none"
                             >
                                 Peşəkar inkişaf və təlim
                             </button>

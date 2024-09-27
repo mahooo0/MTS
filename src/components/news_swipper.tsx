@@ -39,21 +39,21 @@ export const NewsSwiper = () => {
                 }}
             >
                 <SwiperSlide>
-                    <div className="w-full flex lg:justify-around lg:flex-row flex-col gap-5 items-center ">
+                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
                         <News_bunner />
 
                         <News_bunner />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="w-full flex justify-around lg:flex-row flex-col gap-5 items-center">
+                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
                         <News_bunner />
 
                         <News_bunner />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="w-full flex justify-around lg:flex-row flex-col gap-5 items-center">
+                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
                         <News_bunner />
 
                         <News_bunner />

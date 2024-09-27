@@ -29,7 +29,7 @@ export default function media() {
                             Kateqoriyalar
                         </h1>
                         <div className="flex flex-row flex-wrap  lg:justify-between  justify-center gap-4 mt-10">
-                            <button className="px-6 py-3 rounded-lg border border-black border-opacity-10 hover:bg-[#2961B1] hover:text-white hover:border-none">
+                            <button className="px-6 py-3 rounded-lg border border-black border-opacity-10 bg-[#2961B1] text-white hover:border-none">
                                 Hamısı
                             </button>
                             <button className="px-6 py-3 rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">

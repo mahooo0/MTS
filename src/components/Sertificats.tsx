@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import image1 from '../../public/images/sertificat.png';
 import link from '../../public/svg/link.svg';
-import { Blue_to_White } from './btns';
+import { Blue_to_blue, Blue_to_White } from './btns';
 export default function Sertificat() {
     return (
         <div className=" flex lg:flex-row md:flex-row flex-col lg:w-[610px] md:w-[610px] w-[300px] lg:h-[410px] h-fit bg-white">
@@ -19,7 +19,7 @@ export default function Sertificat() {
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                 </h5>
-                <Blue_to_White text="PDF yüklə" />
+                <Blue_to_blue text="PDF yüklə" action={() => {}} />
                 <div className="flex flex-row mt-10  items-center gap-4">
                     <p>Paylaş:</p>
                     <div className="flex justify-center items-center w-10 h-10 rounded-full bg-[#F5F5F5]">

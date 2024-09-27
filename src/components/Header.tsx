@@ -11,6 +11,7 @@ interface Props {
 export default function Header({ active }: Props) {
     const router = useRouter();
     const [show, setshow] = useState<boolean>(false);
+    const [lang, setlang] = useState<'en' | 'ru'>('en');
     return (
         <div className="lg:px-[100px] md:px-[100px] px-[30px]   w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
             <Image src={Logo_Icon} alt="Logo_Icon" />
@@ -197,10 +198,24 @@ export default function Header({ active }: Props) {
                 </li>
             </ul>
             <div className="flex flex-row gap-3">
-                <button className=" rounded-full bg-white bg-opacity-60 h-10 w-10 flex justify-center items-center">
+                <button
+                    onClick={() => setlang('en')}
+                    className={` rounded-full ${
+                        lang === 'en'
+                            ? 'bg-[#2961B1] text-white'
+                            : 'bg-white bg-opacity-60'
+                    }  h-10 w-10 flex justify-center items-center`}
+                >
                     EN
                 </button>
-                <button className="rounded-full bg-white bg-opacity-60 h-10 w-10 flex justify-center items-center">
+                <button
+                    onClick={() => setlang('ru')}
+                    className={` rounded-full ${
+                        lang === 'ru'
+                            ? 'bg-[#2961B1] text-white'
+                            : 'bg-white bg-opacity-60'
+                    }  h-10 w-10 flex justify-center items-center`}
+                >
                     Ru
                 </button>
                 <Image
