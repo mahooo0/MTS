@@ -73,11 +73,13 @@ export default function Home() {
                     </div>
                 </div>
                 <video
+                    playsInline
                     controls={false}
                     width="600"
                     autoPlay
                     muted
                     loop
+                    controlsList="nodownload"
                     className="w-full  object-fill h-full"
                 >
                     <source src="/videos/vid.mp4" type="video/mp4" />
@@ -135,7 +137,11 @@ export default function Home() {
                         }}
                     />
                 </div>
-                <Image src={trubı_png} alt="trubı_png" className="w-full" />
+                <Image
+                    src={trubı_png}
+                    alt="trubı_png"
+                    className="w-full h-full object-cover"
+                />
             </div>
             <div className="m-5 lg:h-[509px] pb-[30px] mt-[100px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
                 <div>
@@ -259,11 +265,13 @@ export default function Home() {
                         <Image src={strelka} alt="strelka" />
                     </button>
                 </div>
-                <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
-                    <News_card />
-                    <News_card />
-                    <News_card />
-                    <News_card />
+                <div className="flex justify-center">
+                    <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
+                        <News_card />
+                        <News_card />
+                        <News_card />
+                        <News_card />
+                    </div>
                 </div>
             </div>
             <div className="lg:px-[100px] mt-[100px] rounded-lg relative mb-[100px] ">

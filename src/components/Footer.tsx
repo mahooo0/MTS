@@ -13,7 +13,7 @@ export default function () {
     return (
         <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41]">
             <div className="pt-[48px] lg:px-20 px-5 flex flex-row justify-between">
-                <div className=" flex lg:flex-row md:flex-column flex-col-reverse flex-wrap gap-[55px]  ">
+                <div className=" flex lg:flex-row md:flex-column flex-col-reverse  justify-between w-full flex-wrap gap-[55px]  ">
                     <div className="lg:flex   flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             Haqqımızda{' '}

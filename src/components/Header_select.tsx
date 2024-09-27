@@ -27,13 +27,13 @@ export default function Header_select({
                 />
             </div>
             <div
-                className="flex flex-col absolute  top-[100%] w-fit  justify-end text-right right-0 "
+                className="flex flex-col lg:absolute block  top-[100%] w-fit  justify-end text-right right-0  z-[100]"
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
                 {ARR?.map((item: ARRE) => (
                     <p
                         onClick={item.action}
-                        className="text-right bg-white border rounded-lg border-black border-opacity-40 p-1  justify-start text-black flex   overflow-hidden text-nowrap max-w-[200px]"
+                        className="text-right bg-white  rounded-lg p-1  justify-start text-black flex   overflow-hidden text-nowrap max-w-[200px]"
                     >
                         {item.title}
                     </p>

@@ -6,7 +6,7 @@ import { Blue_to_blue, Blue_to_White } from './btns';
 export default function Sertificat() {
     return (
         <div className=" flex lg:flex-row md:flex-row flex-col lg:w-[610px] md:w-[610px] w-[300px] lg:h-[410px] h-fit bg-white">
-            <div className="p-5 lg:w-[410px] md:w-[410px] w-[280px] h-full ">
+            <div className="p-5 lg:w-[410px] md:w-[410px] flex items-center  w-full h-full ">
                 <Image
                     src={image1}
                     alt="image"
@@ -19,7 +19,7 @@ export default function Sertificat() {
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                 </h5>
-                <Blue_to_blue text="PDF yüklə" action={() => {}} />
+                <Blue_to_blue text="PDF yüklə" action={() => {}} icon={false} />
                 <div className="flex flex-row mt-10  items-center gap-4">
                     <p>Paylaş:</p>
                     <div className="flex justify-center items-center w-10 h-10 rounded-full bg-[#F5F5F5]">

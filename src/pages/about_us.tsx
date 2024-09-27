@@ -71,7 +71,7 @@ function about_us() {
                         />
                     </div>
                     <div className="bg-[#F7F7F8] lg:h-[128px]  h-fit  lg:w-3/5 w-full md:justify-around lg:absolute z-30 bottom-0 left-[100px] border-b border-black flex lg:justify-between justify-around items-center lg:pr-[40px] pr-0 lg:flex-row md:flex-row flex-row ">
-                        <div className="flex flex-col  w-fit lg:mt-0 mt-4">
+                        <div className="flex flex-col  flex-wrap w-fit lg:mt-0 mt-4">
                             <h4 className="lg:text-[32px] md:text-[32px] text-[24px] font-semibold gap-3 lg:text-start text-center">
                                 10+
                             </h4>
@@ -172,7 +172,7 @@ function about_us() {
 
                 <div className="pt-[100px]  bg-[#F6F7F8] " id="sertificatlar">
                     <h2 className="text-[40px] font-semibold text-center mb-[40px]">
-                        SErtifikatlar
+                        Sertifikatlar
                     </h2>
                     <div className="flex items-center justify-evenly  flex-wrap pb-[100px] gap-[20px] lg:px-[100px] md:px-[60px]  px-[30px] ">
                         <Sertificat />

@@ -27,7 +27,7 @@ export default function contact({}: Props) {
             </h1>
             <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                         <Image src={location} alt="location" />
                     </div>
                     <p className=" text-[16px] font-medium">
@@ -35,7 +35,7 @@ export default function contact({}: Props) {
                     </p>
                 </div>
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                         <Image src={phone} alt="phone" />
                     </div>
                     <p className=" text-[16px] font-medium">
@@ -43,7 +43,7 @@ export default function contact({}: Props) {
                     </p>
                 </div>
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                         <Image src={mail} alt="mail" />
                     </div>
                     <p className=" text-[16px] font-medium">
