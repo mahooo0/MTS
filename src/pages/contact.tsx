@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import strelka from '../../public/svg/strelka_black.svg';
 import strelka2 from '../../public/svg/strelka1.svg';
 import location from '../../public/svg/location.svg';
@@ -9,21 +9,34 @@ import map_png from '../../public/images/map.png';
 import locationREd from '../../public/svg/location_red.svg';
 import mail from '../../public/svg/gmail.svg';
 import Image from 'next/image';
+import ContactForm from '@/components/contacy_bar';
 type Props = {};
 
-export default function contact({}: Props) {
+export default function contact({ apiData }: { apiData: any }) {
+    const [lang, setlang] = useState<string>('az');
+    const [reset, setreset] = useState<boolean>(false);
+    const data = apiData.data;
+    const baseurl = 'http://mts.caratcons.az/';
+    useEffect(() => {
+        const lng = localStorage.getItem('language') || 'en';
+        setlang(lng);
+    }, [reset]);
     return (
         <div className="bg-white">
-            <Header active={9} />
+            <Header
+                setReset={() => setreset((prew) => !prew)}
+                active={9}
+                data={data.translates}
+            />
 
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <div className="flex flex-row text-[18px] gap-3 mt-[41px]   lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                <h5>Ana səhifə</h5>
+                <h5>{data.translates.home[lang]}</h5>
                 <Image src={strelka} alt="strelka" className=" opacity-60" />
-                <h6 className=" opacity-60">Əlaqə</h6>
+                <h6 className=" opacity-60">{data.translates.contact[lang]}</h6>
             </div>
             <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                Bizimlə əlaqə
+                {data.translates.contact[lang]}
             </h1>
             <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
@@ -31,7 +44,7 @@ export default function contact({}: Props) {
                         <Image src={location} alt="location" />
                     </div>
                     <p className=" text-[16px] font-medium">
-                        AZ1023, Bakı Səbail ray., Salyan şosesi 12
+                        {data.contact.address[lang]}
                     </p>
                 </div>
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
@@ -39,7 +52,7 @@ export default function contact({}: Props) {
                         <Image src={phone} alt="phone" />
                     </div>
                     <p className=" text-[16px] font-medium">
-                        +99412 525 85 42 / +99410 250 94 94
+                        {data.contact.phone_1}/ {data.contact.phone_2}
                     </p>
                 </div>
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
@@ -47,20 +60,24 @@ export default function contact({}: Props) {
                         <Image src={mail} alt="mail" />
                     </div>
                     <p className=" text-[16px] font-medium">
-                        reception@marinets.az
+                        {data.contact.email}
                     </p>
                 </div>
             </div>
             <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[100px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">
-                <iframe
+                <div
+                    className="IfarmeCLass"
+                    dangerouslySetInnerHTML={{ __html: `${data.contact.map}` }}
+                ></div>
+                {/* <iframe
                     className="w-full lg:h-full lg:mt-0 mt-10"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6836.025529021591!2d49.85315080154546!3d40.380998971825385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d0a3ea7028d%3A0xac9d73dbd66392c8!2s28%20May!5e0!3m2!1sru!2saz!4v1726840557089!5m2!1sru!2saz"
                     width="600"
                     height="450"
                     loading="lazy"
-                ></iframe>
-
-                <div className="lg:w-[455px] w-full lg:h-[94%] h-fit bg-white rounded-lg lg:absolute  top-[26px] left-[100px] bottom-5  z-30 pt-7 pl-6 pr-[14px] flex flex-col">
+                ></iframe> */}
+                <ContactForm data={data.translates} leng={lang} />
+                {/* <div className="lg:w-[455px] w-full lg:h-[94%] h-fit bg-white rounded-lg lg:absolute  top-[26px] left-[100px] bottom-5  z-30 pt-7 pl-6 pr-[14px] flex flex-col">
                     <h3 className="text-[#050B20] text-[28px] font-semibold mb-3">
                         Sualın var? Biz zəng edək
                     </h3>
@@ -103,9 +120,17 @@ export default function contact({}: Props) {
                             Daha ətraflı <Image src={strelka2} alt="strelka2" />
                         </button>
                     </div>
-                </div>
+                </div> */}
             </div>
-            <Footer />
+            <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
+}
+export async function getServerSideProps() {
+    const res = await fetch('http://mts.caratcons.az/api/home');
+    const data = await res.json();
+    console.log(data);
+
+    // Pass data to the page via props
+    return { props: { apiData: data } };
 }

@@ -1,213 +1,100 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import strelka from '../../../public/svg/strelka_black.svg';
-import ship from '../../../public/images/ship.png';
-import grid2 from '../../../public/svg/grid2.svg';
-import grid4 from '../../../public/svg/grid4.svg';
 
-export default function id() {
-    const [grid_cols, setgrid_cols] = useState<2 | 4>(2);
+export default function MediaPage({ apiData }: { apiData: any }) {
+    const [lang, setLang] = useState<string>('az');
+    const [reset, setReset] = useState<boolean>(false);
+    const data = apiData.data;
+    const baseurl = 'http://mts.caratcons.az/';
+
+    // Check if videos exist to avoid runtime errors
+    const [mainvid, setMainVid] = useState<string>(
+        data?.videos?.[0]?.url || ''
+    );
+
+    useEffect(() => {
+        const lng = localStorage.getItem('language') || 'en';
+        setLang(lng);
+    }, [reset]);
+
+    // Check if the data is available before rendering components
+    if (!data) {
+        return <div></div>;
+    }
+
+    React.useEffect(() => {
+        console.log(`${baseurl}${mainvid}`);
+    }, [baseurl, mainvid]);
+
     return (
         <div>
-            <Header active={6} />
+            <Header
+                setReset={() => setReset((prev) => !prev)}
+                active={6}
+                data={data.translates}
+            />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
+
             <main>
+                {/* Breadcrumb and title */}
                 <div className="flex flex-row text-[18px] gap-3 mt-[41px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    <h5>Ana səhifə</h5>
+                    <h5>{data?.translates?.home[lang]}</h5>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-
-                    <h6 className=" opacity-60">Vidiolar</h6>
+                    <h6 className=" opacity-60">
+                        {data?.translates?.video[lang]}
+                    </h6>
                 </div>
                 <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    Videolar
+                    {data?.translates?.video[lang]}
                 </h1>
+
+                {/* Main Video Section */}
                 <div className="lg:px-[100px]  md:px-[60px] px-[30px]  flex flex-col">
                     <video
                         controls={true}
                         width="600"
                         muted
-                        loop
                         className="w-full rounded-lg"
-                    >
-                        <source src="/videos/vid.mp4" type="video/mp4" />
-                    </video>
-                    <div className="grid flex-row lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-5">
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
+                        src={`${baseurl}${mainvid}`}
+                        disablePictureInPicture
+                    />
+
+                    {/* Video Gallery */}
+                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-5">
+                        {data?.videos?.map((video: any, index: number) => (
+                            <div
+                                key={index}
+                                className="aspect-square"
+                                onClick={() => {
+                                    setMainVid(video.url);
+                                    console.log('slsslslsls');
+                                }}
                             >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
-                        <div className=" aspect-square">
-                            <video
-                                controls={false}
-                                width="600"
-                                muted
-                                loop
-                                className="w-full rounded-lg h-full object-fill"
-                            >
-                                <source
-                                    src="/videos/vid.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>
-                        </div>
+                                <video
+                                    controls={false}
+                                    width="600"
+                                    muted
+                                    loop
+                                    className="w-full rounded-lg h-full object-fill"
+                                >
+                                    <source
+                                        src={`${baseurl}${video.url}`}
+                                        type="video/mp4"
+                                    />
+                                </video>
+                            </div>
+                        ))}
                     </div>
-                    <div className="flex  justify-center mt-[20px] mb-[100px]">
+
+                    {/* Pagination */}
+                    <div className="flex justify-center mt-[20px] mb-[100px]">
                         <div className="flex flex-row gap-5">
                             <Image
                                 src={strelka}
@@ -230,7 +117,22 @@ export default function id() {
                     </div>
                 </div>
             </main>
-            <Footer />
+
+            {/* Footer */}
+            <Footer
+                data={data?.translates}
+                lang={lang}
+                contact={data?.contact}
+            />
         </div>
     );
+}
+
+// Fetch data server-side
+export async function getServerSideProps() {
+    const res = await fetch('http://mts.caratcons.az/api/video');
+    const data = await res.json();
+
+    // Pass data to the page via props
+    return { props: { apiData: data } };
 }

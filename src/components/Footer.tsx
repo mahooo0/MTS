@@ -1,4 +1,5 @@
 import React from 'react';
+import strelka from '../../public/svg/strelka2.svg';
 import logo from '../../public/svg/Logo.svg';
 import Image from 'next/image';
 import mail from '../../public/svg/gmail.svg';
@@ -8,7 +9,15 @@ import facebock from '../../public/svg/facebock.svg';
 import wp from '../../public/svg/wp.svg';
 import location from '../../public/svg/location.svg';
 import { useRouter } from 'next/router';
-export default function () {
+export default function ({
+    data,
+    lang,
+    contact,
+}: {
+    data: any;
+    lang: any;
+    contact: any;
+}) {
     const router = useRouter();
     return (
         <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41]">
@@ -16,19 +25,22 @@ export default function () {
                 <div className=" flex lg:flex-row md:flex-column flex-col-reverse  justify-between w-full flex-wrap gap-[55px]  ">
                     <div className="lg:flex   flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Haqqımızda{' '}
+                            {data.about[lang]}
                         </h4>
                         <p onClick={() => router.push('/about_us')}>
-                            Şirkət tarixçəsi
+                            {data.company_chronology[lang]}
                         </p>
                         <p onClick={() => router.push('/about_us')}>
-                            Sertifikatlar
+                            {data.certificates[lang]}
                         </p>
-                        <p onClick={() => router.push('/about_us')}>Stuktur</p>
+                        <p onClick={() => router.push('/about_us')}>
+                            {' '}
+                            {data.structure[lang]}
+                        </p>
                     </div>
                     <div className="lg:flex   flex-col text-[16px] w-[210px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Xidmətlərimiz{' '}
+                            {data.our_services[lang]}
                         </h4>
                         <p onClick={() => router.push('/services/aaa')}>
                             Soyutma sahəsi üzrə
@@ -52,44 +64,47 @@ export default function () {
                     </div>
                     <div className="lg:flex  md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Media{' '}
+                            {data.media[lang]}
                         </h4>
-                        <p onClick={() => router.push('/news')}>Xəbərlər</p>
+                        <p onClick={() => router.push('/news')}>
+                            {' '}
+                            {data.news[lang]}
+                        </p>
                         <p onClick={() => router.push('/media/images')}>
-                            Qalereya
+                            {data.gallery[lang]}
                         </p>
                         <p onClick={() => router.push('/media/videos')}>
-                            Video
+                            {data.video[lang]}
                         </p>
                     </div>
                     <div className="lg:flex  md:flex flex-col text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Karyera
+                            {data.career[lang]}
                         </h4>
                         <p onClick={() => router.push('/karyera')}>
-                            Vakansiyalar
+                            {data.vacancies[lang]}
                         </p>
                         <p onClick={() => router.push('/karyera/cours')}>
-                            Peşəkar inkişaf və təlim
+                            {data.training[lang]}
                         </p>
                         <p
                             onClick={() =>
                                 router.push('/karyera/request_blanck')
                             }
                         >
-                            Müraciət blankı.
+                            {data.application_form[lang]}
                         </p>
                     </div>
                     <div className="text-white">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
-                            Əlaqə məlumatları
+                            {data.contact_info[lang]}
                         </h4>
                         <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={phone} alt="phone" />
                             </div>
                             <p className=" text-[16px] font-medium lg:w-fit w-[200px]">
-                                +99412 525 85 42 / +99410 250 94 94
+                                {contact.phone_1} / {contact.phone_2}
                             </p>
                         </div>
                         <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -97,8 +112,7 @@ export default function () {
                                 <Image src={location} alt="location" />
                             </div>
                             <p className=" text-[16px] font-medium flex flex-wrap lg:w-[291px]  w-[200px]">
-                                AZ1023, Azərbaycan, Bakı Səbail ray., Salyan
-                                şosesi 12
+                                {contact.address[lang]}
                             </p>
                         </div>
                         <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -106,29 +120,53 @@ export default function () {
                                 <Image src={mail} alt="mail" />
                             </div>
                             <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                                reception@marinets.az
+                                {contact.email}
                             </p>
                         </div>
                     </div>
                     <div className="flex  flex-col text-white w-fit ">
                         <h4 className="mb-[20px] text-[18px] font-semibold ">
-                            Bizi izlə Əlaqə
+                            {data.contact_us[lang]}
                         </h4>
                         <div className="flex flex-row gap-[16px] ">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
-                                <Image src={insta} alt="insta" />
+                                <a href={contact.instagram_url}>
+                                    <Image src={insta} alt="insta" />
+                                </a>
                             </div>
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
-                                <Image src={facebock} alt="facebock" />
+                                <a href={contact.facebook_url}>
+                                    <Image src={facebock} alt="facebock" />
+                                </a>
                             </div>
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
-                                <Image src={wp} alt="wp" />
+                                <a href="">
+                                    <Image src={wp} alt="wp" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div></div>
+            <div className="border-t border-[#FFFFFF1F] flex justify-between text-white lg:mx-[100px] md:mx-[60px] mx-[30px] mt-20 pt-6">
+                <p>© 2024 exemple.com. All rights reserved.</p>
+                <div
+                    className="flex justify-center items-center rounded-full w-10 h-10 bg-[#E1F2FF] animate-bounce "
+                    onClick={() =>
+                        window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: 'smooth', // Enables smooth scrolling
+                        })
+                    }
+                >
+                    <Image
+                        src={strelka}
+                        alt="strelka"
+                        className=" -rotate-90"
+                    />
+                </div>
+            </div>
         </div>
     );
 }

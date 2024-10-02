@@ -1,6 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import strelka from '../../../public/svg/strelka_black.svg';
 import strelka1 from '../../../public/svg/strelka1.svg';
 import calendar from '../../../public/svg/calendar.svg';
@@ -10,39 +10,60 @@ import Image from 'next/image';
 import { Blue_to_blue } from '@/components/btns';
 import Request_blanck from '@/components/Request_blanck';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
-export default function vakancyid() {
+export default function vakancyid({ apiData }: { apiData: any }) {
     const router = useRouter();
+
+    const [lang, setlang] = useState<string>('az');
+    const [reset, setreset] = useState<boolean>(false);
+    const data = apiData.data;
+
+    const baseurl = 'http://mts.caratcons.az/';
+    useEffect(() => {
+        const lng = localStorage.getItem('language') || 'en';
+        setlang(lng);
+    }, [reset]);
+    const CurrenVacansy = useSelector(
+        (state: any) => state.counter.CurrenVacansy
+    );
+    console.log('currentNew', CurrenVacansy);
     return (
         <div className="bg-white">
-            <Header active={3} />
+            <Header
+                setReset={() => setreset((prew) => !prew)}
+                active={3}
+                data={data.translates}
+            />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="lg:px-[100px] md:px-[60px] px-[30px]">
                 <div className="flex flex-row flex-wrap text-[18px] gap-3 mt-[41px] ">
-                    <h5>Ana səhifə</h5>
+                    <h5>{data.translates.home[lang]}</h5>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-                    <h5>Karyera</h5>
+                    <h5>{data.translates.career[lang]}</h5>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-                    <h6 className=" opacity-60">vakansiya adi</h6>
+                    <h6 className=" opacity-60">{CurrenVacansy.title[lang]}</h6>
                 </div>
                 <div className="flex lg:flex-row flex-col  lg:justify-between justify-start w-full flex-wrap lg:h-[204px] h-fit px-10 lg:p-0 p-10 bg-[#F7F8FA] rounded-lg lg:items-center items-start lg:px-10 mt-7">
                     <div className="flex flex-col">
                         <h2 className="lg:text-[32px] md:text-[28px] text-[20px] font-semibold text-[#050B20] lg:w-[900px] w-fit">
-                            İşə qəbul və qiymətləndirmə şöbəsində Menecer/Şöbə
-                            rəis müavini/Şöbə rəisi
+                            {CurrenVacansy.title[lang]}
                         </h2>
                         <div className="flex lg:flex-row md:flex-row flex-col mt-5 gap-5">
                             <div className="flex flex-row gap-2">
                                 <Image src={calendar} alt="calendar" />
-                                <p>12/09/2024-12/10/2024</p>
+                                <p>
+                                    {CurrenVacansy.start_date}-
+                                    {CurrenVacansy.start_date}
+                                </p>
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={aye} alt="calendar" />
@@ -50,21 +71,39 @@ export default function vakancyid() {
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={location} alt="calendar" />
-                                <p>Bakı şəhəri</p>
+                                <p>{CurrenVacansy.address[lang]}</p>
                             </div>
                         </div>
                     </div>
                     <button
-                        onClick={() => router.push('/karyera/vakansiya/aaa')}
+                        onClick={() =>
+                            router.push(
+                                `/karyera/vakansiya/${CurrenVacansy.slug[lang]}`
+                            )
+                        }
                         className="flex flex-row text-nowrap gap-2 items-center lg:mt-0 mt-5 w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97]  text-white text-[20px] font-[500px] justify-center rounded-lg "
                     >
-                        Muraciet et <Image src={strelka1} alt="strelka" />
+                        {data.translates.apply_vacansy[lang]}{' '}
+                        <Image src={strelka1} alt="strelka" />
                     </button>
                     {/* <Blue_to_blue text="Muraciet et" action={() => {}} /> */}
                 </div>
-                <div className="mt-5">{/* <Request_blanck /> */}</div>
+                <div
+                    className=" w-full flex-wrap  h-fit px-10  py-5 bg-[#F7F8FA] rounded-lg lg:items-center items-start lg:px-10 mt-7"
+                    dangerouslySetInnerHTML={{
+                        __html: CurrenVacansy.responsibility[lang],
+                    }}
+                />
             </main>
-            <Footer />
+            <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
+}
+export async function getServerSideProps() {
+    const res = await fetch('http://mts.caratcons.az/api/home');
+    const data = await res.json();
+    console.log(data);
+
+    // Pass data to the page via props
+    return { props: { apiData: data } };
 }

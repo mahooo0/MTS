@@ -3,6 +3,9 @@ import React, { ReactNode } from 'react';
 import clockicon from '../../public/images/clock.png';
 import strelka from '../../public/svg/option_strelka_blue.svg';
 import strelka2 from '../../public/svg/option_strelka.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { setcurrentservices } from '@/redux/slices/PassSlice';
+import { useRouter } from 'next/router';
 
 function Asidemodule({
     active,
@@ -45,7 +48,20 @@ function Asidemodule({
         );
     }
 }
-export default function Services_aside({ action }: { action: () => void }) {
+export default function Services_aside({
+    action,
+    lang,
+}: {
+    action: () => void;
+    lang: any;
+}) {
+    const router = useRouter();
+    const dipatch = useDispatch();
+    const Services = useSelector((state: any) => state.counter.services);
+    console.log(Services);
+    const currenntService = useSelector(
+        (state: any) => state.counter.Currentservice
+    );
     return (
         <div className="lg:w-fit w-full h-fit bg-[#F7F8FA]  border rounded-lg  lg:mt-10 mt-14 flex flex-col text-center ">
             <h5 className="text-[20px] font-semibold mt-5">Xidmətlərimiz</h5>
@@ -53,54 +69,32 @@ export default function Services_aside({ action }: { action: () => void }) {
                 Gəmi təmiri xidmətlərimizə daxildir:
             </p>
             <div className="px-[9px] flex flex-col gap-[6px] pb-6 pt-6">
-                <Asidemodule
-                    active={true}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Elektrik avadanlıqlarının diaqnostikası və tarirovkası
-                </Asidemodule>
-                <Asidemodule
-                    active={false}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Mexanika sahəsi üzrə
-                </Asidemodule>
-                <Asidemodule
-                    active={false}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Mexanika sahəsi üzrə
-                </Asidemodule>
-                <Asidemodule
-                    active={false}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Mexanika sahəsi üzrə
-                </Asidemodule>
-                <Asidemodule
-                    active={false}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Mexanika sahəsi üzrə
-                </Asidemodule>
-                <Asidemodule
-                    active={false}
-                    action={() => {
-                        action();
-                    }}
-                >
-                    Mexanika sahəsi üzrə
-                </Asidemodule>
+                {Services.map((item: any) => {
+                    if (item.type === 'Digər') {
+                        return (
+                            <Asidemodule
+                                active={currenntService === item}
+                                action={() => {
+                                    dipatch(setcurrentservices(item));
+                                    router.push('/services/other');
+                                }}
+                            >
+                                {item.name[lang]}
+                            </Asidemodule>
+                        );
+                    }
+                    return (
+                        <Asidemodule
+                            active={currenntService === item}
+                            action={() => {
+                                dipatch(setcurrentservices(item));
+                                router.push(`/services/${item.slug[lang]}`);
+                            }}
+                        >
+                            {item.name[lang]}
+                        </Asidemodule>
+                    );
+                })}
             </div>
         </div>
     );

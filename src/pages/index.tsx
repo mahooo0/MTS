@@ -33,39 +33,45 @@ import Footer from '@/components/Footer';
 import Companies_logo from '@/components/companies_logo';
 import { Blue_to_blue, White_to_blue } from '@/components/btns';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import DOMPurify from 'dompurify';
+import Rounded_Swipper2 from '@/components/Rounded_Swipper2';
 
-const geistSans = localFont({
-    src: './fonts/GeistVF.woff',
-    variable: '--font-geist-sans',
-    weight: '100 900',
-});
-const geistMono = localFont({
-    src: './fonts/GeistMonoVF.woff',
-    variable: '--font-geist-mono',
-    weight: '100 900',
-});
-
-export default function Home() {
+export default function Home({ apiData }: { apiData: any }) {
+    const [lang, setlang] = useState<string>('az');
+    const [reset, setreset] = useState<boolean>(false);
+    const [activeSer, setactiveSer] = useState<number>(0);
     const router = useRouter();
+    const data = apiData.data;
+    const baseurl = 'http://mts.caratcons.az/';
+    useEffect(() => {
+        const lng = localStorage.getItem('language') || 'en';
+        setlang(lng);
+    }, [reset]);
+    // const lang = localStorage.getItem('language') || 'en';
+    console.log(data.galleries);
+
     return (
         <div
             className="relative flex flex-col justify-center bg-[#F7F7F8]
         "
         >
-            <Header active={1} />
+            <Header
+                setReset={() => setreset((prew) => !prew)}
+                active={1}
+                data={data.translates}
+            />
             <div className="bg-slate-500 lg:h-[700px] h-[280px] w-full overflow-hidden relative">
                 <div className="lg:w-1/2 w-full bg-white lg:bg-opacity-90 bg-opacity-60 h-full z-40 flex pt-[70px] lg:items-center absolute top-0 left-0">
                     <div className="md:ml-[100px] ml-[30px]  flex flex-col ">
                         <h1 className="font-bold  lg:text-[48px]  text-[26px] text-[#050B20]">
-                            Lorem Ipsum is simply dummy text of the printing.
+                            {data.hero.title[lang]}
                         </h1>
-                        <p className="text-black font-[500] lg:text-[20px] text-[12px] lg:mt-[20px] mt-[10px]">
-                            Lorem Ipsum is simply dummy text of the printing and{' '}
-                            <br />
-                            typesetting industry.
+                        <p className="text-black font-[500] lg:text-[20px] text-[12px] lg:mt-[20px] mt-[10px] max-w-[551px]">
+                            {data.hero.sub_title[lang]}
                         </p>
                         <Blue_to_blue
-                            text=" Bizimlə əlaqə "
+                            text={data.translates.contact_us[lang]}
                             action={() => {
                                 router.push('/contact');
                             }}
@@ -82,29 +88,45 @@ export default function Home() {
                     controlsList="nodownload"
                     className="w-full  object-fill h-full"
                 >
-                    <source src="/videos/vid.mp4" type="video/mp4" />
+                    <source
+                        src={`${baseurl}${data.hero.video}`}
+                        type="video/mp4"
+                    />
                 </video>
             </div>
-            <div className="lg:px-[100px] px-[30px] flex flex-row justify-between mt-[40px] z-30">
-                <Companies_logo img={delta_color} />
-
-                <Companies_logo img={novelty_color} />
-                <Companies_logo img={leabhear} />
-                <Companies_logo img={ddla_color} />
-                <Companies_logo img={cms_color} />
-                <Companies_logo img={asc_color} />
+            <div className="lg:px-[100px] px-[30px] flex flex-row justify-around mt-[40px] z-30">
+                {data.brands.map((item: any, i: number) => (
+                    <Companies_logo
+                        key={i}
+                        img={`${baseurl}${item.image}`}
+                        alt={item.image_alt[lang]}
+                        Title={item.image_title[lang]}
+                    />
+                ))}
             </div>
             <div className="lg:mt-[100px] mt-[50px] flex justify-center ">
                 <div className="w-[744px] h-[209px] flex flex-col justify-center">
                     <h1 className=" lg:text-[48px] text-[24px] font-semibold text-center">
-                        Gəmilərdə yerinə yetirilən <br />
-                        təmir  və  modernizasiya  işləri
+                        {data.translates.service_title[lang]}
                     </h1>
                     <div className="flex flex-row gap-5 mt-10 flex-wrap justify-center ">
-                        <button className="px-4 py-2 rounded-lg border border-black border-opacity-10 hover:bg-[#2961B1] hover:text-white hover:border-none">
-                            Valkom və Praxis
-                        </button>
-                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  bg-[#2961B1] text-white border-none">
+                        {data.services.map((item: any, i: number) => {
+                            console.log(item);
+
+                            return (
+                                <button
+                                    onClick={() => setactiveSer(i)}
+                                    className={`px-4 py-2 rounded-lg border border-black border-opacity-10 ${
+                                        activeSer === i &&
+                                        'bg-[#2961B1] text-white'
+                                    } `}
+                                >
+                                    {item.title[lang]}
+                                </button>
+                            );
+                        })}
+
+                        {/* <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  bg-[#2961B1] text-white border-none">
                             Mexanika
                         </button>
                         <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
@@ -115,145 +137,113 @@ export default function Home() {
                         </button>
                         <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
                             Soyutma
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>
             <div className="lg:mx-[100px] flex justify-center mt-[48px] h-[300px]  relative  overflow-hidden">
                 <div className="bg-black  bg-opacity-60 rounded-lg w-full   h-full absolute top-0  flex flex-col justify-center text-center items-center">
                     <h1 className="lg:text-[32px] text-[24px] font-semibold text-white">
-                        Mexanika sahəsi üzrə
+                        {data.services[activeSer].title[lang]}
                     </h1>
                     <p className=" lg:w-[798px] w-[98%] lg:text-[18px] text-[12px] font-medium text-white mt-3">
-                        Gəmilərdə  Baş və köməkçi mühərriklərin sürət
-                        tənzimləyicisilərinin,yüksək təzyiqli yanacaq
-                        nasoslarının, Baş mühərrikin pnevmatik (DAU) məsafədən
-                        idarəetmə sisteminin təmiri işləri
+                        {data.services[activeSer].content[lang]}
                     </p>
                     <White_to_blue
-                        text="Daha ətraflı "
+                        text={data.translates.see_more[lang]}
                         action={() => {
-                            router.push('/services');
+                            router.push(
+                                `/services/${data.services[activeSer].slug[lang]}`
+                            );
                         }}
                     />
                 </div>
-                <Image
-                    src={trubı_png}
+                <img
+                    src="/images/trubı.png"
                     alt="trubı_png"
                     className="w-full h-full object-cover"
                 />
+                {/* <Image
+                    src={trubı_png}
+                    alt="trubı_png"
+                    className="w-full h-full object-cover"
+                /> */}
             </div>
             <div className="m-5 lg:h-[509px] pb-[30px] mt-[100px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
                 <div>
-                    <h2 className=" lg:text-[48px] text-[20px] font-semibold ">
-                        “Marine Technical Solutions” <br />
-                        QSC haqqında qısa məlumat
+                    <h2 className=" lg:text-[48px] text-[20px] font-semibold lg:w-[60%] w-full">
+                        {data.home_about.title[lang]}
                     </h2>
-                    <p className="lg:w-[780px] w-[95%] mt-3 lg:text-[16px] text-[12px] text-opacity-80 ">
-                        “Marine Technical Solutions” Qapalı Səhmdar Cəmiyyəti 28
-                        aprel 2014-cü il tarixində Bakıda – Azərbaycanda
-                        yaradılmış müasir və sürətlə inkişaf edən şirkətdir.
-                        Artıq 10 ildən artıqdır ki, sizin xidmətinizdə olan
-                        Marine Technical Solutions şirkəti müxtəlif növ
-                        gəmilərin əsaslı təmiri, konstruksiyaların
-                        quraşdırılması və s. bu kimi işləri peşəkar komandası
-                        ilə icra edir. Şirkətdə 100 – dən çox əməkdaş sayı ilə
-                        daim inkişafa meyilli olan peşəkar və təcrübəli komanda
-                        fəaliyyət göstərir.
-                    </p>
+                    <div
+                        className="lg:w-[780px] w-[95%] mt-3 lg:text-[16px] text-[12px] text-opacity-80 text-wrap "
+                        id="home_about_description"
+                        dangerouslySetInnerHTML={{
+                            __html: data.home_about.description[lang],
+                        }}
+                    />
+
                     <Blue_to_blue
-                        text="Bizimlə əlaqə"
+                        text={data.translates.contact_us[lang]}
                         action={() => {
                             router.push('/contact');
                         }}
                     />
                 </div>
-                <Image
-                    src={layner_png}
+                {/* <img
+                    src="/images/laner.png"
                     alt="layner_png"
                     className=" absolute  bottom-0 right-0 lg:block hidden "
                     width={600}
+                /> */}
+                <Image
+                    src={`${baseurl}${data.home_about.image}`}
+                    alt="layner_png"
+                    className=" absolute  bottom-0 right-0 lg:block hidden  h-full"
+                    width={600}
+                    height={600}
                 />
             </div>
             <div className="flex lg:flex-row flex-col bg-[#F7F7F8]  justify-between  pt-[80px] lg:px-[100px] px-[30px]">
                 <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20]">
-                    Bizim üstünlüklərimiz
+                    {data.translates.our_advantages[lang]}
                 </h3>
                 <div className="flex-wrap flex-row grid gap-10 mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                    <div className="w-[313px] h-[196px]">
-                        <div className="w-[56px] h-[56px] rounded-lg bg-[#7DB3FF] flex justify-center items-center mb-5">
-                            <Image src={portfel} alt="like" />
+                    {data.advantages.map((item: any) => (
+                        <div className="w-[313px] h-[196px]">
+                            <div className="w-[56px] h-[56px] rounded-lg bg-[#7DB3FF] flex justify-center items-center mb-5">
+                                <Image
+                                    src={`${baseurl}${item.icon}`}
+                                    alt="like"
+                                    width={34}
+                                    height={34}
+                                />
+                            </div>
+                            <h6 className="text-[20px] font-semibold">
+                                {item.title[lang]}
+                            </h6>
+                            <p className="text-[16px] font-normal  w-[100%]">
+                                {item.text[lang]}
+                            </p>
                         </div>
-                        <h6 className="text-[20px] font-semibold">
-                            Peşəkar yanaşma
-                        </h6>
-                        <p className="text-[16px] font-normal  w-[100%]">
-                            {' '}
-                            Şəxsi hesabatlılığı qoruyarkən iş təcrübələrimizi
-                            yaxşılaşdırmaq və hər bir fərdi töhfəyə ortaq bir
-                            yanaşma təmin etmək vəzifəsini davam etdirir
-                        </p>
-                    </div>
-                    <div className="w-[313px] h-[196px]">
-                        <div className="w-[56px] h-[56px] rounded-lg bg-[#7DB3FF] flex justify-center items-center mb-5">
-                            <Image src={protextion} alt="like" />
-                        </div>
-                        <h6 className="text-[20px] font-semibold">
-                            Maksimum rahatlıq
-                        </h6>
-                        <p className="text-[16px] font-normal w-[100%] pb-3">
-                            Effektiv planlaşdırma, effektiv layihə idarəetməsi
-                            və ciddi proses monitorinqi ilə müştəri tələblərinə
-                            çevik, lakin praktik yanaşma
-                        </p>
-                    </div>
-                    <div className="w-[313px] h-[196px]">
-                        <div className="w-[56px] h-[56px] rounded-lg bg-[#7DB3FF] flex justify-center items-center mb-5">
-                            <Image src={pramata} alt="like" />
-                        </div>
-                        <h6 className="text-[20px] font-semibold">
-                            Yüksək keyfiyyət
-                        </h6>
-                        <p className="text-[16px] font-normal w-[100%] pb-3">
-                            Nəzərdə tutulduğu kimi və uyğunluq tələblərinə uyğun
-                            olaraq fəaliyyət göstərilməsi Heç bir əməliyyat
-                            SƏTƏM-dən üstün deyil
-                        </p>
-                    </div>
-                    <div className="w-[313px] h-[196px]">
-                        <div className="w-[56px] h-[56px] rounded-lg bg-[#7DB3FF] flex justify-center items-center mb-5">
-                            <Image src={layner_2d} alt="like" />
-                        </div>
-                        <h6 className="text-[20px] font-semibold">
-                            Təhlükəsiz don limanı
-                        </h6>
-                        <p className="text-[16px] font-normal w-[100%] pb-3">
-                            Uzunluğu 1100 m, orta dərinliyi 7 m, bütün lazımi
-                            vasitələrlə təchiz olunmuşdur
-                        </p>
-                    </div>
+                    ))}
                 </div>
             </div>
             <div className=" bg-[#131E41] h-[708px] w-full flex flex-col justify-center items-center overflow-hidden relative mt-[80px]">
                 <h3 className=" lg:text-[48px] text-[32px] text-white font-semibold w-[200px] text-center absolute z-[101] top-20">
-                    Qalereya
+                    {data.translates.gallery[lang]}
                 </h3>
-                <Rounded_Swipper />
+                <Rounded_Swipper2 data={data.galleries} />
                 <div className=" absolute  bottom-[78px]  z-[10333]">
                     <White_to_blue
-                        text="Daha ətraflı"
+                        text={data.translates.see_more[lang]}
                         action={() => router.push('/media')}
                     />
                 </div>
-
-                {/* <button className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-white text-[#2961B1] text-[20px] font-[500px] justify-center rounded-lg  absolute  bottom-[78px] z-[10333]">
-                    Daha ətraflı <Image src={strelka2} alt="strelka" />
-                </button> */}
             </div>
             <div className="lg:px-[100px] md:px-[60px] px-[30px]   mt-[100px]">
                 <div className="flex lg:flex-row flex-col justify-between gap-[20px] items-center">
                     <h3 className=" lg:text-[48px] text-[32px] font-semibold">
-                        Xəbərlər və yeniliklər
+                        {data.translates.news[lang]}
                     </h3>
                     <button
                         onClick={() => {
@@ -261,42 +251,51 @@ export default function Home() {
                         }}
                         className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97] z-[999999999999999] text-white text-[20px] font-[500px] justify-center rounded-lg "
                     >
-                        Bütün xəbərlər
+                        {data.translates.see_more[lang]}
                         <Image src={strelka} alt="strelka" />
                     </button>
                 </div>
                 <div className="flex justify-center">
                     <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
-                        <News_card />
-                        <News_card />
-                        <News_card />
-                        <News_card />
+                        {data.blogs.map((item: any, i: any) => {
+                            if (i < 3) {
+                                return;
+                            }
+                            return (
+                                <News_card
+                                    data={item}
+                                    lang={lang}
+                                    translates={data.translates}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
-            <div className="lg:px-[100px] mt-[100px] rounded-lg relative mb-[100px] ">
-                <iframe
-                    className="w-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6836.025529021591!2d49.85315080154546!3d40.380998971825385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d0a3ea7028d%3A0xac9d73dbd66392c8!2s28%20May!5e0!3m2!1sru!2saz!4v1726840557089!5m2!1sru!2saz"
-                    width="600"
-                    height="450"
-                    loading="lazy"
-                ></iframe>
+            <div
+                className="lg:px-[100px] mt-[100px] rounded-lg relative mb-[100px] lg:h-[605px] h-auto "
+                id="contact"
+            >
+                <div
+                    className="IfarmeCLass"
+                    dangerouslySetInnerHTML={{
+                        __html: `${data.contact.map} `,
+                    }}
+                />
 
                 <div className="w-[395px] h-[94%] bg-white rounded-lg  absolute top-5 left-[120px] bottom-5  z-30 pt-7 pl-6 pr-[14px] lg:flex hidden flex-col">
                     <h3 className="text-[#050B20] text-[32px] font-semibold mb-3">
-                        Bizimlə əlaqə
+                        {data.translates.contact_us[lang]}
                     </h3>
                     <p className="text-[16px] font-normal mb-10">
-                        Sualın var? Bizimlə əlaqə saxla ən qısa zamanda sualını
-                        cavablandıraq.
+                        {data.translates.contact_title[lang]}
                     </p>
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
                         <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
                             <Image src={phone} alt="phone" />
                         </div>
                         <p className=" text-[16px] font-medium">
-                            +99412 525 85 42 / +99410 250 94 94
+                            {data.contact.phone_1} / {data.contact.phone_2}
                         </p>
                     </div>
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -304,8 +303,7 @@ export default function Home() {
                             <Image src={location} alt="location" />
                         </div>
                         <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                            AZ1023, Azərbaycan, Bakı Səbail ray., Salyan şosesi
-                            12
+                            {data.contact.address[lang]}
                         </p>
                     </div>
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -313,13 +311,21 @@ export default function Home() {
                             <Image src={mail} alt="mail" />
                         </div>
                         <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                            reception@marinets.az
+                            {data.contact.email}
                         </p>
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer data={data.translates} lang={lang} contact={data.contact} />
             {/* <Map /> */}
         </div>
     );
+}
+export async function getServerSideProps() {
+    const res = await fetch('http://mts.caratcons.az/api/home');
+    const data = await res.json();
+    console.log(data);
+
+    // Pass data to the page via props
+    return { props: { apiData: data } };
 }

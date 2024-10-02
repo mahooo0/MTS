@@ -7,7 +7,7 @@ import layner_png from '../../public/images/layner2.png';
 import { White_to_blue } from './btns';
 import CustomPagination from './slider_custom pagiation';
 import News_bunner from './News_bunner';
-export const NewsSwiper = () => {
+export const NewsSwiper = ({ data, lang }: { data: any; lang: string }) => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const handleSlideChange = (index: number) => {
@@ -16,10 +16,22 @@ export const NewsSwiper = () => {
             setCurrentSlide(index);
         }
     };
+    function groupArrayInPairs(arr: any[]): any[][] {
+        const result: any[][] = [];
 
+        for (let i = 0; i < arr.length; i += 2) {
+            // Push a pair of objects (or remaining objects if the length is odd)
+            result.push(arr.slice(i, i + 2));
+        }
+
+        return result;
+    }
     const handleSwiperChange = (swiper: any) => {
         setCurrentSlide(swiper.activeIndex);
     };
+    const NEwArr = groupArrayInPairs(data);
+    console.log(NEwArr);
+
     return (
         <div className="relative w-full">
             <Swiper
@@ -38,27 +50,15 @@ export const NewsSwiper = () => {
                     },
                 }}
             >
-                <SwiperSlide>
-                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
-                        <News_bunner />
+                {NEwArr.map((item: any) => (
+                    <SwiperSlide>
+                        <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
+                            <News_bunner data={item[0]} lang={lang} />
 
-                        <News_bunner />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
-                        <News_bunner />
-
-                        <News_bunner />
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
-                        <News_bunner />
-
-                        <News_bunner />
-                    </div>
-                </SwiperSlide>
+                            <News_bunner data={item[1]} lang={lang} />
+                        </div>
+                    </SwiperSlide>
+                ))}
 
                 {/* Add more slides as needed */}
             </Swiper>

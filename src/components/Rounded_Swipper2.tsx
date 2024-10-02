@@ -86,7 +86,7 @@ const Zoom_swipper = ({
     );
 };
 
-const Rounded_Swipper = ({ data }: { data: any }) => {
+const Rounded_Swipper2 = ({ data }: { data: any }) => {
     const [show, setshow] = useState<boolean>(false);
     const [index, setindex] = useState<number>(0);
     const [slidesPerView, setSlidesPerView] = useState(5);
@@ -140,7 +140,7 @@ const Rounded_Swipper = ({ data }: { data: any }) => {
                                     setshow(true);
                                     setindex(i);
                                 }}
-                                src={`http://mts.caratcons.az/${item}`}
+                                src={`http://mts.caratcons.az/${item.image}`}
                                 alt="Slide 1"
                                 className="w-[344px] h-[346px] object-cover"
                             />
@@ -162,4 +162,4 @@ const Rounded_Swipper = ({ data }: { data: any }) => {
     );
 };
 
-export default Rounded_Swipper;
+export default Rounded_Swipper2;

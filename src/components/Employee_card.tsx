@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { lazy } from 'react';
 
-export default function Employee_card() {
+export default function Employee_card({ data, lng }: { data: any; lng: any }) {
     return (
         <div>
             <div
                 className="  flex  items-end p-3 rounded-full"
                 style={{
-                    backgroundImage: `url('/images/sea.png')`,
+                    backgroundImage: `url('http://mts.caratcons.az/${data.image}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     width: '200px',
@@ -16,9 +16,11 @@ export default function Employee_card() {
             ></div>
             <div className="text-center mt-5">
                 <p className="text-[16px] font-normal text-black text-opacity-80">
-                    Direktor
+                    {data.name[lng]}
                 </p>
-                <h5 className="text-[20px] font-semibold">Elxan Nəbiyev</h5>
+                <h5 className="text-[20px] font-semibold">
+                    {data.profession[lng]}
+                </h5>
             </div>
         </div>
     );

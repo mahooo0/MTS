@@ -2,14 +2,45 @@ import React from 'react';
 import whiteStrelka from '../../public/svg/strelka1.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-export default function Services_card() {
+import { useAppDispatch } from '@/redux/store';
+import { useSelector } from 'react-redux';
+import { setcurrentservices, setservices } from '@/redux/slices/PassSlice';
+export default function Services_card({
+    data,
+    lang,
+    ser,
+}: {
+    data: any;
+    lang: any;
+    ser: any;
+}) {
+    console.log(ser);
+    function shortenText(text: string, maxLength: number): string {
+        if (text?.length <= maxLength) {
+            return text;
+        }
+        return text?.slice(0, maxLength) + '...';
+    }
+    const dispatch = useAppDispatch();
+
     const router = useRouter();
     return (
-        <div className="mb-9 " onClick={() => router.push('/services/aa')}>
+        <div
+            className="mb-9 "
+            onClick={() => {
+                dispatch(setcurrentservices(data));
+                dispatch(setservices(ser));
+                if (data.type === 'Digər') {
+                    router.push(`/services/other`);
+                } else {
+                    router.push(`/services/${data.slug[lang]}`);
+                }
+            }}
+        >
             <div
                 className="rounded-lg overflow-hidden w-[295px] h-[250px]  hover:scale-105  ransition-transform duration-500 lg:p-2 flex items-end "
                 style={{
-                    backgroundImage: `url('/images/sea.png')`,
+                    backgroundImage: `url('http://mts.caratcons.az/${data.image}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
 
@@ -22,11 +53,12 @@ export default function Services_card() {
                 </div>
             </div>
             <h6 className="text-[16px] font-semibold mt-4 mb-2 w-[295px]">
-                Soyutma sahəsi üzrə
+                {shortenText(data.title[lang], 35)}
             </h6>
             <p className="text-[16px] font-normal w-[295px]">
-                Gəmilərdə kondisionerlərin təmiri və quraşdırılması, ərzaq
-                saxlama ...
+                {shortenText(data.content[lang], 80)}
+
+                {/* {data.content[lang]} */}
             </p>
         </div>
     );

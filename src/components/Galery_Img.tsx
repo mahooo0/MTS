@@ -1,13 +1,33 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-
-export default function Galery_Img() {
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../redux/store'; // Custom hook for dispatch
+import { setBlog } from '../redux/slices/PassSlice';
+import { RootState } from '@reduxjs/toolkit/query';
+export default function Galery_Img({
+    image,
+    title,
+    category,
+    slug,
+    data,
+}: {
+    image: string;
+    title: string;
+    category: string;
+    slug: any;
+    data: any;
+}) {
+    const dispatch = useAppDispatch();
+    const count = useSelector((state: any) => state.counter.blog);
     const router = useRouter();
     return (
         <div
-            onClick={() => router.push('media/images')}
+            onClick={() => {
+                dispatch(setBlog(data));
+                router.push(`media/${slug}`);
+            }}
             style={{
-                backgroundImage: `url('/images/sea.png')`,
+                backgroundImage: `url('${image}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 width: '295px',
@@ -24,10 +44,10 @@ export default function Galery_Img() {
                 }}
             >
                 <p className="rounded-lg bg-white bg-opacity-40 px-3 py-[6px] text-[14px] font-normal absolute top-3 left-3">
-                    Tədbir
+                    {category}
                 </p>
                 <p className="text-white text-[16px] font-medium absolute left-5 bottom-5">
-                    Lorem Ipsum is simply dummy
+                    {title}
                 </p>
             </div>
         </div>

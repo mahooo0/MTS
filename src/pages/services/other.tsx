@@ -51,20 +51,18 @@ export default function Services_id({ apiData }: { apiData: any }) {
                         {currenntService.name[lang]}
                     </h6>
                 </div>
-                <h1 className="text-[#050B20] lg:text-[40px] md:text-[30px] text-[24px] font-semibold mt-10">
-                    {currenntService.title[lang]}
+                <h1 className="text-[#050B20] lg:text-[40px] md:text-[36px] text-[28px] font-semibold mt-10">
+                    {data.translates.our_services[lang]}
                 </h1>
-                <div className="flex justify-start lg:flex-row flex-col gap-5">
-                    <Services_img_swipper data={currenntService.images} />
-                    <Services_aside action={() => {}} lang={lang} />
+                <div className="flex justify-start lg:flex-row flex-col-reverse gap-5 pb-[100px]">
+                    <FAQ lang={lang} />
+                    <Services_aside
+                        lang={lang}
+                        action={() => {
+                            setvariant(1);
+                        }}
+                    />
                 </div>
-
-                <div
-                    className="text-[16px] font-normal text-black text-opacity-80 text-start   felx flex-col lg:w-[75%] w-full mt-11 pb-[100px]  "
-                    dangerouslySetInnerHTML={{
-                        __html: currenntService.description[lang],
-                    }}
-                />
             </main>
             {/* <Footer /> */}
             <Footer data={data.translates} lang={lang} contact={data.contact} />

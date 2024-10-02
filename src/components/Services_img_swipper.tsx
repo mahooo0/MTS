@@ -7,10 +7,10 @@ import container_png from '../../public/images/container.png';
 import Image from 'next/image';
 import CustomPagination from './slider_custom pagiation';
 
-const Services_img_swipper = () => {
+const Services_img_swipper = ({ data }: { data: any }) => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
-
+    const baseurl = 'http://mts.caratcons.az/';
     const handleNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slideNext();
@@ -43,27 +43,17 @@ const Services_img_swipper = () => {
                 slidesPerView={1}
                 spaceBetween={10}
             >
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full lg:h-[486px] h-fit"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full lg:h-[486px] h-fit"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full lg:h-[486px] h-fit"
-                    />
-                </SwiperSlide>
+                {data.map((item: any) => (
+                    <SwiperSlide>
+                        <img
+                            src={`${baseurl}${item}`}
+                            width={100}
+                            height={100}
+                            alt="container_png"
+                            className="w-full lg:h-[486px] h-fit"
+                        />
+                    </SwiperSlide>
+                ))}
             </Swiper>
 
             <div className="flex flex-row  absolute lg:bottom-0 md:bottom-0 -bottom-[40%] right-0  gap-3">

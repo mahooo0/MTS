@@ -1,17 +1,58 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo_Icon from '../../public/svg/Logo.svg';
 import menu_Icon from '../../public/svg/menu.svg';
 import close_Icon from '../../public/svg/close_black.svg';
 import { useRouter } from 'next/router';
 import Header_select from './Header_select';
+import { useDispatch } from 'react-redux';
+import { setcurrentservices, setservices } from '@/redux/slices/PassSlice';
 interface Props {
     active: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+    setReset: () => void;
+    data: any;
 }
-export default function Header({ active }: Props) {
+export default function Header({ active, setReset, data }: Props) {
     const router = useRouter();
     const [show, setshow] = useState<boolean>(false);
-    const [lang, setlang] = useState<'en' | 'ru'>('en');
+    const [Loading, setIsLoading] = useState<boolean>(false);
+    const [lang, setlang] = useState<any>('en');
+    const [services, setserviceS] = useState<any>([]);
+    useEffect(() => {
+        const lng = localStorage.getItem('language') || 'en';
+        setlang(lng);
+    }, []);
+    useEffect(() => {
+        (async () => {
+            try {
+                setIsLoading(true);
+
+                const res = await fetch(
+                    `http://mts.caratcons.az/api/get-header-data`
+                );
+                const newdata = await res.json();
+                console.log('newdata', newdata);
+
+                console.log('newdata', newdata);
+
+                const NewDATA = await newdata.data;
+                setserviceS(NewDATA.services);
+                // setdata(NewDATA);
+                const ARR = [...NewDATA.services];
+
+                dispatch(setservices(ARR));
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setIsLoading(false);
+            }
+        })();
+    }, []);
+    const dispatch = useDispatch();
+    console.log(services);
+    if (Loading) {
+        return <div></div>;
+    }
     return (
         <div className="lg:px-[100px] md:px-[100px] px-[30px]   w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
             <Image
@@ -28,7 +69,7 @@ export default function Header({ active }: Props) {
                             : '  font-medium'
                     }
                 >
-                    Ana səhifə
+                    {data.home[lang]}
                 </li>
                 <li
                     className={
@@ -39,7 +80,7 @@ export default function Header({ active }: Props) {
                 >
                     <Header_select
                         action={() => router.push('/about_us')}
-                        text="Haqqımızda"
+                        text={data?.about[lang]}
                         ARR={[
                             {
                                 title: 'Şirkət tarixçəsi',
@@ -80,46 +121,16 @@ export default function Header({ active }: Props) {
                 >
                     <Header_select
                         action={() => router.push('/services')}
-                        text="Xidmətlərimiz"
-                        ARR={[
-                            {
-                                title: 'Soyutma sahəsi üzrə',
+                        text={data?.our_services[lang]}
+                        ARR={services.map((item: any) => {
+                            return {
+                                title: item.name[lang],
                                 action: () => {
-                                    router.push('/services/aaaa');
+                                    dispatch(setcurrentservices(item));
+                                    router.push(`/services/${item.slug[lang]}`);
                                 },
-                            },
-                            {
-                                title: 'Hidravlika sahəsi üzrə',
-                                action: () => {
-                                    router.push('/services/sss');
-                                },
-                            },
-
-                            {
-                                title: 'Mexanika sahəsi üzrə',
-                                action: () => {
-                                    router.push('/services/sss');
-                                },
-                            },
-                            {
-                                title: 'Avtomatika sahəsi üzrə',
-                                action: () => {
-                                    router.push('/services/sss');
-                                },
-                            },
-                            {
-                                title: 'Elektrik avadanlıqlarının diaqnostikası və tarirovkası',
-                                action: () => {
-                                    router.push('/services/sss');
-                                },
-                            },
-                            {
-                                title: 'Digər',
-                                action: () => {
-                                    router.push('/services/sss');
-                                },
-                            },
-                        ]}
+                            };
+                        })}
                     />
                 </li>
 
@@ -132,7 +143,7 @@ export default function Header({ active }: Props) {
                 >
                     <Header_select
                         action={() => router.push('/media')}
-                        text="Media"
+                        text={data?.media[lang]}
                         ARR={[
                             {
                                 title: 'Qalereya',
@@ -165,7 +176,7 @@ export default function Header({ active }: Props) {
                 >
                     <Header_select
                         action={() => router.push('/karyera')}
-                        text="Karyera"
+                        text={data?.career[lang]}
                         ARR={[
                             {
                                 title: 'Vakansiyalar',
@@ -198,12 +209,16 @@ export default function Header({ active }: Props) {
                             : '  font-medium'
                     }
                 >
-                    Əlaqə
+                    {data?.contact[lang]}
                 </li>
             </ul>
             <div className="flex flex-row gap-3">
                 <button
-                    onClick={() => setlang('en')}
+                    onClick={() => {
+                        setlang('en');
+                        localStorage.setItem('language', 'en');
+                        setReset();
+                    }}
                     className={` rounded-full ${
                         lang === 'en'
                             ? 'bg-[#2961B1] text-white'
@@ -213,7 +228,11 @@ export default function Header({ active }: Props) {
                     EN
                 </button>
                 <button
-                    onClick={() => setlang('ru')}
+                    onClick={() => {
+                        setlang('ru');
+                        localStorage.setItem('language', 'ru');
+                        setReset();
+                    }}
                     className={` rounded-full ${
                         lang === 'ru'
                             ? 'bg-[#2961B1] text-white'
@@ -221,6 +240,20 @@ export default function Header({ active }: Props) {
                     }  h-10 w-10 flex justify-center items-center`}
                 >
                     Ru
+                </button>
+                <button
+                    onClick={() => {
+                        setlang('az');
+                        localStorage.setItem('language', 'az');
+                        setReset();
+                    }}
+                    className={` rounded-full ${
+                        lang === 'az'
+                            ? 'bg-[#2961B1] text-white'
+                            : 'bg-white bg-opacity-60'
+                    }  h-10 w-10 flex justify-center items-center`}
+                >
+                    Az
                 </button>
                 <Image
                     src={menu_Icon}
@@ -231,7 +264,7 @@ export default function Header({ active }: Props) {
             </div>
             <div
                 className="lg:hidden  bg-[#E7EDF8] flex-col   fixed right-0 top-0 h-[100vh] w-[300px] rounded-l-lg
-                p-6"
+                    p-6"
                 style={show ? { display: 'flex' } : { display: 'none' }}
             >
                 <div className="flex w-full justify-end">
@@ -251,7 +284,7 @@ export default function Header({ active }: Props) {
                                 : '  font-medium'
                         }
                     >
-                        Ana səhifə
+                        {data?.home.lang}
                     </li>
                     <li
                         className={
@@ -262,7 +295,7 @@ export default function Header({ active }: Props) {
                     >
                         <Header_select
                             action={() => router.push('/about_us')}
-                            text="Haqqımızda"
+                            text={data?.about[lang]}
                             ARR={[
                                 {
                                     title: 'Şirkət tarixçəsi',
@@ -303,7 +336,7 @@ export default function Header({ active }: Props) {
                     >
                         <Header_select
                             action={() => router.push('/services')}
-                            text="Xidmətlərimiz"
+                            text={data?.our_services[lang]}
                             ARR={[
                                 {
                                     title: 'Soyutma sahəsi üzrə',
@@ -355,7 +388,7 @@ export default function Header({ active }: Props) {
                     >
                         <Header_select
                             action={() => router.push('/media')}
-                            text="Media"
+                            text={data?.media[lang]}
                             ARR={[
                                 {
                                     title: 'Qalereya',
@@ -388,7 +421,7 @@ export default function Header({ active }: Props) {
                     >
                         <Header_select
                             action={() => router.push('/karyera')}
-                            text="Karyera"
+                            text={data?.career[lang]}
                             ARR={[
                                 {
                                     title: 'Vakansiyalar',
@@ -421,7 +454,7 @@ export default function Header({ active }: Props) {
                                 : '  font-medium'
                         }
                     >
-                        Əlaqə
+                        {data?.contact[lang]}
                     </li>
                 </ul>
             </div>

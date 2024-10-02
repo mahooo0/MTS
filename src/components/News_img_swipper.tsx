@@ -7,7 +7,7 @@ import container_png from '../../public/images/container.png';
 import Image from 'next/image';
 import CustomPagination from './slider_custom pagiation';
 
-const CustomSwiper = () => {
+const CustomSwiper = ({ data }: { data: any }) => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -43,27 +43,15 @@ const CustomSwiper = () => {
                 slidesPerView={1}
                 spaceBetween={10}
             >
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image
-                        src={container_png}
-                        alt="container_png"
-                        className="w-full"
-                    />
-                </SwiperSlide>
+                {data.map((item: any) => (
+                    <SwiperSlide>
+                        <img
+                            src={`http://mts.caratcons.az/${item}`}
+                            alt="container_png"
+                            className="w-full"
+                        />
+                    </SwiperSlide>
+                ))}
             </Swiper>
 
             <div className="flex flex-row  absolute bottom-0 lg:right-[205px] md:right-[105px]  right-0 gap-3">
@@ -83,7 +71,7 @@ const CustomSwiper = () => {
             </div>
             <div className="mt-10 lg:block ">
                 <CustomPagination
-                    totalSlides={3} // Set this to the number of slides you have
+                    totalSlides={data.length} // Set this to the number of slides you have
                     currentSlide={currentSlide}
                     onSlideChange={handleSlideChange}
                 />
