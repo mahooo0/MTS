@@ -127,7 +127,7 @@ export default function news() {
                             <div
                                 onClick={() => {
                                     dispatch(setCurrenVacansy(item));
-                                    router.push(`/karyera/${item.slug[lang]}`);
+                                    router.push(`/karyera/${item.id}`);
                                 }}
                                 className="w-[295px] h-[195px] p-5 flex flex-col justify-between bg-[#F7F8FA] rounded-lg"
                             >

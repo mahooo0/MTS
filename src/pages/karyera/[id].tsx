@@ -11,23 +11,45 @@ import { Blue_to_blue } from '@/components/btns';
 import Request_blanck from '@/components/Request_blanck';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import { GetServerSideProps } from 'next';
 
-export default function vakancyid({ apiData }: { apiData: any }) {
-    const router = useRouter();
-
+export default function vakancyid() {
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
-    const data = apiData.data;
+    const [data, setdata] = useState<any>();
 
     const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
     }, [reset]);
-    const CurrenVacansy = useSelector(
-        (state: any) => state.counter.CurrenVacansy
-    );
-    console.log('currentNew', CurrenVacansy);
+    // const CurrenVacansy = useSelector(
+    //     (state: any) => state.counter.CurrenVacansy
+    // );
+    // console.log('currentNew', CurrenVacansy);
+    const router = useRouter();
+    const { id } = router.query;
+    useEffect(() => {
+        (async () => {
+            if (id) {
+                try {
+                    const res = await fetch(
+                        `https://mts.caratcons.az/api/vacancy-detail/${id}`
+                    );
+                    const data = await res.json();
+                    setdata(data.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        })();
+    }, [id]);
+
+    if (!data) {
+        return <></>;
+    }
+    console.log(data);
+    const CurrenVacansy = data.vacancy;
     return (
         <div className="bg-white">
             <Header
@@ -78,7 +100,7 @@ export default function vakancyid({ apiData }: { apiData: any }) {
                     <button
                         onClick={() =>
                             router.push(
-                                `/karyera/vakansiya/${CurrenVacansy.slug[lang]}`
+                                `/karyera/vakansiya/${CurrenVacansy.id}`
                             )
                         }
                         className="flex flex-row text-nowrap gap-2 items-center lg:mt-0 mt-5 w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97]  text-white text-[20px] font-[500px] justify-center rounded-lg "
@@ -98,12 +120,4 @@ export default function vakancyid({ apiData }: { apiData: any }) {
             <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
-}
-export async function getServerSideProps() {
-    const res = await fetch('https://mts.caratcons.az/api/home');
-    const data = await res.json();
-    console.log(data);
-
-    // Pass data to the page via props
-    return { props: { apiData: data } };
 }
