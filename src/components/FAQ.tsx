@@ -46,7 +46,7 @@ const FAQItem = ({
 
                 <div className="lg:w-full mg:w-full sm:w-full w-fit lg:h-[300px] h-full m-7">
                     <img
-                        src={`http://mts.caratcons.az/${data.image}`}
+                        src={`https://mts.caratcons.az/${data.image}`}
                         alt="image"
                         className=" object-cover w-full h-full  rounded-lg"
                     />

@@ -49,7 +49,7 @@ const Zoom_swipper = ({
                     <SwiperSlide>
                         <div className=" h-full flex  justify-center items-center">
                             <img
-                                src={`http://mts.caratcons.az/${item.image}`}
+                                src={`https://mts.caratcons.az/${item.image}`}
                                 alt="Slide 1"
                                 className="w-3/5  "
                             />
@@ -140,7 +140,7 @@ const Rounded_Swipper2 = ({ data }: { data: any }) => {
                                     setshow(true);
                                     setindex(i);
                                 }}
-                                src={`http://mts.caratcons.az/${item.image}`}
+                                src={`https://mts.caratcons.az/${item.image}`}
                                 alt="Slide 1"
                                 className="w-[344px] h-[346px] object-cover"
                             />

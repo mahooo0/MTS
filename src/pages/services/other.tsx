@@ -18,7 +18,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
     const data = apiData.data;
     console.log('data', data);
 
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
@@ -71,7 +71,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/service?page=1');
+    const res = await fetch('https://mts.caratcons.az/api/service?page=1');
     const data = await res.json();
     console.log(data);
 

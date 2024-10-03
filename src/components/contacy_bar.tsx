@@ -24,7 +24,7 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                     };
 
                     const res = await axios.post(
-                        `http://mts.caratcons.az/api/send-message`,
+                        `https://mts.caratcons.az/api/send-message`,
                         body
                     );
 

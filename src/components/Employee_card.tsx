@@ -6,7 +6,7 @@ export default function Employee_card({ data, lng }: { data: any; lng: any }) {
             <div
                 className="  flex  items-end p-3 rounded-full"
                 style={{
-                    backgroundImage: `url('http://mts.caratcons.az/${data.image}')`,
+                    backgroundImage: `url('https://mts.caratcons.az/${data.image}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     width: '200px',

@@ -47,7 +47,7 @@ export default function Request_blanck2() {
 
                     body.append('phone', values.phone);
                     const res = await axios.put(
-                        'http://mts.caratcons.az/api/apply'
+                        'https://mts.caratcons.az/api/apply'
                     );
                     const status = res.status;
                     if (status === 201) {

@@ -33,7 +33,7 @@ export default function News_card({
         >
             <div className="h-[226px] overflow-hidden relative">
                 <img
-                    src={`http://mts.caratcons.az/${data.image}`}
+                    src={`https://mts.caratcons.az/${data.image}`}
                     alt="kater_png"
                     className={`w-full h-full  ${
                         ison ? 'scale-110' : ''

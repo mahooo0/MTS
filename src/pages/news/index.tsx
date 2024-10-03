@@ -13,7 +13,7 @@ export default function news() {
     const [data, setdata] = useState<any>({});
     const [page, setpage] = useState<number>(1);
 
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
@@ -23,7 +23,7 @@ export default function news() {
             try {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://mts.caratcons.az/api/blog?page=${page}`
+                    `https://mts.caratcons.az/api/blog?page=${page}`
                 );
                 const newdata = await res.json();
 
@@ -94,7 +94,7 @@ export default function news() {
     );
 }
 // export async function getServerSideProps() {
-//     const res = await fetch('http://mts.caratcons.az/api/blog?page=1');
+//     const res = await fetch('https://mts.caratcons.az/api/blog?page=1');
 //     const data = await res.json();
 //     console.log(data);
 

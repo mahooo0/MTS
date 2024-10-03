@@ -13,7 +13,7 @@ export default function id({ apiData }: { apiData: any }) {
     const [grid_cols, setgrid_cols] = useState<2 | 4>(2);
     const [reset, setreset] = useState<boolean>(false);
     const [lang, setlang] = useState<string>('az');
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const id = localStorage.getItem('scrollto');
         if (id) {
@@ -100,7 +100,7 @@ export default function id({ apiData }: { apiData: any }) {
                                 }
                             >
                                 <img
-                                    src={`http://mts.caratcons.az/${item}`}
+                                    src={`https://mts.caratcons.az/${item}`}
                                     alt="ship"
                                     className={
                                         grid_cols === 4
@@ -119,7 +119,7 @@ export default function id({ apiData }: { apiData: any }) {
 }
 
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/home');
+    const res = await fetch('https://mts.caratcons.az/api/home');
     const data = await res.json();
     console.log(data);
 

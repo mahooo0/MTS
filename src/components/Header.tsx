@@ -28,7 +28,7 @@ export default function Header({ active, setReset, data }: Props) {
                 setIsLoading(true);
 
                 const res = await fetch(
-                    `http://mts.caratcons.az/api/get-header-data`
+                    `https://mts.caratcons.az/api/get-header-data`
                 );
                 const newdata = await res.json();
                 console.log('newdata', newdata);

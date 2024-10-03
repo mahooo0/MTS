@@ -23,7 +23,7 @@ export default function id({ apiData }: { apiData: any }) {
     const [reset, setreset] = useState<boolean>(false);
     const data = apiData.data;
 
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
@@ -57,7 +57,7 @@ export default function id({ apiData }: { apiData: any }) {
                 </div>
                 <div className="lg:px-[100px] md:px-[60px] px-[30px] mt-12 flex  flex-col items-center">
                     <img
-                        src={`http://mts.caratcons.az/${currentNew.image}`}
+                        src={`https://mts.caratcons.az/${currentNew.image}`}
                         alt="container_pn"
                         className="w-full h-full"
                     />
@@ -138,7 +138,7 @@ export default function id({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/home');
+    const res = await fetch('https://mts.caratcons.az/api/home');
     const data = await res.json();
     console.log(data);
 

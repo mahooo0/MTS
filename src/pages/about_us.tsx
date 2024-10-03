@@ -12,7 +12,7 @@ import Sertificat from '@/components/Sertificats';
 function about_us({ apiData }: { apiData: any }) {
     const [reset, setreset] = useState<boolean>(false);
     const [lang, setlang] = useState<string>('az');
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const id = localStorage.getItem('scrollto');
         if (id) {
@@ -199,7 +199,7 @@ function about_us({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/about');
+    const res = await fetch('https://mts.caratcons.az/api/about');
     const data = await res.json();
     console.log(data);
 

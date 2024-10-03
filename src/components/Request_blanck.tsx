@@ -59,7 +59,7 @@ export default function Request_blanck({ data }: { data: any }) {
                             body.append('vacancy_id', data.id);
                             body.append('phone', values.azerbaijanPhone);
                             const res = await axios.put(
-                                'http://mts.caratcons.az/api/apply-vacancy'
+                                'https://mts.caratcons.az/api/apply-vacancy'
                             );
                             const status = res.status;
                             if (status === 201) {

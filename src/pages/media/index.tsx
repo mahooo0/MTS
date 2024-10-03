@@ -15,7 +15,7 @@ export default function media() {
     const [reset, setreset] = useState<boolean>(false);
     const [stringval, setStringVal] = useState<string>('');
     const [isLoading, setIsLoading] = useState(true);
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
@@ -25,11 +25,11 @@ export default function media() {
             try {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
+                    `https://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
                 );
                 const newdata = await res.json();
                 // const newdata = await axios.get(
-                //     `http://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
+                //     `https://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
                 // );
                 // console.log(newdata.data.data.categories[0]?.name['az'], 'data my');
                 console.log('newdata', newdata);

@@ -45,7 +45,7 @@ export default function Home({ apiData }: { apiData: any }) {
     const [activeSer, setactiveSer] = useState<number>(0);
     const router = useRouter();
     const data = apiData.data;
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
@@ -315,7 +315,7 @@ export default function Home({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/home');
+    const res = await fetch('https://mts.caratcons.az/api/home');
     const data = await res.json();
     console.log(data);
 

@@ -10,7 +10,7 @@ import CustomPagination from './slider_custom pagiation';
 const Services_img_swipper = ({ data }: { data: any }) => {
     const swiperRef = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     console.log('DAta', data);
 
     const handleNext = () => {

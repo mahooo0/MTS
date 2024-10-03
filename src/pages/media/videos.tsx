@@ -8,7 +8,7 @@ export default function MediaPage({ apiData }: { apiData: any }) {
     const [lang, setLang] = useState<string>('az');
     const [reset, setReset] = useState<boolean>(false);
     const data = apiData.data;
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
 
     // Check if videos exist to avoid runtime errors
     const [mainvid, setMainVid] = useState<string>(
@@ -130,7 +130,7 @@ export default function MediaPage({ apiData }: { apiData: any }) {
 
 // Fetch data server-side
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/video');
+    const res = await fetch('https://mts.caratcons.az/api/video');
     const data = await res.json();
 
     // Pass data to the page via props

@@ -5,7 +5,7 @@ import link from '../../public/svg/link.svg';
 import { Blue_to_blue, Blue_to_White } from './btns';
 export default function Sertificat({ data, lang }: { data: any; lang: any }) {
     console.log(data);
-    const baseurl = 'http://mts.caratcons.az/';
+    const baseurl = 'https://mts.caratcons.az/';
     console.log(`${baseurl}${data.pdf}`);
 
     return (

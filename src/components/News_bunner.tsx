@@ -28,7 +28,7 @@ export default function News_bunner({
                     ison ? 'scale-110' : ''
                 } text-white `}
                 style={{
-                    backgroundImage: `url('http://mts.caratcons.az/${data.image}')`,
+                    backgroundImage: `url('https://mts.caratcons.az/${data.image}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}

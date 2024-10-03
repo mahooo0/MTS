@@ -40,7 +40,7 @@ export default function Services_card({
             <div
                 className="rounded-lg overflow-hidden w-[295px] h-[250px]  hover:scale-105  ransition-transform duration-500 lg:p-2 flex items-end "
                 style={{
-                    backgroundImage: `url('http://mts.caratcons.az/${data.image}')`,
+                    backgroundImage: `url('https://mts.caratcons.az/${data.image}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
 
