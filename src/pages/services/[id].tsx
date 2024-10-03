@@ -26,7 +26,7 @@ export default function Services_id() {
             if (id) {
                 try {
                     const res = await fetch(
-                        `http://mts.caratcons.az/api/service-detail/${id}`
+                        `https://mts.caratcons.az/api/service-detail/${id}`
                     );
                     const data = await res.json();
                     setdata(data.data);
