@@ -49,7 +49,7 @@ const Zoom_swipper = ({
                     <SwiperSlide>
                         <div className=" h-full flex  justify-center items-center">
                             <img
-                                src={`https://mts.caratcons.az/${item.image}`}
+                                src={`https://mts.caratcons.az/${item}`}
                                 alt="Slide 1"
                                 className="w-3/5  "
                             />
