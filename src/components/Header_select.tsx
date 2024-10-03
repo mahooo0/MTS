@@ -16,7 +16,11 @@ export default function Header_select({
 }) {
     const [show, setshow] = useState<Boolean>(true);
     return (
-        <div className="flex flex-col relative ">
+        <div
+            className="flex flex-col relative "
+            onMouseEnter={() => setshow(false)}
+            onMouseLeave={() => setshow(true)}
+        >
             <div className="flex flex-row gap-[9px]">
                 <h5 onClick={() => action()}>{text}</h5>
                 <Image
@@ -27,7 +31,7 @@ export default function Header_select({
                 />
             </div>
             <div
-                className="flex flex-col lg:absolute block  top-[100%] w-fit  justify-end text-right right-0  z-[100]"
+                className="flex flex-col lg:absolute   top-[100%] w-fit  justify-end text-right right-0  z-[100]"
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
                 {ARR?.map((item: ARRE) => (
