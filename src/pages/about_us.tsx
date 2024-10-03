@@ -111,7 +111,7 @@ function about_us({ apiData }: { apiData: any }) {
                                 }
                             })}
 
-                            <div className="  gap-[60px] pt-5 grid  grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-between flex-row mt-[40px]">
+                            <div className="  gap-[60px] pt-5 flex flex-row flex-wrap justify-center items-center mt-[40px]">
                                 {data.teams.map((item: any) => {
                                     console.log(item);
 
@@ -127,7 +127,7 @@ function about_us({ apiData }: { apiData: any }) {
                                 {/* <Employee_card />
                                 <Employee_card /> */}
                             </div>
-                            <div className="  gap-[60px] pt-5 grid lg:grid-cols-3 md:grid-cols-3  md:justify-center md:items-center grid-rows-1  justify-between flex-row mt-[40px]">
+                            <div className="  gap-[60px] pt-5   flex flex-row flex-wrap justify-center items-center  mt-[40px]">
                                 {data.teams.map((item: any) => {
                                     console.log(item);
 
@@ -141,7 +141,7 @@ function about_us({ apiData }: { apiData: any }) {
                                     }
                                 })}
                             </div>
-                            <div className="  gap-[60px] pt-5  grid  grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-between flex-row mt-[40px]">
+                            <div className="  gap-[60px] pt-5  flex flex-row flex-wrap justify-center items-center mt-[40px]">
                                 {data.teams.map((item: any) => {
                                     console.log(item);
 
@@ -155,7 +155,7 @@ function about_us({ apiData }: { apiData: any }) {
                                     }
                                 })}
                             </div>
-                            <div className="  gap-[60px] pt-5 grid lg:grid-cols-4 md:grid-cols-2 place-items-center  place-content-center   md:justify-center md:items-center grid-rows-1  lg:justify-between justify-center  mt-[40px]">
+                            <div className="  gap-[60px] pt-5 flex flex-row flex-wrap justify-center items-center  mt-[40px]">
                                 {data.teams.map((item: any) => {
                                     console.log(item);
 

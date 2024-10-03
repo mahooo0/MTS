@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 
 export default function Employee_card({ data, lng }: { data: any; lng: any }) {
     return (
-        <div>
+        <div className="flex justify-center flex-col items-center">
             <div
                 className="  flex  items-end p-3 rounded-full"
                 style={{
