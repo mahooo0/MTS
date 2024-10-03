@@ -80,10 +80,12 @@ export default function Services_id({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('https://mts.caratcons.az/api/service?page=1');
-    const data = await res.json();
-    console.log(data);
-
-    // Pass data to the page via props
-    return { props: { apiData: data } };
+    try {
+        const res = await fetch('https://mts.caratcons.az/api/service?page=1');
+        const data = await res.json();
+        return { props: { apiData: data } };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return { props: { apiData: null } };
+    }
 }
