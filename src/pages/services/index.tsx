@@ -25,7 +25,7 @@ export default function () {
             try {
                 setIsLoading(true);
                 const res = await fetch(
-                    `http://mts.caratcons.az/api/service?page=${page}`
+                    `https://mts.caratcons.az/api/service?page=${page}`
                 );
                 const newdata = await res.json();
                 // const newdata = await axios.get(
