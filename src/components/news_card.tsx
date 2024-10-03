@@ -28,7 +28,7 @@ export default function News_card({
             onClick={() => {
                 console.log(data);
                 dispatch(setCurrentNew(data));
-                rounter.push(`news/${data.slug[lang]}`);
+                rounter.push(`news/${data.id}`);
             }}
         >
             <div className="h-[226px] overflow-hidden relative">

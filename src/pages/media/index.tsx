@@ -106,7 +106,7 @@ export default function media() {
                                 title={item.title[lang]}
                                 image={`${baseurl}${item.image}`}
                                 category={item.category.name[lang]}
-                                slug={item.slug[lang]}
+                                slug={item.id}
                             />
                         ))}
                     </div>

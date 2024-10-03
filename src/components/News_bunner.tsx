@@ -53,7 +53,7 @@ export default function News_bunner({
                     text="Ətraflı bax "
                     action={() => {
                         dispatch(setCurrentNew(data));
-                        router.push(`news/${data.slug[lang]}`);
+                        router.push(`news/${data.id}`);
                     }}
                 />
             </div>

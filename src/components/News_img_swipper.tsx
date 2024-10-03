@@ -48,7 +48,7 @@ const CustomSwiper = ({ data }: { data: any }) => {
                         <img
                             src={`https://mts.caratcons.az/${item}`}
                             alt="container_png"
-                            className="w-full"
+                            className="w-full h-[372px]"
                         />
                     </SwiperSlide>
                 ))}
