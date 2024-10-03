@@ -146,7 +146,7 @@ export default function Home({ apiData }: { apiData: any }) {
                                 setcurrentservices(data.services[activeSer])
                             );
                             router.push(
-                                `/services/${data.services[activeSer].slug[lang]}`
+                                `/services/${data.services[activeSer].id}`
                             );
                         }}
                     />
