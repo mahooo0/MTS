@@ -23,14 +23,16 @@ export default function Services_id() {
 
     useEffect(() => {
         (async () => {
-            try {
-                const res = await fetch(
-                    `http://mts.caratcons.az/api/service-detail/${id}`
-                );
-                const data = await res.json();
-                setdata(data.data);
-            } catch (error) {
-                console.log(error);
+            if (id) {
+                try {
+                    const res = await fetch(
+                        `http://mts.caratcons.az/api/service-detail/${id}`
+                    );
+                    const data = await res.json();
+                    setdata(data.data);
+                } catch (error) {
+                    console.log(error);
+                }
             }
         })();
     }, [id]);
