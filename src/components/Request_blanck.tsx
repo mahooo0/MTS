@@ -39,33 +39,44 @@ export default function Request_blanck({ data }: { data: any }) {
                     imageFile: null,
                 }}
                 validationSchema={validationSchema}
-                onSubmit={(values) => {
+                onSubmit={async (values) => {
                     console.log(values);
-                    if (values.cvFile === null || values.imageFile === null) {
+                    if (values.cvFile === null && values.imageFile === null) {
                         toast.error('ADD cv file');
                         return;
                     } else {
-                        (async () => {
-                            const body = new FormData();
-                            body.append('firstname', values.firstName);
-                            body.append('lastname', values.lastName);
-                            body.append('email', values.email);
-                            if (values.cvFile) {
-                                body.append('cv', values.cvFile); // Only append if it's a valid file
+                        console.log(values, 'valueler');
+                        const formData = new FormData();
+                        formData.append('firstname', values.firstName);
+                        formData.append('lastname', values.lastName);
+                        formData.append('email', values.email);
+                        formData.append('vacancy_id', data.id);
+                        formData.append('phone', values.azerbaijanPhone);
+                        if (values.cvFile) {
+                            formData.append('cv', values.cvFile); // Only append if it's a valid file
+                        }
+                        if (values.imageFile) {
+                            formData.append('image', values.imageFile); // Only append if it's a valid file
+                        }
+                        const res = await axios.post(
+                            'https://mts.caratcons.az/api/apply-vacancy',
+                            formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                },
                             }
-                            if (values.imageFile) {
-                                body.append('image', values.imageFile); // Only append if it's a valid file
-                            }
-                            body.append('vacancy_id', data.id);
-                            body.append('phone', values.azerbaijanPhone);
-                            const res = await axios.put(
-                                'https://mts.caratcons.az/api/apply-vacancy'
-                            );
-                            const status = res.status;
-                            if (status === 201) {
-                                router.push('/karyera/aply');
-                            }
-                        })();
+                        );
+
+                        if (res.data) {
+                            router.push('/karyera/aply');
+                        } else {
+                            console.log(res.status);
+                        }
+
+                        // if (status === 201) {
+                        //
+                        // }
                     }
                 }}
             >

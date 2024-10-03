@@ -19,7 +19,24 @@ const Zoom_swipper = ({
     index: number;
 }) => {
     let swiperRef = useRef<any>();
+    function rearrangeArray(arr: any[], index: number) {
+        // Check if the index is valid
+        if (index < 0 || index >= arr.length) {
+            throw new Error('Index out of bounds');
+        }
 
+        // Get the element at the specified index
+        const firstElement = arr[index];
+
+        // Create a new array with the first element followed by the rest of the elements
+        const newArr = [
+            firstElement,
+            ...arr.slice(0, index),
+            ...arr.slice(index + 1),
+        ];
+
+        return newArr;
+    }
     const handleNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slideNext();
@@ -31,7 +48,7 @@ const Zoom_swipper = ({
             swiperRef.current.swiper.slidePrev();
         }
     };
-
+    const newdata = rearrangeArray(data, index);
     return (
         <div
             className="w-full h-[708px]  bg-black bg-opacity-60 flex justify-center items-center absolute z-[999999999990] -top-[183px]"
@@ -45,7 +62,7 @@ const Zoom_swipper = ({
                 loop={true}
                 className="w-full h-[708px] flex justify-center items-center"
             >
-                {data.map((item: any, i: any) => (
+                {newdata.map((item: any, i: any) => (
                     <SwiperSlide>
                         <div className=" h-full flex  justify-center items-center">
                             <img

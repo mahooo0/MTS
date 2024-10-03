@@ -12,6 +12,8 @@ const Services_img_swipper = ({ data }: { data: any }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const baseurl = 'https://mts.caratcons.az/';
     console.log('DAta', data);
+    // const num = data.length();
+    console.log();
 
     const handleNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
@@ -75,7 +77,7 @@ const Services_img_swipper = ({ data }: { data: any }) => {
             </div>
             <div className="mt-10 lg:block md:block hidden ">
                 <CustomPagination
-                    totalSlides={3} // Set this to the number of slides you have
+                    totalSlides={data.length} // Set this to the number of slides you have
                     currentSlide={currentSlide}
                     onSlideChange={handleSlideChange}
                 />

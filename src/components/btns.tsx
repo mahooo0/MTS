@@ -29,7 +29,7 @@ function Blue_to_blue({
     return (
         <button
             onClick={() => action()}
-            className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97]  text-white text-[20px] font-[500px] justify-center rounded-lg lg:mt-12 md:mt-9 mt-3"
+            className="flex flex-row gap-2 items-center px-4 w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97]  text-white text-[20px] font-[500px] justify-center rounded-lg lg:mt-12 md:mt-9 mt-3"
         >
             {text} {icon && <Image src={strelka1} alt="strelka" />}
         </button>

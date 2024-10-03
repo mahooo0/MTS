@@ -29,7 +29,7 @@ export default function Request_blanck2() {
         onSubmit: (values) => {
             console.log(values);
             // Handle form submission here
-            if (values.cvFile === null || values.imageFile === null) {
+            if (values.cvFile === null && values.imageFile === null) {
                 toast.error('ADD cv file');
                 return;
             } else {
@@ -46,8 +46,9 @@ export default function Request_blanck2() {
                     }
 
                     body.append('phone', values.phone);
-                    const res = await axios.put(
-                        'https://mts.caratcons.az/api/apply'
+                    const res = await axios.post(
+                        'https://mts.caratcons.az/api/apply',
+                        body
                     );
                     const status = res.status;
                     if (status === 201) {
