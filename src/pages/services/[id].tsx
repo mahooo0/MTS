@@ -7,16 +7,38 @@ import Services_img_swipper from '@/components/Services_img_swipper';
 import Services_aside from '@/components/services_aside';
 import { FAQ } from '@/components/FAQ';
 import { useSelector } from 'react-redux';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 
-export default function Services_id({ apiData }: { apiData: any }) {
-    const [variant, setvariant] = useState<1 | 2 | 3>(1);
-    let currenntService = useSelector(
-        (state: any) => state.counter.Currentservice
-    );
+export default function Services_id() {
+    const [data, setdata] = useState<any>();
+    // let currenntService = useSelector(
+    //     (state: any) => state.counter.Currentservice
+    // );
+    console.log(data);
+
+    const router = useRouter();
+    const { id } = router.query;
+    console.log(id);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetch(
+                    `http://mts.caratcons.az/api/service-detail/${id}`
+                );
+                const data = await res.json();
+                setdata(data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, [id]);
 
     const [lang, setlang] = useState<string>('az');
+    // const [id, setid] = useState<string>();
     const [reset, setreset] = useState<boolean>(false);
-    const data = apiData.data;
+
     console.log('data', data);
 
     const baseurl = 'https://mts.caratcons.az/';
@@ -24,11 +46,16 @@ export default function Services_id({ apiData }: { apiData: any }) {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
     }, [reset]);
-    const Services = data.services;
-    console.log(currenntService, Services);
-    if (!currenntService) {
+    // const Services = data.services;
+    // if (!currenntService) {
+    //     return <></>;
+    // }
+    if (!data) {
         return <></>;
     }
+    const currenntService = data.service;
+    const Services = data.services;
+
     return (
         <div>
             <Header
@@ -61,6 +88,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
                 <div className="flex justify-start lg:flex-row flex-col gap-5">
                     <Services_img_swipper data={currenntService.images} />
                     <Services_aside
+                        currenntService={currenntService}
                         action={() => {}}
                         lang={lang}
                         Services={Services}
@@ -78,14 +106,4 @@ export default function Services_id({ apiData }: { apiData: any }) {
             <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
-}
-export async function getServerSideProps() {
-    try {
-        const res = await fetch('https://mts.caratcons.az/api/service?page=1');
-        const data = await res.json();
-        return { props: { apiData: data } };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return { props: { apiData: null } };
-    }
 }

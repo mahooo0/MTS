@@ -10,9 +10,9 @@ import { useSelector } from 'react-redux';
 
 export default function Services_id({ apiData }: { apiData: any }) {
     const [variant, setvariant] = useState<1 | 2 | 3>(1);
-    const currenntService = useSelector(
-        (state: any) => state.counter.Currentservice
-    );
+    // const currenntService = useSelector(
+    //     (state: any) => state.counter.Currentservice
+    // );
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
     const data = apiData.data;
@@ -24,7 +24,13 @@ export default function Services_id({ apiData }: { apiData: any }) {
         setlang(lng);
     }, [reset]);
     const Services = data.services;
-    console.log(currenntService, Services);
+    // console.log(currenntService, Services);
+    // console.log(
+    //     Services.find((item: any) => {
+    //         return item.type === 'Digər';
+    //     })
+    // );
+
     return (
         <div>
             <Header
@@ -57,6 +63,9 @@ export default function Services_id({ apiData }: { apiData: any }) {
                 <div className="flex justify-start lg:flex-row flex-col-reverse gap-5 pb-[100px]">
                     <FAQ lang={lang} Services={Services} />
                     <Services_aside
+                        currenntService={Services.find((item: any) => {
+                            return item.type === 'Digər';
+                        })}
                         Services={Services}
                         lang={lang}
                         action={() => {

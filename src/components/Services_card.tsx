@@ -33,7 +33,7 @@ export default function Services_card({
                 if (data.type === 'Digər') {
                     router.push(`/services/other`);
                 } else {
-                    router.push(`/services/${data.slug[lang]}`);
+                    router.push(`/services/${data.id}`);
                 }
             }}
         >

@@ -124,10 +124,14 @@ export default function Header({ active, setReset, data }: Props) {
                         text={data?.our_services[lang]}
                         ARR={services.map((item: any) => {
                             return {
-                                title: item.name[lang],
+                                title: item.title[lang],
                                 action: () => {
+                                    if (item.type === 'Digər') {
+                                        router.push(`/services/other`);
+                                    } else {
+                                        router.push(`/services/${item.id}`);
+                                    }
                                     // dispatch(setcurrentservices(item));
-                                    router.push(`/services/${item.slug[lang]}`);
                                 },
                             };
                         })}

@@ -49,20 +49,23 @@ function Asidemodule({
     }
 }
 export default function Services_aside({
+    currenntService,
+    Services,
     action,
     lang,
 }: {
     Services: any;
+    currenntService: any;
     action: () => void;
     lang: any;
 }) {
     const router = useRouter();
     const dipatch = useDispatch();
-    const Services = useSelector((state: any) => state.counter.services);
+    // const Services = useSelector((state: any) => state.counter.services);
     // console.log(Services);
-    const currenntService = useSelector(
-        (state: any) => state.counter.Currentservice
-    );
+    // const currenntService = useSelector(
+    //     (state: any) => state.counter.Currentservice
+    // );
     console.log('currenntService', currenntService);
 
     return (
@@ -80,12 +83,12 @@ export default function Services_aside({
                     }
                     return (
                         <Asidemodule
-                            active={currenntService === item}
+                            active={currenntService.id === item.id}
                             action={() => {
                                 dipatch(setcurrentservices(item));
                                 // console.log('AAAAAAAAA', Services, ServiceS);
 
-                                router.push(`/services/${item.slug[lang]}`);
+                                router.push(`/services/${item.id}`);
                             }}
                         >
                             {item.title[lang]}
