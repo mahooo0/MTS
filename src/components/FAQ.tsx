@@ -55,10 +55,10 @@ const FAQItem = ({
         </div>
     );
 };
-export const FAQ = ({ lang }: { lang: any }) => {
+export const FAQ = ({ lang, Services }: { lang: any; Services: any }) => {
     const [openIndex, setopenIndex] = useState<number>(0);
 
-    const Services = useSelector((state: any) => state.counter.services);
+    // const Services = useSelector((state: any) => state.counter.services);
     const otherServices = Services.filter((item: any) => item.type === 'Digər');
     return (
         <div className="lg:w-[75%] w-full flex flex-col gap-3 mt-10">

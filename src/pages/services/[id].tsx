@@ -10,9 +10,10 @@ import { useSelector } from 'react-redux';
 
 export default function Services_id({ apiData }: { apiData: any }) {
     const [variant, setvariant] = useState<1 | 2 | 3>(1);
-    const currenntService = useSelector(
+    let currenntService = useSelector(
         (state: any) => state.counter.Currentservice
     );
+
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
     const data = apiData.data;
@@ -23,8 +24,11 @@ export default function Services_id({ apiData }: { apiData: any }) {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
     }, [reset]);
-    const Services = useSelector((state: any) => state.counter.services);
+    const Services = data.services;
     console.log(currenntService, Services);
+    if (!currenntService) {
+        return <></>;
+    }
     return (
         <div>
             <Header
@@ -56,7 +60,11 @@ export default function Services_id({ apiData }: { apiData: any }) {
                 </h1>
                 <div className="flex justify-start lg:flex-row flex-col gap-5">
                     <Services_img_swipper data={currenntService.images} />
-                    <Services_aside action={() => {}} lang={lang} />
+                    <Services_aside
+                        action={() => {}}
+                        lang={lang}
+                        Services={Services}
+                    />
                 </div>
 
                 <div
@@ -72,7 +80,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/home');
+    const res = await fetch('http://mts.caratcons.az/api/service?page=1');
     const data = await res.json();
     console.log(data);
 

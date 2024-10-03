@@ -23,7 +23,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
     }, [reset]);
-    const Services = useSelector((state: any) => state.counter.services);
+    const Services = data.services;
     console.log(currenntService, Services);
     return (
         <div>
@@ -48,15 +48,16 @@ export default function Services_id({ apiData }: { apiData: any }) {
                         className=" opacity-60"
                     />
                     <h6 className=" opacity-60">
-                        {currenntService.name[lang]}
+                        {data.translates.other_services[lang]}
                     </h6>
                 </div>
                 <h1 className="text-[#050B20] lg:text-[40px] md:text-[36px] text-[28px] font-semibold mt-10">
                     {data.translates.our_services[lang]}
                 </h1>
                 <div className="flex justify-start lg:flex-row flex-col-reverse gap-5 pb-[100px]">
-                    <FAQ lang={lang} />
+                    <FAQ lang={lang} Services={Services} />
                     <Services_aside
+                        Services={Services}
                         lang={lang}
                         action={() => {
                             setvariant(1);
@@ -70,7 +71,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('http://mts.caratcons.az/api/home');
+    const res = await fetch('http://mts.caratcons.az/api/service?page=1');
     const data = await res.json();
     console.log(data);
 

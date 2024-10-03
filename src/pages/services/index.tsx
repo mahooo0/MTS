@@ -45,7 +45,7 @@ export default function () {
     }, [page]);
     console.log(data.service_title?.description);
     if (isLoading) {
-        return <div>loading</div>;
+        return <div></div>;
     }
 
     return (
@@ -92,13 +92,17 @@ export default function () {
                 </div>
 
                 <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-2  lg:justify-between justify-center mb-[100px] ">
-                    {data.services.map((item: any) => (
-                        <Services_card
-                            data={item}
-                            lang={lang}
-                            ser={data.services}
-                        />
-                    ))}
+                    {data.services
+                        .filter((item: any) =>
+                            item.type === 'Digər' ? false : true
+                        )
+                        .map((item: any) => (
+                            <Services_card
+                                data={item}
+                                lang={lang}
+                                ser={data.services}
+                            />
+                        ))}
                 </div>
             </main>
             {/* <Footer /> */}

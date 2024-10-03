@@ -36,6 +36,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
 import Rounded_Swipper2 from '@/components/Rounded_Swipper2';
+import { useDispatch } from 'react-redux';
+import { setcurrentservices, setservices } from '@/redux/slices/PassSlice';
 
 export default function Home({ apiData }: { apiData: any }) {
     const [lang, setlang] = useState<string>('az');
@@ -50,7 +52,7 @@ export default function Home({ apiData }: { apiData: any }) {
     }, [reset]);
     // const lang = localStorage.getItem('language') || 'en';
     console.log(data.galleries);
-
+    const dispatch = useDispatch();
     return (
         <div
             className="relative flex flex-col justify-center bg-[#F7F7F8]
@@ -125,19 +127,6 @@ export default function Home({ apiData }: { apiData: any }) {
                                 </button>
                             );
                         })}
-
-                        {/* <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  bg-[#2961B1] text-white border-none">
-                            Mexanika
-                        </button>
-                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
-                            Avtomatika
-                        </button>
-                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
-                            Hidravlika
-                        </button>
-                        <button className="px-4 py-2   rounded-lg border border-black border-opacity-10  hover:bg-[#2961B1] hover:text-white hover:border-none">
-                            Soyutma
-                        </button> */}
                     </div>
                 </div>
             </div>
@@ -152,6 +141,10 @@ export default function Home({ apiData }: { apiData: any }) {
                     <White_to_blue
                         text={data.translates.see_more[lang]}
                         action={() => {
+                            dispatch(setservices(data.services));
+                            dispatch(
+                                setcurrentservices(data.services[activeSer])
+                            );
                             router.push(
                                 `/services/${data.services[activeSer].slug[lang]}`
                             );

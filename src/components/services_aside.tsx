@@ -52,16 +52,19 @@ export default function Services_aside({
     action,
     lang,
 }: {
+    Services: any;
     action: () => void;
     lang: any;
 }) {
     const router = useRouter();
     const dipatch = useDispatch();
     const Services = useSelector((state: any) => state.counter.services);
-    console.log(Services);
+    // console.log(Services);
     const currenntService = useSelector(
         (state: any) => state.counter.Currentservice
     );
+    console.log('currenntService', currenntService);
+
     return (
         <div className="lg:w-fit w-full h-fit bg-[#F7F8FA]  border rounded-lg  lg:mt-10 mt-14 flex flex-col text-center ">
             <h5 className="text-[20px] font-semibold mt-5">Xidmətlərimiz</h5>
@@ -70,31 +73,44 @@ export default function Services_aside({
             </p>
             <div className="px-[9px] flex flex-col gap-[6px] pb-6 pt-6">
                 {Services.map((item: any) => {
+                    console.log(currenntService, item);
+
                     if (item.type === 'Digər') {
-                        return (
-                            <Asidemodule
-                                active={currenntService === item}
-                                action={() => {
-                                    dipatch(setcurrentservices(item));
-                                    router.push('/services/other');
-                                }}
-                            >
-                                {item.name[lang]}
-                            </Asidemodule>
-                        );
+                        return;
                     }
                     return (
                         <Asidemodule
                             active={currenntService === item}
                             action={() => {
                                 dipatch(setcurrentservices(item));
+                                // console.log('AAAAAAAAA', Services, ServiceS);
+
                                 router.push(`/services/${item.slug[lang]}`);
                             }}
                         >
-                            {item.name[lang]}
+                            {item.title[lang]}
                         </Asidemodule>
                     );
                 })}
+                <Asidemodule
+                    active={
+                        currenntService ===
+                        Services.find((item: any) => item.type === 'Digər')
+                    }
+                    action={() => {
+                        dipatch(
+                            setcurrentservices(
+                                Services.find(
+                                    (item: any) => item.type === 'Digər'
+                                )
+                            )
+                        );
+                        // console.log(item, currenntService);
+                        router.push(`/services/other`);
+                    }}
+                >
+                    Digər
+                </Asidemodule>
             </div>
         </div>
     );

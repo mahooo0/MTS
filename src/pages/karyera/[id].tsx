@@ -32,11 +32,11 @@ export default function vakancyid({ apiData }: { apiData: any }) {
         <div className="bg-white">
             <Header
                 setReset={() => setreset((prew) => !prew)}
-                active={3}
+                active={7}
                 data={data.translates}
             />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
-            <main className="lg:px-[100px] md:px-[60px] px-[30px]">
+            <main className="lg:px-[100px] md:px-[60px] px-[30px] mb-[40px]">
                 <div className="flex flex-row flex-wrap text-[18px] gap-3 mt-[41px] ">
                     <h5>{data.translates.home[lang]}</h5>
                     <Image

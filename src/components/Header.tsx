@@ -40,7 +40,7 @@ export default function Header({ active, setReset, data }: Props) {
                 // setdata(NewDATA);
                 const ARR = [...NewDATA.services];
 
-                dispatch(setservices(ARR));
+                // dispatch(setservices(ARR));
             } catch (error) {
                 console.log(error);
             } finally {
@@ -126,7 +126,7 @@ export default function Header({ active, setReset, data }: Props) {
                             return {
                                 title: item.name[lang],
                                 action: () => {
-                                    dispatch(setcurrentservices(item));
+                                    // dispatch(setcurrentservices(item));
                                     router.push(`/services/${item.slug[lang]}`);
                                 },
                             };
