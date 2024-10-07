@@ -28,6 +28,7 @@ export default function Services_id() {
                     const res = await fetch(
                         `https://mts.caratcons.az/api/service-detail/${id}`
                     );
+
                     const data = await res.json();
                     setdata(data.data);
                 } catch (error) {

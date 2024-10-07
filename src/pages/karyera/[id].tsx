@@ -36,6 +36,9 @@ export default function vakancyid() {
                     const res = await fetch(
                         `https://mts.caratcons.az/api/vacancy-detail/${id}`
                     );
+                    await fetch(
+                        `https://mts.caratcons.az/api/vacancy/change-view/${id}`
+                    );
                     const data = await res.json();
                     setdata(data.data);
                 } catch (error) {
@@ -89,7 +92,7 @@ export default function vakancyid() {
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={aye} alt="calendar" />
-                                <p>200 baxış</p>
+                                <p>{CurrenVacansy.view}</p>
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={location} alt="calendar" />

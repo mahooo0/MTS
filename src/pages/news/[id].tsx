@@ -54,6 +54,9 @@ export default function id() {
                     const res = await fetch(
                         `https://mts.caratcons.az/api/blog-detail/${id}`
                     );
+                    await fetch(
+                        `https://mts.caratcons.az/api/blog/change-view/${id}`
+                    );
                     const data = await res.json();
                     setdata(data.data);
                 } catch (error) {
