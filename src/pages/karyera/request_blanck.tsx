@@ -51,7 +51,7 @@ export default function news() {
     console.log(data.vacancy_features);
 
     if (isLoading) {
-        return <div>loading..</div>;
+        return <div></div>;
     }
     return (
         <div className="max-w-[1600px]">

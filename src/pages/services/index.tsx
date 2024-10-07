@@ -93,9 +93,7 @@ export default function () {
 
                 <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-2  lg:justify-between justify-center mb-[100px] ">
                     {data.services
-                        .filter((item: any) =>
-                            item.type === 'Digər' ? false : true
-                        )
+                        .filter((item: any, i: number) => i < 5)
                         .map((item: any) => (
                             <Services_card
                                 data={item}

@@ -15,11 +15,26 @@ import { Blue_to_blue, White_to_blue } from '@/components/btns';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 export default function id() {
+    const handleCopy = () => {
+        // Get the current page URL
+        const url = window.location.href;
+
+        // Copy the URL to the clipboard
+        navigator.clipboard
+            .writeText(url)
+            .then(() => {
+                alert('URL copied to clipboard!'); // Show a success message
+            })
+            .catch((err) => {
+                console.error('Failed to copy: ', err); // Handle errors
+            });
+    };
     const currenntService = useSelector(
         (state: any) => state.counter.Currentservice
     );
     const [lang, setlang] = useState<string>('az');
     const [data, setdata] = useState<any>();
+    // const [ID, setID] = useState<any>();
     const [reset, setreset] = useState<boolean>(false);
 
     const baseurl = 'https://mts.caratcons.az/';
@@ -30,7 +45,7 @@ export default function id() {
 
     const router = useRouter();
     const { id } = router.query;
-    console.log(id);
+    // console.log(ID);
 
     useEffect(() => {
         (async () => {
@@ -55,14 +70,14 @@ export default function id() {
         console.log(currentNew);
 
         return (
-            <div>
+            <div className="bg-white">
                 <Header
                     setReset={() => setreset((prew) => !prew)}
                     active={6}
                     data={data.translates}
                 />
                 <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
-                <main>
+                <main className="bg-white">
                     <div className="flex flex-row  flex-wrap text-[18px] gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
                         <h5>{data.translates.home[lang]}</h5>
                         <Image
@@ -156,6 +171,7 @@ export default function id() {
                         <div className="flex lg:flex-row md:flex-row flex-col gap-3   justify-between mt-12">
                             {data.other_blogs.map((item: any) => (
                                 <News_card
+                                    // setid={}
                                     data={item}
                                     lang={lang}
                                     translates={data.translates}

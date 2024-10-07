@@ -56,6 +56,7 @@ export default function Header({ active, setReset, data }: Props) {
     return (
         <div className="lg:px-[100px] md:px-[100px] px-[30px]   w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
             <Image
+                onClick={() => router.push('/')}
                 src={Logo_Icon}
                 alt="Logo_Icon"
                 className="lg:h-[100px] w-auto"
@@ -120,7 +121,11 @@ export default function Header({ active, setReset, data }: Props) {
                     }
                 >
                     <Header_select
-                        action={() => router.push('/services')}
+                        action={() => {
+                            console.log('services:', services);
+
+                            // router.push('/services')
+                        }}
                         text={data?.our_services[lang]}
                         ARR={services.map((item: any) => {
                             return {

@@ -156,47 +156,40 @@ export default function Home({ apiData }: { apiData: any }) {
                     alt="trubı_png"
                     className="w-full h-full object-cover"
                 />
-                {/* <Image
-                    src={trubı_png}
-                    alt="trubı_png"
-                    className="w-full h-full object-cover"
-                /> */}
             </div>
-            <div className="m-5 lg:h-[509px] pb-[30px] mt-[100px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
-                <div>
-                    <h2 className=" lg:text-[48px] text-[20px] font-semibold lg:w-[60%] w-full">
-                        {data.home_about.title[lang]}
-                    </h2>
-                    <div
-                        className="lg:w-[780px] w-[95%] mt-3 lg:text-[16px] text-[12px] text-opacity-80 text-wrap "
-                        id="home_about_description"
-                        dangerouslySetInnerHTML={{
-                            __html: data.home_about.description[lang],
-                        }}
-                    />
+            <div className="bg-white mt-[100px] ">
+                <div className="m-5 lg:h-[509px] pb-[30px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
+                    <div>
+                        <h2 className=" lg:text-[48px] text-[20px] font-semibold lg:w-[60%] w-full">
+                            {data.home_about.title[lang]}
+                        </h2>
+                        <div
+                            className="lg:w-[780px] w-[95%] mt-3 lg:text-[16px] text-[12px] text-opacity-80 text-wrap "
+                            id="home_about_description"
+                            dangerouslySetInnerHTML={{
+                                __html: data.home_about.description[lang],
+                            }}
+                        />
 
-                    <Blue_to_blue
-                        text={data.translates.contact_us[lang]}
-                        action={() => {
-                            router.push('/contact');
-                        }}
+                        <Blue_to_blue
+                            text={data.translates.contact_us[lang]}
+                            action={() => {
+                                router.push('/contact');
+                            }}
+                        />
+                    </div>
+
+                    <Image
+                        src={`${baseurl}${data.home_about.image}`}
+                        alt="layner_png"
+                        className=" absolute  bottom-0 right-0 lg:block hidden  h-full"
+                        width={600}
+                        height={600}
                     />
                 </div>
-                {/* <img
-                    src="/images/laner.png"
-                    alt="layner_png"
-                    className=" absolute  bottom-0 right-0 lg:block hidden "
-                    width={600}
-                /> */}
-                <Image
-                    src={`${baseurl}${data.home_about.image}`}
-                    alt="layner_png"
-                    className=" absolute  bottom-0 right-0 lg:block hidden  h-full"
-                    width={600}
-                    height={600}
-                />
             </div>
-            <div className="flex lg:flex-row flex-col bg-[#F7F7F8]  justify-between  pt-[80px] lg:px-[100px] px-[30px]">
+
+            <div className="flex lg:flex-row flex-col bg-  justify-between  pt-[80px] lg:px-[100px] px-[30px]">
                 <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20]">
                     {data.translates.our_advantages[lang]}
                 </h3>
@@ -233,82 +226,85 @@ export default function Home({ apiData }: { apiData: any }) {
                     />
                 </div>
             </div>
-            <div className="lg:px-[100px] md:px-[60px] px-[30px]   mt-[100px]">
-                <div className="flex lg:flex-row flex-col justify-between gap-[20px] items-center">
-                    <h3 className=" lg:text-[48px] text-[32px] font-semibold">
-                        {data.translates.news[lang]}
-                    </h3>
-                    <button
-                        onClick={() => {
-                            router.push('/news');
-                        }}
-                        className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97] z-[999999999999999] text-white text-[20px] font-[500px] justify-center rounded-lg "
-                    >
-                        {data.translates.see_more[lang]}
-                        <Image src={strelka} alt="strelka" />
-                    </button>
-                </div>
-                <div className="flex justify-center">
-                    <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
-                        {data.blogs.map((item: any, i: any) => {
-                            if (i < 3) {
-                                return;
-                            }
-                            return (
-                                <News_card
-                                    data={item}
-                                    lang={lang}
-                                    translates={data.translates}
-                                />
-                            );
-                        })}
+            <div className="bg-white">
+                <div className="lg:px-[100px] md:px-[60px] px-[30px]   mt-[100px]">
+                    <div className="flex lg:flex-row flex-col justify-between gap-[20px] items-center">
+                        <h3 className=" lg:text-[48px] text-[32px] font-semibold">
+                            {data.translates.news[lang]}
+                        </h3>
+                        <button
+                            onClick={() => {
+                                router.push('/news');
+                            }}
+                            className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97] z-[999999999999999] text-white text-[20px] font-[500px] justify-center rounded-lg "
+                        >
+                            {data.translates.see_more[lang]}
+                            <Image src={strelka} alt="strelka" />
+                        </button>
+                    </div>
+                    <div className="flex justify-center">
+                        <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
+                            {data.blogs.map((item: any, i: any) => {
+                                if (i < 3) {
+                                    return;
+                                }
+                                return (
+                                    <News_card
+                                        data={item}
+                                        lang={lang}
+                                        translates={data.translates}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div
-                className="lg:px-[100px] mt-[100px] rounded-lg relative mb-[100px] lg:h-[605px] h-auto "
-                id="contact"
-            >
                 <div
-                    className="IfarmeCLass"
-                    dangerouslySetInnerHTML={{
-                        __html: `${data.contact.map} `,
-                    }}
-                />
+                    className="lg:px-[100px] mt-[100px] rounded-lg relative mb-[100px] lg:h-[605px] h-auto "
+                    id="contact"
+                >
+                    <div
+                        className="IfarmeCLass"
+                        dangerouslySetInnerHTML={{
+                            __html: `${data.contact.map} `,
+                        }}
+                    />
 
-                <div className="w-[395px] h-[94%] bg-white rounded-lg  absolute top-5 left-[120px] bottom-5  z-30 pt-7 pl-6 pr-[14px] lg:flex hidden flex-col">
-                    <h3 className="text-[#050B20] text-[32px] font-semibold mb-3">
-                        {data.translates.contact_us[lang]}
-                    </h3>
-                    <p className="text-[16px] font-normal mb-10">
-                        {data.translates.contact_title[lang]}
-                    </p>
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
-                        <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
-                            <Image src={phone} alt="phone" />
-                        </div>
-                        <p className=" text-[16px] font-medium">
-                            {data.contact.phone_1} / {data.contact.phone_2}
+                    <div className="w-[395px] h-[94%] bg-white rounded-lg  absolute top-5 left-[120px] bottom-5  z-30 pt-7 pl-6 pr-[14px] lg:flex hidden flex-col">
+                        <h3 className="text-[#050B20] text-[32px] font-semibold mb-3">
+                            {data.translates.contact_us[lang]}
+                        </h3>
+                        <p className="text-[16px] font-normal mb-10">
+                            {data.translates.contact_title[lang]}
                         </p>
-                    </div>
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
-                        <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
-                            <Image src={location} alt="location" />
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                            <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                                <Image src={phone} alt="phone" />
+                            </div>
+                            <p className=" text-[16px] font-medium">
+                                {data.contact.phone_1} / {data.contact.phone_2}
+                            </p>
                         </div>
-                        <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                            {data.contact.address[lang]}
-                        </p>
-                    </div>
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
-                        <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
-                            <Image src={mail} alt="mail" />
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                            <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                                <Image src={location} alt="location" />
+                            </div>
+                            <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                                {data.contact.address[lang]}
+                            </p>
                         </div>
-                        <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                            {data.contact.email}
-                        </p>
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                            <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
+                                <Image src={mail} alt="mail" />
+                            </div>
+                            <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                                {data.contact.email}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <Footer data={data.translates} lang={lang} contact={data.contact} />
             {/* <Map /> */}
         </div>

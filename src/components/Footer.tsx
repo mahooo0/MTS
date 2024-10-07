@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import strelka from '../../public/svg/strelka2.svg';
 import logo from '../../public/svg/Logo.svg';
 import Image from 'next/image';
@@ -18,6 +18,40 @@ export default function ({
     lang: any;
     contact: any;
 }) {
+    const [services, setserviceS] = useState<any>([]);
+    const [Loading, setIsLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                setIsLoading(true);
+
+                const res = await fetch(
+                    `https://mts.caratcons.az/api/get-header-data`
+                );
+                const newdata = await res.json();
+                console.log('newdata', newdata);
+
+                console.log('newdata', newdata);
+
+                const NewDATA = await newdata.data;
+                setserviceS(NewDATA.services);
+                // setdata(NewDATA);
+                const ARR = [...NewDATA.services];
+
+                // dispatch(setservices(ARR));
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setIsLoading(false);
+            }
+        })();
+    }, []);
+    if (Loading) {
+        return <div></div>;
+    }
+    console.log(services);
+
     const router = useRouter();
     return (
         <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41]">
@@ -42,22 +76,16 @@ export default function ({
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.our_services[lang]}
                         </h4>
-                        <p onClick={() => router.push('/services/aaa')}>
-                            Soyutma sahəsi üzrə
-                        </p>
-                        <p onClick={() => router.push('/services/aaa')}>
-                            Hidravlika sahəsi üzrə
-                        </p>
-                        <p onClick={() => router.push('/services/aaa')}>
-                            Mexanika sahəsi üzrə
-                        </p>
-                        <p onClick={() => router.push('/services/aaa')}>
-                            Avtomatika sahəsi üzrə
-                        </p>
-                        <p onClick={() => router.push('/services/aaa')}>
-                            Elektrik avadanlıqlarının diaqnostikası və
-                            tarirovkası
-                        </p>
+                        {services.map((item: any) => (
+                            <p
+                                onClick={() =>
+                                    router.push(`/services/${item.id}`)
+                                }
+                            >
+                                {item.title[lang]}
+                            </p>
+                        ))}
+
                         <p onClick={() => router.push('/services/aaa')}>
                             Digər
                         </p>

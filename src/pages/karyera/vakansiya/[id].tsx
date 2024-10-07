@@ -50,7 +50,7 @@ export default function vakancyid() {
         <div className="bg-white">
             <Header
                 setReset={() => setreset((prew) => !prew)}
-                active={3}
+                active={7}
                 data={data.translates}
             />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>

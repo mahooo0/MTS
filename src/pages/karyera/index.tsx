@@ -50,10 +50,10 @@ export default function news() {
     const dispatch = useDispatch();
     // const lang = localStorage.getItem('language') || 'en';
     if (isLoading) {
-        return <div>loading..</div>;
+        return <div></div>;
     }
     return (
-        <div className="max-w-[1600px]">
+        <div className="">
             <Header
                 setReset={() => setreset((prew) => !prew)}
                 active={6}

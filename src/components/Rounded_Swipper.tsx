@@ -112,29 +112,31 @@ const Rounded_Swipper = ({ data }: { data: any }) => {
     }, []);
     return (
         <>
-            <div className="w-full swiper-container relative">
+            <div className="w-full swiper-container relative  flex justify-center">
                 <Swiper
-                    modules={[Navigation, Autoplay]}
+                    className="!w-full"
+                    modules={[Autoplay]}
                     spaceBetween={20}
-                    slidesPerView={slidesPerView}
+                    // autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    slidesPerView={'auto'}
                     centeredSlides={true}
                     loop={true}
-                    navigation={false}
-                    autoplay={{ delay: 1000, disableOnInteraction: false }} // Enable autoplay
-                    speed={1000}
-                    breakpoints={{
-                        // when window width is <= 640px (mobile)
-                        640: {
-                            slidesPerView: 3, // Show 3 slides on mobile
-                        },
-                        // when window width is <= 1024px (tablet)
-                        1024: {
-                            slidesPerView: 4, // Show 4 slides on tablets (optional)
-                        },
-                    }}
+
+                    // autoplay={{ delay: 1000, disableOnInteraction: false }} // Enable autoplay
+                    // speed={1000}
+                    // breakpoints={{
+                    //     // when window width is <= 640px (mobile)
+                    //     640: {
+                    //         slidesPerView: 3, // Show 3 slides on mobile
+                    //     },
+                    //     // when window width is <= 1024px (tablet)
+                    //     1024: {
+                    //         slidesPerView: 4, // Show 4 slides on tablets (optional)
+                    //     },
+                    // }}
                 >
                     {data.map((item: any, i: any) => (
-                        <SwiperSlide>
+                        <SwiperSlide className="!w-[344px]">
                             <img
                                 onClick={() => {
                                     setshow(true);
@@ -142,7 +144,7 @@ const Rounded_Swipper = ({ data }: { data: any }) => {
                                 }}
                                 src={`https://mts.caratcons.az/${item}`}
                                 alt="Slide 1"
-                                className="w-[344px] h-[346px] object-cover"
+                                className="w-full h-[346px] object-cover"
                             />
                         </SwiperSlide>
                     ))}
