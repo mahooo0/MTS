@@ -133,7 +133,7 @@ export default function Home({ apiData }: { apiData: any }) {
             <div className="lg:mx-[100px] flex justify-center mt-[48px] h-[300px]  relative  overflow-hidden">
                 <div className="bg-black  bg-opacity-60 rounded-lg w-full   h-full absolute top-0  flex flex-col justify-center text-center items-center">
                     <h1 className="lg:text-[32px] text-[24px] font-semibold text-white">
-                        {data.services[activeSer].title[lang]}
+                        {data.services[activeSer].name[lang]}
                     </h1>
                     <p className=" lg:w-[798px] w-[98%] lg:text-[18px] text-[12px] font-medium text-white mt-3">
                         {data.services[activeSer].content[lang]}
