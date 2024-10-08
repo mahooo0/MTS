@@ -85,16 +85,21 @@ export default function ({
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.our_services[lang]}
                         </h4>
-                        {services.map((item: any) => (
-                            <p
-                                onClick={() =>
-                                    router.push(`/services/${item.id}`)
-                                }
-                                className="cursor-pointer"
-                            >
-                                {item.name[lang]}
-                            </p>
-                        ))}
+                        {services
+                            .filter((item: any) => {
+                                const result = item.type === 'Digər';
+                                return !result;
+                            })
+                            .map((item: any) => (
+                                <p
+                                    onClick={() =>
+                                        router.push(`/services/${item.id}`)
+                                    }
+                                    className="cursor-pointer"
+                                >
+                                    {item.name[lang]}
+                                </p>
+                            ))}
 
                         <p
                             onClick={() => router.push('/services/other')}

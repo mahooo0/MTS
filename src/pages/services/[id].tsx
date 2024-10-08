@@ -82,7 +82,7 @@ export default function Services_id() {
                         className=" opacity-60"
                     />
                     <h6 className=" opacity-60">
-                        {currenntService.name[lang]}
+                        {currenntService.title[lang]}
                     </h6>
                 </div>
                 <h1 className="text-[#050B20] lg:text-[40px] md:text-[30px] text-[24px] font-semibold mt-10">

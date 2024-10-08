@@ -18,7 +18,7 @@ function Asidemodule({
 }) {
     if (active) {
         return (
-            <div className="flex flex-row lg:w-[287px] w-full h-[56px] justify-between rounded-lg bg-white text-[#2961B1] items-center p-3 gap-3">
+            <div className="flex flex-row lg:w-[287px] w-full min-h-[56px] h-fit justify-between rounded-lg bg-white text-[#2961B1] items-center p-3 gap-3">
                 <div className="w-8 h-8 rounded-lg bg-[#C9DEF7] flex justify-center items-center">
                     <Image src={clockicon} alt="clockicon" width={20} />
                 </div>
@@ -34,9 +34,9 @@ function Asidemodule({
                 onClick={() => {
                     action();
                 }}
-                className="flex flex-row lg:w-[287px] w-full h-[56px] rounded-lg bg-white  text-black text-opacity-80 items-center p-4 gap-3 justify-between"
+                className="flex flex-row lg:w-[287px] w-full h-[56px] rounded-lg bg-white   text-black text-opacity-80 items-center p-4 gap-3 justify-between"
             >
-                <p className="text-[14px] font-normal w-[183px] flex flex-wrap ">
+                <p className="text-[14px] font-normal w-[183px] flex flex-wrap m-1 ">
                     {children}
                 </p>
                 <Image
