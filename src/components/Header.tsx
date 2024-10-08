@@ -92,22 +92,29 @@ export default function Header({ active, setReset, data }: Props) {
                             {
                                 title: 'Sertifikatlar',
                                 action: () => {
-                                    router.push('/about_us');
+                                    setReset();
+
                                     localStorage.setItem(
                                         'scrollto',
                                         'sertificatlar'
                                     );
+                                    active === 2
+                                        ? ''
+                                        : router.push('/about_us');
                                 },
                             },
 
                             {
                                 title: 'Stuktur',
                                 action: () => {
-                                    router.push('/about_us');
                                     localStorage.setItem(
                                         'scrollto',
                                         'structure'
                                     );
+                                    setReset();
+                                    active === 2
+                                        ? ''
+                                        : router.push('/about_us');
                                 },
                             },
                         ]}

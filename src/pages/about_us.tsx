@@ -13,6 +13,7 @@ function about_us({ apiData }: { apiData: any }) {
     const [reset, setreset] = useState<boolean>(false);
     const [lang, setlang] = useState<string>('az');
     const baseurl = 'https://mts.caratcons.az/';
+
     useEffect(() => {
         const id = localStorage.getItem('scrollto');
         if (id) {
@@ -72,7 +73,7 @@ function about_us({ apiData }: { apiData: any }) {
                         {data.statistics.map((item: any) => (
                             <div className="flex flex-col  flex-wrap w-fit lg:mt-0 mt-4">
                                 <h4 className="lg:text-[32px] md:text-[32px] text-[24px] font-semibold gap-3 lg:text-start text-center">
-                                    {item.value}
+                                    {item.value}+
                                 </h4>
                                 <p className="lg:text-[16px] md:text-[16px] text-[10px] font-normal">
                                     {item.title[lang]}
