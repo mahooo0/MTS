@@ -92,7 +92,7 @@ export default function ({
                                 }
                                 className="cursor-pointer"
                             >
-                                {item.title[lang]}
+                                {item.name[lang]}
                             </p>
                         ))}
 

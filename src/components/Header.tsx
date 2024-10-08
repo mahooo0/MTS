@@ -127,19 +127,27 @@ export default function Header({ active, setReset, data }: Props) {
                             router.push('/services');
                         }}
                         text={data?.our_services[lang]}
-                        ARR={services.map((item: any) => {
-                            return {
-                                title: item.title[lang],
-                                action: () => {
-                                    if (item.type === 'Digər') {
-                                        router.push(`/services/other`);
-                                    } else {
-                                        router.push(`/services/${item.id}`);
-                                    }
-                                    // dispatch(setcurrentservices(item));
-                                },
-                            };
-                        })}
+                        ARR={[
+                            ...services
+                                .filter((item: any) => {
+                                    const result = item.type === 'Digər';
+                                    return !result;
+                                })
+                                .map((item: any) => {
+                                    return {
+                                        title: item.name[lang],
+                                        action: () => {
+                                            router.push(`/services/${item.id}`);
+
+                                            // dispatch(setcurrentservices(item));
+                                        },
+                                    };
+                                }),
+                            {
+                                title: data?.others[lang],
+                                action: () => router.push(`/services/other`),
+                            },
+                        ]}
                     />
                 </li>
 
