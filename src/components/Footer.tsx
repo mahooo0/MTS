@@ -81,7 +81,7 @@ export default function ({
                             {data.structure[lang]}
                         </p>
                     </div>
-                    <div className="lg:flex   flex-col text-[16px] w-[210px] text-white font-normal gap-[14px]">
+                    <div className="lg:flex   flex-col text-[16px] w-[150px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.our_services[lang]}
                         </h4>
