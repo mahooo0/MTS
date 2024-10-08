@@ -55,16 +55,26 @@ export default function contact({ apiData }: { apiData: any }) {
                         <Image src={phone} alt="phone" />
                     </div>
                     <p className=" text-[16px] font-medium">
-                        {data.contact.phone_1}/ {data.contact.phone_2}
+                        <a href={`tel:${data.contact.phone_1}`}>
+                            {' '}
+                            {data.contact.phone_1}{' '}
+                        </a>
+                        /{' '}
+                        <a href={`tel:${data.contact.phone_2}`}>
+                            {' '}
+                            {data.contact.phone_2}{' '}
+                        </a>
                     </p>
                 </div>
                 <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
                     <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                         <Image src={mail} alt="mail" />
                     </div>
-                    <p className=" text-[16px] font-medium">
-                        {data.contact.email}
-                    </p>
+                    <a href={`mailto:${data.contact.email}`}>
+                        <p className=" text-[16px] font-medium">
+                            {data.contact.email}
+                        </p>
+                    </a>
                 </div>
             </div>
             <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[100px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">

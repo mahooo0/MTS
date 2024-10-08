@@ -49,13 +49,13 @@ export default function news() {
         return <div></div>;
     }
     return (
-        <div className="">
+        <div className="bg-white">
             <Header
                 setReset={() => setreset((prew) => !prew)}
                 active={7}
                 data={data.translates}
             />
-            <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
+            <div className="bg-white h-[90px] w-full "></div>
 
             <main className="">
                 <div className="flex flex-row lg:px-[100px] md:px-[60px] px-[30px]">
@@ -121,7 +121,7 @@ export default function news() {
                 </div>
 
                 <>
-                    <div className="lg:py-[100px] py-[40px] lg:px-[100px] md:px-[60px] px-[30px]">
+                    <div className="lg:my-[100px] my-[40px] lg:mx-[100px] md:px-[60px] mx-[30px] bg-[#F7F8FA] rounded-lg">
                         <div className="bg-[#F7F8FA] lg:h-[700px] h-fit w-full rounded-lg flex flex-row">
                             <div className="w-2/5 p-10  lg:block hidden  h-full rounded-lg overflow-hidden ">
                                 <img
@@ -130,7 +130,7 @@ export default function news() {
                                     className=" object-cover w-full h-full rounded-lg"
                                 />
                             </div>
-                            <div className="lg:w-3/5 w-full p-10 ">
+                            <div className="lg:w-3/5 w-full p-10 pl-14 ">
                                 <div className="lg:mt-[76px] mt-[40px]  lg:text-[16px] md:text-[16px] text-[12px] font-normal">
                                     <h4 className=" lg:text-[48px] md:text-[32px] text-[28px] font-semibold">
                                         {data.training.title[lang]}

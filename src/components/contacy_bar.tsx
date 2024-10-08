@@ -82,8 +82,6 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                             <Field
                                 type="tel"
                                 name="phone"
-                                pattern="[0-9]*"
-                                inputMode="numeric"
                                 required
                                 placeholder="00 000 00 00"
                                 className="h-[55px] w-full bg-[#F5F5F5] p-4 focus:outline-none focus:ring-0"
