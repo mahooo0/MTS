@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Image from 'next/image';
 import strelka2 from '../../public/svg/strelka2.svg';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function ContactForm({ data, leng }: { data: any; leng: any }) {
     return (
@@ -27,7 +28,9 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                         `https://mts.caratcons.az/api/send-message`,
                         body
                     );
-
+                    if (res.status === 201) {
+                        toast.success('Send');
+                    }
                     console.log(res);
                 } catch (error) {
                     console.log(error);
@@ -108,7 +111,7 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                             type="submit"
                             className="flex flex-row gap-2 items-center w-full h-[50px] bg-[#2961B1] text-white text-[20px] font-[500px] justify-center rounded-lg mt-3"
                         >
-                            Daha ətraflı <Image src={strelka2} alt="strelka2" />
+                            Göndər <Image src={strelka2} alt="strelka2" />
                         </button>
                     </div>
                 </Form>

@@ -46,13 +46,20 @@ export default function Request_blanck2() {
                     }
 
                     body.append('phone', values.phone);
-                    const res = await axios.post(
-                        'https://mts.caratcons.az/api/apply',
-                        body
-                    );
-                    const status = res.status;
-                    if (status === 201) {
-                        router.push('/karyera/aply');
+                    try {
+                        const res = await axios.post(
+                            'https://mts.caratcons.az/api/apply',
+                            body
+                        );
+                        const status = res.status;
+                        if (status === 201) {
+                            router.push('/karyera/aply');
+                        } else {
+                            toast.error('something went wrong ');
+                        }
+                    } catch (error) {
+                        console.log(error);
+                        toast.error('something went wrong');
                     }
                 })();
             }
@@ -157,8 +164,8 @@ export default function Request_blanck2() {
                             CV faylın seç
                         </div>
                         <p className="text-[14px] font-normal text-center opacity-60 mt-2">
-                            {img
-                                ? img.name
+                            {cv
+                                ? cv.name
                                 : ' Yüklədiyiniz fayl PDF, DOC, DOCX formatında olmalı (max 3 mb)'}
                         </p>
                     </div>

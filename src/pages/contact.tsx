@@ -10,6 +10,9 @@ import locationREd from '../../public/svg/location_red.svg';
 import mail from '../../public/svg/gmail.svg';
 import Image from 'next/image';
 import ContactForm from '@/components/contacy_bar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 type Props = {};
 
 export default function contact({ apiData }: { apiData: any }) {
@@ -123,6 +126,7 @@ export default function contact({ apiData }: { apiData: any }) {
                 </div> */}
             </div>
             <Footer data={data.translates} lang={lang} contact={data.contact} />
+            <ToastContainer />
         </div>
     );
 }

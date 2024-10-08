@@ -329,23 +329,22 @@ export default function Header({ active, setReset, data }: Props) {
                                     },
                                 },
                                 {
+                                    title: 'Struktur',
+                                    action: () => {
+                                        router.push('/about_us');
+                                        localStorage.setItem(
+                                            'scrollto',
+                                            'structure'
+                                        );
+                                    },
+                                },
+                                {
                                     title: 'Sertifikatlar',
                                     action: () => {
                                         router.push('/about_us');
                                         localStorage.setItem(
                                             'scrollto',
                                             'sertificatlar'
-                                        );
-                                    },
-                                },
-
-                                {
-                                    title: 'Stuktur',
-                                    action: () => {
-                                        router.push('/about_us');
-                                        localStorage.setItem(
-                                            'scrollto',
-                                            'structure'
                                         );
                                     },
                                 },

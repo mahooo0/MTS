@@ -34,8 +34,9 @@ export default function Header_select({
                 className="flex flex-col lg:absolute   top-[100%] w-fit  justify-end text-right right-0  z-[100]"
                 style={show ? { display: 'none' } : { display: 'flex' }}
             >
-                {ARR?.map((item: ARRE) => (
+                {ARR?.map((item: ARRE, i: number) => (
                     <p
+                        key={i}
                         onClick={item.action}
                         className="text-right bg-white  rounded-lg p-1  justify-start text-black flex   overflow-hidden text-nowrap max-w-[200px]"
                     >

@@ -56,7 +56,7 @@ export default function news() {
         <div className="">
             <Header
                 setReset={() => setreset((prew) => !prew)}
-                active={6}
+                active={7}
                 data={data.translates}
             />
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>

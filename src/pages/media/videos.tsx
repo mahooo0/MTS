@@ -56,12 +56,12 @@ export default function MediaPage({ apiData }: { apiData: any }) {
                 </h1>
 
                 {/* Main Video Section */}
-                <div className="lg:px-[100px]  md:px-[60px] px-[30px]  flex flex-col">
+                <div className="lg:px-[100px]  md:px-[60px] px-[30px]  flex flex-col ">
                     <video
                         controls={true}
                         width="600"
                         muted
-                        className="w-full rounded-lg"
+                        className="w-full rounded-lg max-h-[500px] "
                         src={`${baseurl}${mainvid}`}
                         disablePictureInPicture
                     />
@@ -71,7 +71,7 @@ export default function MediaPage({ apiData }: { apiData: any }) {
                         {data?.videos?.map((video: any, index: number) => (
                             <div
                                 key={index}
-                                className="aspect-square"
+                                className="aspect-square cursor-pointer"
                                 onClick={() => {
                                     setMainVid(video.url);
                                     console.log('slsslslsls');

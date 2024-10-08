@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import email_icon from '../../public/svg/email.svg';
@@ -22,6 +22,8 @@ const validationSchema = Yup.object({
 });
 
 export default function Request_blanck({ data }: { data: any }) {
+    const [cv, setcv] = useState<any>();
+    const [img, setimg] = useState<any>();
     const cvinpt = useRef<any>();
     const Imageinpt = useRef<any>();
     const triggerFileSelectPopup = () => cvinpt.current.click();
@@ -68,9 +70,10 @@ export default function Request_blanck({ data }: { data: any }) {
                             }
                         );
 
-                        if (res.data) {
+                        if (res.status === 201) {
                             router.push('/karyera/aply');
                         } else {
+                            toast.error('something went wrong');
                             console.log(res.status);
                         }
 
@@ -145,8 +148,10 @@ export default function Request_blanck({ data }: { data: any }) {
                                 type="file"
                                 className="hidden"
                                 ref={cvinpt}
+                                accept=".pdf,.doc,.docx"
                                 onChange={(event) => {
                                     if (event.currentTarget.files) {
+                                        setcv(event.currentTarget.files[0]);
                                         formik.setFieldValue(
                                             'cvFile',
                                             event.currentTarget.files[0]
@@ -167,8 +172,9 @@ export default function Request_blanck({ data }: { data: any }) {
                                         CV faylın seç
                                     </div>
                                     <p className="text-[14px] font-normal text-center opacity-60 mt-2">
-                                        Yüklədiyiniz fayl PDF, DOC, DOCX
-                                        formatında olmalı (max 3 mb)
+                                        {cv
+                                            ? cv.name
+                                            : ' Yüklədiyiniz fayl PDF, DOC, DOCX formatında olmalı (max 3 mb)'}
                                     </p>
                                 </div>
                                 <ErrorMessage
@@ -183,8 +189,10 @@ export default function Request_blanck({ data }: { data: any }) {
                                 type="file"
                                 className="hidden"
                                 ref={Imageinpt}
+                                accept="image/png, image/jpeg"
                                 onChange={(event) => {
                                     if (event.currentTarget.files) {
+                                        setimg(event.currentTarget.files[0]);
                                         formik.setFieldValue(
                                             'imageFile',
                                             event.currentTarget.files[0]
@@ -208,7 +216,9 @@ export default function Request_blanck({ data }: { data: any }) {
                                         Dəyişmək üçün kliklə
                                     </div>
                                     <p className="text-[14px] font-normal opacity-60 mt-2">
-                                        PNG, JPG (Max 3 mb)
+                                        {img
+                                            ? img.name
+                                            : '  PNG, JPG (Max 3 mb)'}
                                     </p>
                                 </div>
                                 <ErrorMessage

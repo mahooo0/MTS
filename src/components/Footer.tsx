@@ -181,9 +181,11 @@ export default function ({
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={mail} alt="mail" />
                             </div>
-                            <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                                {contact.email}
-                            </p>
+                            <a href={contact.email}>
+                                <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                                    {contact.email}
+                                </p>
+                            </a>
                         </div>
                     </div>
                     <div className="flex  flex-col text-white w-fit ">
