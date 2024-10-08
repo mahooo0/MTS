@@ -85,7 +85,7 @@ export default function vakancyid() {
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={aye} alt="calendar" />
-                                <p>200 baxış</p>
+                                <p>{CurrenVacansy.view}</p>
                             </div>
                             <div className="flex flex-row gap-2">
                                 <Image src={location} alt="calendar" />

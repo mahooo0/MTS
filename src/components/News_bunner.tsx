@@ -46,7 +46,7 @@ export default function News_bunner({
                 </h5>
                 <div
                     className="text-4 font-normal lg:text-[18px] md:text-[12px] text-[10px] "
-                    dangerouslySetInnerHTML={{ __html: data.description[lang] }}
+                    dangerouslySetInnerHTML={{ __html: data.content[lang] }}
                 />
 
                 <White_to_blue

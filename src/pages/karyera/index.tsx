@@ -53,13 +53,13 @@ export default function news() {
         return <div></div>;
     }
     return (
-        <div className="">
+        <div className="bg-white">
             <Header
                 setReset={() => setreset((prew) => !prew)}
                 active={7}
                 data={data.translates}
             />
-            <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
+            <div className="bg-white h-[90px] w-full "></div>
 
             <main className="">
                 <div className="flex flex-row lg:px-[100px] md:px-[60px] px-[30px]">
@@ -122,7 +122,7 @@ export default function news() {
                     <h1 className="text-[36px] font-semibold text-center mt-[100px]">
                         {data.translates.career[lang]}
                     </h1>
-                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center  gap-5 mt-10">
+                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center  gap-5 mt-10  mb-8">
                         {data.vacancies.map((item: any) => (
                             <div
                                 onClick={() => {
@@ -149,6 +149,7 @@ export default function news() {
                             </div>
                         ))}
                     </div>
+
                     <Pagination
                         totalPages={data.total_pages}
                         setPage={setpage}

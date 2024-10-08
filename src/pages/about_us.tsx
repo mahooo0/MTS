@@ -39,7 +39,7 @@ function about_us({ apiData }: { apiData: any }) {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
 
             <main>
-                <div className="w-full  flex lg:flex-row flex-col relative bg-[#F7F7F8]">
+                <div className="w-full  flex lg:flex-row flex-col relative bg-[#F7F7F8] ">
                     <div className="lg:w-1/2 lg:pl-[100px] md:px-[60px] px-[30px]">
                         <div className="flex flex-row text-[18px] gap-3 mt-[41px] ">
                             <h5>{data.translates.home[lang]}</h5>
@@ -56,7 +56,7 @@ function about_us({ apiData }: { apiData: any }) {
                             {data.about.title[lang]}
                         </h1>
                         <div
-                            className=" text-[15px] font-normal opacity-80 lg:pr-[20px] pr-0 mt-5 lg:mt-0"
+                            className=" text-[15px] font-normal opacity-80 lg:pr-[20px] pr-0 mt-5 lg:mt-0 "
                             dangerouslySetInnerHTML={{
                                 __html: data.about.text_upper[lang],
                             }}
@@ -82,7 +82,7 @@ function about_us({ apiData }: { apiData: any }) {
                         ))}
                     </div>
                 </div>
-                <div className="w-full lg:px-[100px] md:px-[60px] px-[30px] pt-[20px] pn-[40px]">
+                <div className="w-full lg:px-[100px] md:px-[60px] px-[30px] pt-[20px] pn-[40px] mb-4">
                     <div
                         className=" text-[16px] font-normal opacity-80 lg:pr-[20px]"
                         dangerouslySetInnerHTML={{

@@ -10,7 +10,7 @@ function White_to_blue({ text, action }: { text: string; action: () => void }) {
             onClick={() => action()}
             onMouseEnter={() => setIson(true)}
             onMouseLeave={() => setIson(false)}
-            className="flex flex-row gap-2 items-center lg:w-[200px] lg:h-[50px] md:w-[200px] md:h-[50px] w-[120px] h-[30px] bg-white hover:bg-[#2961B1] hover:text-white text-[#2961B1] lg:text-[20px] md:text-[20px] text-[12px] font-[500px] justify-center rounded-lg lg:mt-12 md:mt-9 mt-8"
+            className="flex flex-row gap-2 items-center lg:w-[200px] lg:h-[50px] md:w-[200px] md:h-[50px] w-[120px] h-[30px] bg-white hover:bg-[#2961B1] hover:text-white text-[#2961B1] lg:text-[20px] md:text-[20px] text-[12px] font-[500px] justify-center rounded-lg lg:mt-12 md:mt-9 mt-6"
         >
             {text} <Image src={ison ? strelka1 : strelka2} alt="strelka" />
         </button>

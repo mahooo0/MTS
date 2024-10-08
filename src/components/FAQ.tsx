@@ -36,7 +36,7 @@ const FAQItem = ({
             </button>
             <div
                 className={`mt-2 text-gray-600 transition-max-height transition-all duration-500 ease-in-out overflow-hidden  ${
-                    IsOpen ? 'max-h-screen' : 'max-h-0'
+                    IsOpen ? 'h-full' : 'max-h-0'
                 }`}
             >
                 <div
@@ -44,7 +44,7 @@ const FAQItem = ({
                     dangerouslySetInnerHTML={{ __html: data.description[lang] }}
                 />
 
-                <div className="lg:w-full mg:w-full sm:w-full w-fit lg:h-[300px] h-full m-7">
+                <div className="lg:w-full mg:w-full sm:w-full w-fit lg:h-[300px] h-full mt-7">
                     <img
                         src={`https://mts.caratcons.az/${data.image}`}
                         alt="image"
