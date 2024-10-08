@@ -96,8 +96,9 @@ export default function media() {
                             >
                                 {data.translates.all_galeries[lang]}
                             </button>
-                            {data.categories.map((item: any) => (
+                            {[...data.categories].reverse().map((item: any) => (
                                 <button
+                                    key={item.id} // It's important to have a unique key for React lists
                                     onClick={() => setcategory_id(item.id)}
                                     className={`px-6 py-3 rounded-lg border border-black border-opacity-10 ${
                                         item.id === category_id

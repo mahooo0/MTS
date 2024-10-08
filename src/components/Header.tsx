@@ -89,6 +89,7 @@ export default function Header({ active, setReset, data }: Props) {
                                     router.push('/about_us');
                                 },
                             },
+
                             {
                                 title: 'Sertifikatlar',
                                 action: () => {
@@ -103,7 +104,6 @@ export default function Header({ active, setReset, data }: Props) {
                                         : router.push('/about_us');
                                 },
                             },
-
                             {
                                 title: 'Stuktur',
                                 action: () => {
@@ -286,6 +286,7 @@ export default function Header({ active, setReset, data }: Props) {
                     onClick={() => setshow(true)}
                 />
             </div>
+            {/* aside */}
             <div
                 className="lg:hidden  bg-[#E7EDF8] flex-col   fixed right-0 top-0 h-[100vh] w-[300px] rounded-l-lg
                     p-6"
@@ -308,12 +309,12 @@ export default function Header({ active, setReset, data }: Props) {
                                 : '  font-medium'
                         }
                     >
-                        {data?.home.lang}
+                        {data?.home[lang]}
                     </li>
                     <li
                         className={
                             active === 2
-                                ? 'h-fit flex items-center text-[#2961B1]text border-[#2961B1]  '
+                                ? 'h-fit flex items-center text-[#2961B1]  border-[#2961B1]  '
                                 : '  font-medium'
                         }
                     >
@@ -362,42 +363,27 @@ export default function Header({ active, setReset, data }: Props) {
                             action={() => router.push('/services')}
                             text={data?.our_services[lang]}
                             ARR={[
-                                {
-                                    title: 'Soyutma sahəsi üzrə',
-                                    action: () => {
-                                        router.push('/services/aaaa');
-                                    },
-                                },
-                                {
-                                    title: 'Hidravlika sahəsi üzrə',
-                                    action: () => {
-                                        router.push('/services/sss');
-                                    },
-                                },
+                                ...services
+                                    .filter((item: any) => {
+                                        const result = item.type === 'Digər';
+                                        return !result;
+                                    })
+                                    .map((item: any) => {
+                                        return {
+                                            title: item.name[lang],
+                                            action: () => {
+                                                router.push(
+                                                    `/services/${item.id}`
+                                                );
 
+                                                // dispatch(setcurrentservices(item));
+                                            },
+                                        };
+                                    }),
                                 {
-                                    title: 'Mexanika sahəsi üzrə',
-                                    action: () => {
-                                        router.push('/services/sss');
-                                    },
-                                },
-                                {
-                                    title: 'Avtomatika sahəsi üzrə',
-                                    action: () => {
-                                        router.push('/services/sss');
-                                    },
-                                },
-                                {
-                                    title: 'Elektrik avadanlıqlarının diaqnostikası və tarirovkası',
-                                    action: () => {
-                                        router.push('/services/sss');
-                                    },
-                                },
-                                {
-                                    title: 'Digər',
-                                    action: () => {
-                                        router.push('/services/sss');
-                                    },
+                                    title: data?.others[lang],
+                                    action: () =>
+                                        router.push(`/services/other`),
                                 },
                             ]}
                         />
