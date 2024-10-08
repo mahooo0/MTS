@@ -53,9 +53,15 @@ export const NewsSwiper = ({ data, lang }: { data: any; lang: string }) => {
                 {NEwArr.map((item: any) => (
                     <SwiperSlide>
                         <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
-                            <News_bunner data={item[0]} lang={lang} />
+                            {item.map(
+                                (item: any) => (
+                                    <News_bunner data={item} lang={lang} />
+                                )
+                                // console.log(item);
+                            )}
+                            {/* <News_bunner data={item[0]} lang={lang} /> */}
 
-                            <News_bunner data={item[1]} lang={lang} />
+                            {/* <News_bunner data={item[1]} lang={lang} /> */}
                         </div>
                     </SwiperSlide>
                 ))}

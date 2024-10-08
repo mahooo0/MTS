@@ -61,13 +61,22 @@ export default function ({
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.about[lang]}
                         </h4>
-                        <p onClick={() => router.push('/about_us')}>
+                        <p
+                            onClick={() => router.push('/about_us')}
+                            className="cursor-pointer"
+                        >
                             {data.company_chronology[lang]}
                         </p>
-                        <p onClick={() => router.push('/about_us')}>
+                        <p
+                            onClick={() => router.push('/about_us')}
+                            className="cursor-pointer"
+                        >
                             {data.certificates[lang]}
                         </p>
-                        <p onClick={() => router.push('/about_us')}>
+                        <p
+                            onClick={() => router.push('/about_us')}
+                            className="cursor-pointer"
+                        >
                             {' '}
                             {data.structure[lang]}
                         </p>
@@ -81,12 +90,16 @@ export default function ({
                                 onClick={() =>
                                     router.push(`/services/${item.id}`)
                                 }
+                                className="cursor-pointer"
                             >
                                 {item.title[lang]}
                             </p>
                         ))}
 
-                        <p onClick={() => router.push('/services/aaa')}>
+                        <p
+                            onClick={() => router.push('/services/other')}
+                            className="cursor-pointer"
+                        >
                             Digər
                         </p>
                     </div>
@@ -94,14 +107,23 @@ export default function ({
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.media[lang]}
                         </h4>
-                        <p onClick={() => router.push('/news')}>
+                        <p
+                            onClick={() => router.push('/news')}
+                            className="cursor-pointer"
+                        >
                             {' '}
                             {data.news[lang]}
                         </p>
-                        <p onClick={() => router.push('/media/images')}>
+                        <p
+                            onClick={() => router.push('/media/images')}
+                            className="cursor-pointer"
+                        >
                             {data.gallery[lang]}
                         </p>
-                        <p onClick={() => router.push('/media/videos')}>
+                        <p
+                            onClick={() => router.push('/media/videos')}
+                            className="cursor-pointer"
+                        >
                             {data.video[lang]}
                         </p>
                     </div>
@@ -109,13 +131,20 @@ export default function ({
                         <h4 className="mb-[16px] text-[18px] font-semibold">
                             {data.career[lang]}
                         </h4>
-                        <p onClick={() => router.push('/karyera')}>
+                        <p
+                            onClick={() => router.push('/karyera')}
+                            className="cursor-pointer"
+                        >
                             {data.vacancies[lang]}
                         </p>
-                        <p onClick={() => router.push('/karyera/cours')}>
+                        <p
+                            onClick={() => router.push('/karyera/cours')}
+                            className="cursor-pointer"
+                        >
                             {data.training[lang]}
                         </p>
                         <p
+                            className="cursor-pointer"
                             onClick={() =>
                                 router.push('/karyera/request_blanck')
                             }
@@ -168,7 +197,7 @@ export default function ({
                                 </a>
                             </div>
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
-                                <a href="">
+                                <a href={`https://wa.me/${contact.wp_phone}`}>
                                     <Image src={wp} alt="wp" />
                                 </a>
                             </div>

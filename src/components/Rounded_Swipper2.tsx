@@ -159,7 +159,7 @@ const Rounded_Swipper2 = ({ data }: { data: any }) => {
                                 }}
                                 src={`https://mts.caratcons.az/${item.image}`}
                                 alt="Slide 1"
-                                className="w-[344px] h-[346px] object-cover"
+                                className="w-[344px] h-[346px] object-cover cursor-pointer"
                             />
                         </SwiperSlide>
                     ))}

@@ -26,7 +26,7 @@ export default function Services_card({
     const router = useRouter();
     return (
         <div
-            className="mb-9 "
+            className="mb-9 cursor-pointer"
             onClick={() => {
                 dispatch(setcurrentservices(data));
                 dispatch(setservices(ser));

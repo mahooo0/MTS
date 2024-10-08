@@ -40,8 +40,10 @@ export default function news() {
     }, [page]);
     // const lang = localStorage.getItem('language') || 'en';
     if (isLoading) {
-        return <div>loading..</div>;
+        return <div></div>;
     }
+    console.log(data);
+
     return (
         <div className="max-w-[1600px]">
             {/* <Header active={6} /> */}

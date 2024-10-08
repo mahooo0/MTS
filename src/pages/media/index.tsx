@@ -125,31 +125,6 @@ export default function media() {
                     </div>
                 </div>
 
-                {/* <div className="flex mb-[100px] justify-center">
-                    <div className="flex flex-row gap-5">
-                        <Image
-                            src={strelka}
-                            alt="strelka"
-                            style={{ transform: 'rotate(180deg)' }}
-                        />
-                        <div className="flex flex-row gap-3">
-                            <div className="w-10 h-10 rounded-full flex justify-center items-center border border-black border-opacity-10">
-                                1
-                            </div>
-                            <div className="w-10 h-10 rounded-full flex justify-center items-center text-[#2961B1] border border-[#2961B1] ">
-                                2
-                            </div>
-                            <div className="w-10 h-10 rounded-full flex justify-center items-center border border-black border-opacity-10">
-                                3
-                            </div>
-                        </div>
-                        <Image
-                            src={strelka}
-                            alt="strelka"
-                            onClick={() => setpage((prew) => prew + 1)}
-                        />
-                    </div>
-                </div> */}
                 <Pagination
                     totalPages={data.total_pages}
                     currentPage={page}

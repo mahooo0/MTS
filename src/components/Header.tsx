@@ -59,7 +59,7 @@ export default function Header({ active, setReset, data }: Props) {
                 onClick={() => router.push('/')}
                 src={Logo_Icon}
                 alt="Logo_Icon"
-                className="lg:h-[100px] w-auto"
+                className="lg:h-[100px] w-auto cursor-pointer"
             />
             <ul className="lg:flex hidden  flex-row gap-[28px] h-full  items-center cursor-pointer">
                 <li
@@ -122,9 +122,9 @@ export default function Header({ active, setReset, data }: Props) {
                 >
                     <Header_select
                         action={() => {
-                            console.log('services:', services);
+                            // console.log('services:', services);
 
-                            // router.push('/services')
+                            router.push('/services');
                         }}
                         text={data?.our_services[lang]}
                         ARR={services.map((item: any) => {

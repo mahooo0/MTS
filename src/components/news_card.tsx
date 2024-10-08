@@ -17,10 +17,14 @@ export default function News_card({
     const [ison, setison] = useState<boolean>(false);
     const router = useRouter(); // <-- Using correct useRouter from next/router
     const dispatch = useDispatch();
-
+    function shortenText(text: string, maxLength: number) {
+        return text.length > maxLength
+            ? text.slice(0, maxLength) + '...'
+            : text;
+    }
     return (
         <div
-            className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden flex flex-col"
+            className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden flex flex-col cursor-pointer"
             onMouseEnter={() => setison(true)}
             onMouseLeave={() => setison(false)}
             onClick={() => {
@@ -45,7 +49,7 @@ export default function News_card({
             </div>
 
             <h6 className="text-[18px] my-4 px-3 font-[500] text-[#050B20]">
-                {data.title[lang]}
+                {shortenText(data.title[lang], 60)}
             </h6>
             <div className="flex flex-row justify-between px-3">
                 <p className="text-[#2961B1] text-[16px] font-semibold">
