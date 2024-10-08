@@ -6,6 +6,7 @@ import strelka from '../../../public/svg/strelka_black.svg';
 import NewsSwiper from '@/components/news_swipper';
 import News_card from '@/components/news_card';
 import Pagination from '../../components/DinamicPagination';
+import Link from 'next/link';
 export default function news() {
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
@@ -55,7 +56,9 @@ export default function news() {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main>
                 <div className="flex flex-row text-[18px] gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px] ">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"

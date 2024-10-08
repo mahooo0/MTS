@@ -14,6 +14,7 @@ import News_card from '@/components/news_card';
 import { Blue_to_blue, White_to_blue } from '@/components/btns';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 export default function id() {
     const handleCopy = () => {
         // Get the current page URL
@@ -82,13 +83,18 @@ export default function id() {
                 <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
                 <main className="bg-white">
                     <div className="flex flex-row  flex-wrap text-[18px] gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                        <h5>{data.translates.home[lang]}</h5>
+                        <Link href={'/'}>
+                            <h5>{data.translates.home[lang]}</h5>
+                        </Link>
                         <Image
                             src={strelka}
                             alt="strelka"
                             className=" opacity-60"
                         />
-                        <h5>{data.translates.news[lang]}</h5>
+                        <Link href={'/news'}>
+                            <h5>{data.translates.news[lang]}</h5>
+                        </Link>
+
                         <Image
                             src={strelka}
                             alt="strelka"

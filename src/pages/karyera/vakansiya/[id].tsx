@@ -12,6 +12,7 @@ import Request_blanck from '@/components/Request_blanck';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function vakancyid() {
     const [lang, setlang] = useState<string>('az');
@@ -56,13 +57,17 @@ export default function vakancyid() {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="lg:px-[100px] md:px-[60px] px-[30px]">
                 <div className="flex flex-row flex-wrap text-[18px] gap-3 mt-[41px] ">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-                    <h5>{data.translates.career[lang]}</h5>
+                    <Link href={'/karyera'}>
+                        <h5>{data.translates.career[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"

@@ -12,6 +12,7 @@ import Image from 'next/image';
 import ContactForm from '@/components/contacy_bar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 type Props = {};
 
@@ -34,7 +35,9 @@ export default function contact({ apiData }: { apiData: any }) {
 
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <div className="flex flex-row text-[18px] gap-3 mt-[41px]   lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                <h5>{data.translates.home[lang]}</h5>
+                <Link href={'/'}>
+                    <h5>{data.translates.home[lang]}</h5>
+                </Link>
                 <Image src={strelka} alt="strelka" className=" opacity-60" />
                 <h6 className=" opacity-60">{data.translates.contact[lang]}</h6>
             </div>
@@ -77,7 +80,7 @@ export default function contact({ apiData }: { apiData: any }) {
                     </a>
                 </div>
             </div>
-            <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[100px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">
+            <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[40px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">
                 <div
                     className="IfarmeCLass"
                     dangerouslySetInnerHTML={{ __html: `${data.contact.map}` }}

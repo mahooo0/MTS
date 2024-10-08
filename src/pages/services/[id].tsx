@@ -9,6 +9,7 @@ import { FAQ } from '@/components/FAQ';
 import { useSelector } from 'react-redux';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Services_id() {
     const [data, setdata] = useState<any>();
@@ -69,13 +70,17 @@ export default function Services_id() {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="lg:px-[100px] md:px-[60px] px-[30px] bg-white">
                 <div className="flex flex-row flex-wrap text-[18px] gap-3 pt-[41px] ">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-                    <h5>{data.translates.our_services[lang]}</h5>
+                    <Link href={'/services'}>
+                        <h5>{data.translates.our_services[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"

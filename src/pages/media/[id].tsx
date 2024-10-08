@@ -9,6 +9,7 @@ import grid4 from '../../../public/svg/grid4.svg';
 import { useAppDispatch } from '@/redux/store';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function id() {
     const [grid_cols, setgrid_cols] = useState<2 | 4>(2);
@@ -65,13 +66,17 @@ export default function id() {
                 <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
                 <main>
                     <div className="flex flex-row lg:text-[18px] md:text-[18px] text-[12px] items-center gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                        <h5>{data.translates.home[lang]}</h5>
+                        <Link href={'/'}>
+                            <h5>{data.translates.home[lang]}</h5>
+                        </Link>
                         <Image
                             src={strelka}
                             alt="strelka"
                             className=" opacity-60"
                         />
-                        <h5>{data.translates.gallery[lang]}</h5>
+                        <Link href={'/media'}>
+                            <h5>{data.translates.gallery[lang]}</h5>
+                        </Link>
                         <Image
                             src={strelka}
                             alt="strelka"

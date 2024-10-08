@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import Request_blanck2 from '@/components/Request_blanck2';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 export default function news() {
     const [lang, setlang] = useState<string>('az');
@@ -66,13 +67,17 @@ export default function news() {
                 <div className="flex flex-row lg:px-[100px] md:px-[60px] px-[30px]">
                     <div className="flex flex-col lg:w-1/2 w-full">
                         <div className="flex flex-row text-[18px] gap-3 mt-[41px] ">
-                            <h5>{data.translates.home[lang]}</h5>
+                            <Link href={'/'}>
+                                <h5>{data.translates.home[lang]}</h5>
+                            </Link>
                             <Image
                                 src={strelka}
                                 alt="strelka"
                                 className=" opacity-60"
                             />{' '}
-                            <h5> {data.translates.career[lang]}</h5>
+                            <Link href={'/karyera'}>
+                                <h5>{data.translates.career[lang]}</h5>
+                            </Link>
                             <Image
                                 src={strelka}
                                 alt="strelka"

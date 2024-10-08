@@ -6,6 +6,7 @@ import strelka from '../../../public/svg/strelka_black.svg';
 import Services_card from '@/components/Services_card';
 import { useAppDispatch } from '@/redux/store';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 export default function () {
     const [data, setdata] = useState<any>({});
@@ -58,7 +59,9 @@ export default function () {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="lg:px-[100px] md:px-[60px] px-[30px] flex flex-col justify-center">
                 <div className="flex flex-row text-[18px] gap-3 mt-[41px] ">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"

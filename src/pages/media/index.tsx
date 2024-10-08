@@ -6,6 +6,7 @@ import strelka from '../../../public/svg/strelka_black.svg';
 import Galery_Img from '@/components/Galery_Img';
 import axios from 'axios';
 import Pagination from '../../components/DinamicPagination';
+import Link from 'next/link';
 
 export default function media() {
     const [data, setdata] = useState<any>({});
@@ -66,7 +67,9 @@ export default function media() {
             <div className=" h-[90px] w-full "></div>
             <main>
                 <div className="flex flex-row text-[18px] gap-3 mt-[41px]  lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
 
                     <Image
                         src={strelka}

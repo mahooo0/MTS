@@ -7,6 +7,7 @@ import Services_img_swipper from '@/components/Services_img_swipper';
 import Services_aside from '@/components/services_aside';
 import { FAQ } from '@/components/FAQ';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 export default function Services_id({ apiData }: { apiData: any }) {
     const [variant, setvariant] = useState<1 | 2 | 3>(1);
@@ -41,13 +42,18 @@ export default function Services_id({ apiData }: { apiData: any }) {
             <div className="bg-[#FBFBFB] h-[90px] w-full "></div>
             <main className="lg:px-[100px] md:px-[60px] px-[30px] bg-white">
                 <div className="flex flex-row flex-wrap text-[18px] gap-3 pt-[41px] ">
-                    <h5>{data.translates.home[lang]}</h5>
+                    <Link href={'/'}>
+                        <h5>{data.translates.home[lang]}</h5>
+                    </Link>
                     <Image
                         src={strelka}
                         alt="strelka"
                         className=" opacity-60"
                     />
-                    <h5>{data.translates.our_services[lang]}</h5>
+                    <Link href={'/services'}>
+                        <h5>{data.translates.our_services[lang]}</h5>
+                    </Link>
+
                     <Image
                         src={strelka}
                         alt="strelka"

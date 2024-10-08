@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Employee_card from '@/components/Employee_card';
 import Sertificat from '@/components/Sertificats';
+import Link from 'next/link';
 
 function about_us({ apiData }: { apiData: any }) {
     const [reset, setreset] = useState<boolean>(false);
@@ -42,7 +43,9 @@ function about_us({ apiData }: { apiData: any }) {
                 <div className="w-full  flex lg:flex-row flex-col relative bg-[#F7F7F8] ">
                     <div className="lg:w-1/2 lg:pl-[100px] md:px-[60px] px-[30px]">
                         <div className="flex flex-row text-[18px] gap-3 mt-[41px] ">
-                            <h5>{data.translates.home[lang]}</h5>
+                            <Link href={'/'}>
+                                <h5>{data.translates.home[lang]}</h5>
+                            </Link>
                             <Image
                                 src={strelka}
                                 alt="strelka"

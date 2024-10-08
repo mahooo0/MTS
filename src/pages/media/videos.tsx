@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import strelka from '../../../public/svg/strelka_black.svg';
 import Pagination from '@/components/DinamicPagination';
+import Link from 'next/link';
 
 export default function MediaPage() {
     const [lang, setLang] = useState<string>('az');
@@ -53,7 +54,10 @@ export default function MediaPage() {
             <main>
                 {/* Breadcrumb and title */}
                 <div className="flex flex-row text-[18px] gap-3 mt-[41px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    <h5>{data?.translates?.home[lang]}</h5>
+                    <Link href={`/`}>
+                        <h5>{data?.translates?.home[lang]}</h5>
+                    </Link>
+
                     <Image
                         src={strelka}
                         alt="strelka"
