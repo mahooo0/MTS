@@ -3,11 +3,13 @@ import Header from '@/components/Header';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import strelka from '../../../public/svg/strelka_black.svg';
+import Pagination from '@/components/DinamicPagination';
 
-export default function MediaPage({ apiData }: { apiData: any }) {
+export default function MediaPage() {
     const [lang, setLang] = useState<string>('az');
     const [reset, setReset] = useState<boolean>(false);
-    const data = apiData.data;
+    const [data, setdata] = useState<any>();
+    const [page, setpage] = useState<number>(1);
     const baseurl = 'https://mts.caratcons.az/';
 
     // Check if videos exist to avoid runtime errors
@@ -19,15 +21,25 @@ export default function MediaPage({ apiData }: { apiData: any }) {
         const lng = localStorage.getItem('language') || 'en';
         setLang(lng);
     }, [reset]);
-
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await fetch(
+                    `https://mts.caratcons.az/api/video?page=${page}`
+                );
+                const apiData = await res.json();
+                const data = apiData.data;
+                setdata(data);
+                setMainVid(data?.videos?.[0]?.url);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
     // Check if the data is available before rendering components
     if (!data) {
         return <div></div>;
     }
-
-    React.useEffect(() => {
-        console.log(`${baseurl}${mainvid}`);
-    }, [baseurl, mainvid]);
 
     return (
         <div>
@@ -94,27 +106,11 @@ export default function MediaPage({ apiData }: { apiData: any }) {
                     </div>
 
                     {/* Pagination */}
-                    <div className="flex justify-center mt-[20px] mb-[100px]">
-                        <div className="flex flex-row gap-5">
-                            <Image
-                                src={strelka}
-                                alt="strelka"
-                                style={{ transform: 'rotate(180deg)' }}
-                            />
-                            <div className="flex flex-row gap-3">
-                                <div className="w-10 h-10 rounded-full flex justify-center items-center border border-black border-opacity-10">
-                                    1
-                                </div>
-                                <div className="w-10 h-10 rounded-full flex justify-center items-center text-[#2961B1] border border-[#2961B1] ">
-                                    2
-                                </div>
-                                <div className="w-10 h-10 rounded-full flex justify-center items-center border border-black border-opacity-10">
-                                    3
-                                </div>
-                            </div>
-                            <Image src={strelka} alt="strelka" />
-                        </div>
-                    </div>
+                    <Pagination
+                        totalPages={data.total_pages}
+                        setPage={setpage}
+                        currentPage={page}
+                    />
                 </div>
             </main>
 
@@ -129,10 +125,10 @@ export default function MediaPage({ apiData }: { apiData: any }) {
 }
 
 // Fetch data server-side
-export async function getServerSideProps() {
-    const res = await fetch('https://mts.caratcons.az/api/video');
-    const data = await res.json();
+// export async function getServerSideProps() {
+//     const res = await fetch('https://mts.caratcons.az/api/video');
+//     const data = await res.json();
 
-    // Pass data to the page via props
-    return { props: { apiData: data } };
-}
+//     // Pass data to the page via props
+//     return { props: { apiData: data } };
+// }

@@ -103,7 +103,7 @@ export default function () {
                         ))}
                 </div>
             </main>
-            {/* <Footer /> */}
+            <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
 }

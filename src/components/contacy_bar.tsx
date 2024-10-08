@@ -14,7 +14,7 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                 phone: '',
                 message: '',
             }}
-            onSubmit={async (values) => {
+            onSubmit={async (values, { resetForm }) => {
                 console.log(values);
                 try {
                     const body = {
@@ -29,11 +29,13 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                         body
                     );
                     if (res.status === 201) {
-                        toast.success('Send');
+                        toast.success('Message sent successfully!');
+                        resetForm(); // Reset the form after successful submission
                     }
                     console.log(res);
                 } catch (error) {
                     console.log(error);
+                    toast.error('Failed to send message');
                 }
             }}
         >

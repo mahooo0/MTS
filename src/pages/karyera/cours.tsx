@@ -67,8 +67,14 @@ export default function news() {
                                 alt="strelka"
                                 className=" opacity-60"
                             />
+                            <h5>{data.translates.career[lang]}</h5>
+                            <Image
+                                src={strelka}
+                                alt="strelka"
+                                className=" opacity-60"
+                            />
                             <h6 className=" opacity-60">
-                                {data.translates.career[lang]}
+                                {data.translates.training[lang]}
                             </h6>
                         </div>
                         <h1 className="lg:text-[48px] md:text-[36px] text-[28px]  font-semibold mt-[68px]">

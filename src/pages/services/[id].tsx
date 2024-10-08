@@ -88,7 +88,7 @@ export default function Services_id() {
                 <h1 className="text-[#050B20] lg:text-[40px] md:text-[30px] text-[24px] font-semibold mt-10">
                     {currenntService.title[lang]}
                 </h1>
-                <div className="flex justify-start lg:flex-row flex-col gap-5">
+                <div className="flex justify-start lg:flex-row flex-col-reverse gap-5">
                     <Services_img_swipper data={currenntService.images} />
                     <Services_aside
                         currenntService={currenntService}

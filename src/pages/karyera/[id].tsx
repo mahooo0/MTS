@@ -82,7 +82,7 @@ export default function vakancyid() {
                         <h2 className="lg:text-[32px] md:text-[28px] text-[20px] font-semibold text-[#050B20] lg:w-[900px] w-fit">
                             {CurrenVacansy.title[lang]}
                         </h2>
-                        <div className="flex lg:flex-row md:flex-row flex-col mt-5 gap-5">
+                        <div className="flex lg:flex-row md:flex-col flex-col mt-5 gap-5 ">
                             <div className="flex flex-row gap-2">
                                 <Image src={calendar} alt="calendar" />
                                 <p>

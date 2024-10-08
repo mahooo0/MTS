@@ -54,7 +54,7 @@ export default function ({
 
     const router = useRouter();
     return (
-        <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41]">
+        <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41] px-[30px]">
             <div className="pt-[48px] lg:px-20 px-5 flex flex-row justify-between">
                 <div className=" flex lg:flex-row md:flex-column flex-col-reverse  justify-between w-full flex-wrap gap-[55px]  ">
                     <div className="lg:flex   flex-col text-[16px] text-white font-normal gap-[14px]">
@@ -166,7 +166,15 @@ export default function ({
                                 <Image src={phone} alt="phone" />
                             </div>
                             <p className=" text-[16px] font-medium lg:w-fit w-[200px]">
-                                {contact.phone_1} / {contact.phone_2}
+                                <a href={`tel:${contact.phone_1}`}>
+                                    {' '}
+                                    {contact.phone_1}{' '}
+                                </a>
+                                /{' '}
+                                <a href={`tel:${contact.phone_2}`}>
+                                    {' '}
+                                    {contact.phone_2}{' '}
+                                </a>
                             </p>
                         </div>
                         <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -181,7 +189,7 @@ export default function ({
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={mail} alt="mail" />
                             </div>
-                            <a href={contact.email}>
+                            <a href={`mailto:${contact.email}`}>
                                 <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
                                     {contact.email}
                                 </p>

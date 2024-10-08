@@ -177,7 +177,7 @@ export default function news() {
                     </div> */}
                 </div>
             </main>
-            {/* <Footer data={data.translates} lang={lang} contact={data.contact} /> */}
+            <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>
     );
 }

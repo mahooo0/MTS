@@ -243,7 +243,7 @@ export default function Home({ apiData }: { apiData: any }) {
                         </button>
                     </div>
                     <div className="flex justify-center">
-                        <div className="grid lg:flex-row flex-col items-center gap-4 lg:grid-cols-4 md:grid-cols-2  justify-between mt-12 ">
+                        <div className="flex flex-row  items-center gap-4 flex-wrap  lg:justify-between md:justify-between justify-center mt-12 ">
                             {data.blogs.map((item: any, i: any) => {
                                 if (i < 3) {
                                     return;
