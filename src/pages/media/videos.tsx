@@ -87,7 +87,7 @@ export default function MediaPage() {
                         {data?.videos?.map((video: any, index: number) => (
                             <div
                                 key={index}
-                                className="aspect-square cursor-pointer"
+                                className="aspect-square cursor-pointer relative  flex justify-center items-center"
                                 onClick={() => {
                                     setMainVid(video.url);
                                     console.log('slsslslsls');
@@ -105,6 +105,10 @@ export default function MediaPage() {
                                         type="video/mp4"
                                     />
                                 </video>
+                                <img
+                                    src="/svg/play.svg"
+                                    className=" !absolute  w-[60px] h-[60px]"
+                                />
                             </div>
                         ))}
                     </div>
