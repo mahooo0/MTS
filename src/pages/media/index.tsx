@@ -14,12 +14,15 @@ export default function media() {
     const [category_id, setcategory_id] = useState<number>(0);
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
-    const [stringval, setStringVal] = useState<string>('');
     const [isLoading, setIsLoading] = useState(true);
     const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
+        const cat = localStorage.getItem('category');
+        if (cat === 'Təlim') {
+            setcategory_id(4);
+        }
     }, [reset]);
     useEffect(() => {
         (async () => {
@@ -40,11 +43,6 @@ export default function media() {
                     const NewDATA = await newdata.data;
                     setdata(NewDATA);
                 }
-
-                // const newdata = await axios.get(
-                //     `https://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
-                // );
-                // console.log(newdata.data.data.categories[0]?.name['az'], 'data my');
             } catch (error) {
                 console.log(error);
             } finally {

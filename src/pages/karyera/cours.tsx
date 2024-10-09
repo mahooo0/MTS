@@ -157,7 +157,10 @@ export default function news() {
                         </h3>
                         <Rounded_Swipper data={data.training.images} />
                         <button
-                            onClick={() => router.push('/media')}
+                            onClick={() => {
+                                localStorage.setItem('category', 'Təlim');
+                                router.push('/media');
+                            }}
                             className="flex flex-row gap-2 items-center w-[200px] h-[50px] bg-white text-[#2961B1] text-[20px] font-[500px] justify-center rounded-lg  absolute  bottom-[78px] z-[10333]"
                         >
                             {data.translates.see_more[lang]}

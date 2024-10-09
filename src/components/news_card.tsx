@@ -24,7 +24,7 @@ export default function News_card({
     }
     return (
         <div
-            className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden flex flex-col cursor-pointer"
+            className="w-[295px] h-[342px] bg-[#FAFAFA] rounded-t-lg overflow-hidden flex flex-col cursor-pointer justify-between"
             onMouseEnter={() => setison(true)}
             onMouseLeave={() => setison(false)}
             onClick={() => {
