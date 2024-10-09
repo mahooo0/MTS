@@ -173,8 +173,8 @@ export default function id() {
                                 Xəbərlər və yeniliklər
                             </h3>
                             <Blue_to_blue
-                                action={() => router.push('/contact')}
-                                text=" Bizimlə əlaq"
+                                action={() => router.push('/news')}
+                                text=" Bütün xəbərlər"
                             />
                         </div>
                         <div className="flex lg:flex-row md:flex-row flex-col gap-3   justify-between mt-12">

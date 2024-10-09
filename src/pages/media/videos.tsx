@@ -83,7 +83,7 @@ export default function MediaPage() {
                     />
 
                     {/* Video Gallery */}
-                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-5">
+                    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 mt-5 mb-10">
                         {data?.videos?.map((video: any, index: number) => (
                             <div
                                 key={index}

@@ -33,7 +33,7 @@ export const NewsSwiper = ({ data, lang }: { data: any; lang: string }) => {
     console.log(NEwArr);
 
     return (
-        <div className="relative w-full">
+        <div className="relative w-full lg:px-[100px] md:px-[60px] px-[30px]">
             <Swiper
                 ref={swiperRef}
                 spaceBetween={20}
@@ -52,7 +52,7 @@ export const NewsSwiper = ({ data, lang }: { data: any; lang: string }) => {
             >
                 {NEwArr.map((item: any) => (
                     <SwiperSlide>
-                        <div className="w-full flex lg:justify-center lg:flex-row flex-col gap-5 items-center ">
+                        <div className="w-full flex lg:justify-between lg:flex-row flex-col gap-5 items-center ">
                             {item.map(
                                 (item: any) => (
                                     <News_bunner data={item} lang={lang} />

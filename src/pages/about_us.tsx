@@ -159,7 +159,7 @@ function about_us({ apiData }: { apiData: any }) {
                                     }
                                 })}
                             </div>
-                            <div className="  gap-[60px] pt-5 flex flex-row flex-wrap justify-center items-center  mt-[40px]">
+                            {/* <div className="  gap-[60px] pt-5 flex flex-row flex-wrap justify-center items-center  mt-[40px]">
                                 {data.teams.map((item: any) => {
                                     console.log(item);
 
@@ -172,7 +172,7 @@ function about_us({ apiData }: { apiData: any }) {
                                         );
                                     }
                                 })}
-                            </div>
+                            </div> */}
                         </div>
                         <Image
                             src={dnk2}

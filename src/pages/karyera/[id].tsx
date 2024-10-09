@@ -13,7 +13,9 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
-
+import teleqram_icon from '../../../public/svg/teleqram.svg';
+import wp_icon from '../../../public/svg/wp.svg';
+import link_icon from '../../../public/svg/link.svg';
 export default function vakancyid() {
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
@@ -124,6 +126,22 @@ export default function vakancyid() {
                         __html: CurrenVacansy.responsibility[lang],
                     }}
                 />
+                <div className="flex flex-col ">
+                    <p className="mt-12 mb-4 text-[12px] font-normal">
+                        Paylaş:
+                    </p>
+                    <div className="flex flex-row gap-5">
+                        <div className="w-10 h-10 rounded-full flex justify-center items-center bg-[#E5F7FF]">
+                            <Image src={teleqram_icon} alt="teleqram_icon" />
+                        </div>
+                        <div className="w-10 h-10 rounded-full flex justify-center items-center bg-[#ECFFF5]">
+                            <Image src={wp_icon} alt="wp" />
+                        </div>
+                        <div className="w-10 h-10 rounded-full flex justify-center items-center bg-[#F5F5F5]">
+                            <Image src={link_icon} alt="copy_linck" />
+                        </div>
+                    </div>
+                </div>
             </main>
             <Footer data={data.translates} lang={lang} contact={data.contact} />
         </div>

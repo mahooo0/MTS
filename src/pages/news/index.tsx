@@ -77,7 +77,7 @@ export default function news() {
                         {data.translates.other_news[lang]}
                     </h1>
                     <div className="w-full flex flex-col justify-center items-center">
-                        <div className=" grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5 mb-10">
+                        <div className=" grid w-full lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5 mb-10">
                             {data.other_blogs.map((item: any) => (
                                 <News_card
                                     data={item}

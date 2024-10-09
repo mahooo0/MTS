@@ -158,7 +158,7 @@ export default function Home({ apiData }: { apiData: any }) {
                 />
             </div>
             <div className="bg-white mt-[100px] ">
-                <div className="m-5 lg:h-[509px] pb-[30px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
+                <div className="m-5 lg:min-h-[509px] pb-[30px] lg:w-[97%] bg-[#E7EDF8] pt-[75px] lg:pl-[80px] pl-[30px] flex flex-row relative rounded-lg overflow-hidden">
                     <div>
                         <h2 className=" lg:text-[48px] text-[20px] font-semibold lg:w-[60%] w-full">
                             {data.home_about.title[lang]}
@@ -190,7 +190,7 @@ export default function Home({ apiData }: { apiData: any }) {
             </div>
 
             <div className="flex lg:flex-row flex-col bg-  justify-between  pt-[80px] lg:px-[100px] px-[30px]">
-                <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20]">
+                <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20] w-[341px]">
                     {data.translates.our_advantages[lang]}
                 </h3>
                 <div className="flex-wrap flex-row grid gap-10 mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -243,7 +243,7 @@ export default function Home({ apiData }: { apiData: any }) {
                         </button>
                     </div>
                     <div className="flex justify-center">
-                        <div className="flex flex-row  items-center gap-4 flex-wrap  lg:justify-between md:justify-between justify-center mt-12 ">
+                        <div className="flex flex-row w-full  items-center gap-4 flex-wrap  lg:justify-between md:justify-between justify-center mt-12 ">
                             {data.blogs.map((item: any, i: any) => {
                                 if (i < 3) {
                                     return;
@@ -282,7 +282,16 @@ export default function Home({ apiData }: { apiData: any }) {
                                 <Image src={phone} alt="phone" />
                             </div>
                             <p className=" text-[16px] font-medium">
-                                {data.contact.phone_1} / {data.contact.phone_2}
+                                {' '}
+                                <a href={`tel:${data.contact.phone_1}`}>
+                                    {' '}
+                                    {data.contact.phone_1}{' '}
+                                </a>
+                                /{' '}
+                                <a href={`tel:${data.contact.phone_2}`}>
+                                    {' '}
+                                    {data.contact.phone_2}{' '}
+                                </a>
                             </p>
                         </div>
                         <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
@@ -297,9 +306,11 @@ export default function Home({ apiData }: { apiData: any }) {
                             <div className="flex justify-center items-center bg-[#7DB3FF] w-11 h-11 rounded-lg">
                                 <Image src={mail} alt="mail" />
                             </div>
-                            <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
-                                {data.contact.email}
-                            </p>
+                            <a href={`mailto:${data.contact.email}`}>
+                                <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                                    {data.contact.email}
+                                </p>
+                            </a>
                         </div>
                     </div>
                 </div>

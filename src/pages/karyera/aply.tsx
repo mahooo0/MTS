@@ -15,10 +15,12 @@ export default function aa() {
                 Müraciətiniz üçün təşəkkür edirik. Sizinlə ən qısa zamanda əlaqə
                 saxlayacağıq.
             </p>
-            <Blue_to_blue
-                text="Ana səhifəyə qayıt"
-                action={() => router.push('/')}
-            />
+            <button
+                onClick={() => router.push('/')}
+                className="flex flex-row gap-2 items-center text-nowrap px-4 w-[200px] h-[50px] bg-[#2961B1] hover:bg-[#184C97]  text-white text-[20px] font-[500px] justify-center rounded-lg lg:mt-12 md:mt-9 mt-3"
+            >
+                Ana səhifəyə qayıt
+            </button>
         </div>
     );
 }
