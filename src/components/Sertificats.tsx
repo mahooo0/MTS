@@ -61,6 +61,7 @@ export default function Sertificat({ data, lang }: { data: any; lang: any }) {
                             navigator.clipboard.writeText(
                                 `${baseurl}${data.pdf}`
                             );
+                            alert('copied');
                         }}
                     >
                         <Image src={link} alt="link" />

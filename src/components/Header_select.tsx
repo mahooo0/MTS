@@ -38,7 +38,7 @@ export default function Header_select({
                     <p
                         key={i}
                         onClick={item.action}
-                        className="text-right bg-white  rounded-lg p-1  justify-start text-black flex   overflow-hidden text-nowrap max-w-[200px]"
+                        className="text-right bg-white  rounded-lg p-1  justify-start text-black flex   overflow-hidden  max-w-[200px] text-wrap"
                     >
                         {item.title}
                     </p>
