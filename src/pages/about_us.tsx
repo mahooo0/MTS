@@ -208,6 +208,11 @@ export async function getServerSideProps() {
     console.log(data);
 
     // Pass data to the page via props
-    return { props: { apiData: data } };
+    return {
+        props: {
+            apiData: data,
+        },
+        revalidate: 10,
+    };
 }
 export default about_us;
