@@ -212,7 +212,6 @@ export async function getServerSideProps() {
         props: {
             apiData: data,
         },
-        revalidate: 10,
     };
 }
 export default about_us;

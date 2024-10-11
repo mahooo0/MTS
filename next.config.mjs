@@ -7,7 +7,6 @@ const nextConfig = {
         unoptimized: true, // Şəkil optimizasiyasını deaktiv edir
     },
     trailingSlash: true, // URL sonuna / əlavə edir
-    assetPrefix: './', // Aktivlərin düzgün işləməsi üçün
 };
 
 export default nextConfig;
