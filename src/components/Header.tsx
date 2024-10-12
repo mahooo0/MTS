@@ -18,10 +18,23 @@ export default function Header({ active, setReset, data }: Props) {
     const [Loading, setIsLoading] = useState<boolean>(false);
     const [lang, setlang] = useState<any>('az');
     const [services, setserviceS] = useState<any>([]);
+
     useEffect(() => {
-        const lng = localStorage.getItem('language') || 'az';
-        setlang(lng);
-    }, []);
+        const lng = localStorage.getItem('language');
+        // setlang(lng);
+        if (lng) {
+            setlang(lng);
+        } else {
+            setlang('az');
+            localStorage.setItem('language', 'az');
+        }
+    }, [setlang]);
+
+    const handleChangelang = (lang: string) => {
+        setlang(lang);
+        localStorage.setItem('language', lang);
+    };
+
     useEffect(() => {
         (async () => {
             try {
@@ -239,8 +252,7 @@ export default function Header({ active, setReset, data }: Props) {
             <div className="flex flex-row gap-3">
                 <button
                     onClick={() => {
-                        setlang('en');
-                        localStorage.setItem('language', 'en');
+                        handleChangelang('en');
                         setReset();
                     }}
                     className={` rounded-full ${
@@ -253,8 +265,7 @@ export default function Header({ active, setReset, data }: Props) {
                 </button>
                 <button
                     onClick={() => {
-                        setlang('ru');
-                        localStorage.setItem('language', 'ru');
+                        handleChangelang('ru');
                         setReset();
                     }}
                     className={` rounded-full ${
@@ -267,8 +278,7 @@ export default function Header({ active, setReset, data }: Props) {
                 </button>
                 <button
                     onClick={() => {
-                        setlang('az');
-                        localStorage.setItem('language', 'az');
+                        handleChangelang('az');
                         setReset();
                     }}
                     className={` rounded-full ${
