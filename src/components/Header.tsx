@@ -16,10 +16,10 @@ export default function Header({ active, setReset, data }: Props) {
     const router = useRouter();
     const [show, setshow] = useState<boolean>(false);
     const [Loading, setIsLoading] = useState<boolean>(false);
-    const [lang, setlang] = useState<any>('en');
+    const [lang, setlang] = useState<any>('az');
     const [services, setserviceS] = useState<any>([]);
     useEffect(() => {
-        const lng = localStorage.getItem('language') || 'en';
+        const lng = localStorage.getItem('language') || 'az';
         setlang(lng);
     }, []);
     useEffect(() => {

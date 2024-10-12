@@ -96,7 +96,7 @@ export default function Home({ apiData }: { apiData: any }) {
                     />
                 </video>
             </div>
-            <div className="lg:px-[100px] px-[30px] flex flex-row justify-around mt-[40px] ">
+            <div className="lg:px-[100px] px-[30px] flex flex-row justify-around mt-[40px] flex-wrap gap-3 w-full ">
                 {data.brands.map((item: any, i: number) => (
                     <Companies_logo
                         key={i}
@@ -107,18 +107,18 @@ export default function Home({ apiData }: { apiData: any }) {
                 ))}
             </div>
             <div className="lg:mt-[100px] mt-[50px] flex justify-center ">
-                <div className="w-[744px] h-fit flex flex-col justify-center">
-                    <h1 className=" lg:text-[48px] text-[24px] font-semibold text-center">
+                <div className=" h-fit flex flex-col justify-center items-center">
+                    <h1 className=" w-[744px] lg:text-[48px] text-[24px] font-semibold text-center">
                         {data.translates.service_title[lang]}
                     </h1>
-                    <div className="flex flex-row gap-5 mt-10 flex-wrap justify-center ">
+                    <div className="flex flex-row gap-5 mt-10 flex-wrap justify-around lg:px-[100px] px-[30px] ">
                         {data.services.map((item: any, i: number) => {
                             console.log(item);
 
                             return (
                                 <button
                                     onClick={() => setactiveSer(i)}
-                                    className={`px-4 py-2 rounded-lg border border-black border-opacity-10 ${
+                                    className={`px-4 py-2 rounded-lg border border-black border-opacity-10 max-w-[600px] ${
                                         activeSer === i &&
                                         'bg-[#2961B1] text-white'
                                     } `}
