@@ -66,7 +66,7 @@ export default function Home({ apiData }: { apiData: any }) {
             <div className="bg-slate-500 lg:h-[700px] h-[280px] w-full overflow-hidden relative">
                 <div className="lg:w-full w-full bg-[linear-gradient(180deg,_rgba(255,255,255,0.4)_4.66%,_rgba(255,255,255,0.4)_13.57%,_rgba(255,255,255,0)_25.57%),_linear-gradient(180deg,_rgba(0,0,0,0.2)_65.29%,_rgba(0,0,0,0)_100%)] lg:bg-opacity-20 bg-opacity-20 h-full z-40 flex pt-[70px] lg:items-center absolute top-0 left-0 justify-around">
                     <div className="md:px-[100px] px-[30px]  flex flex-col justify-center items-center w-full ">
-                        <h1 className="font-bold  lg:text-[48px]  text-[26px] text-white max-w-[633px]">
+                        <h1 className="font-bold  lg:text-[48px]  text-[25px] text-white max-w-[633px]">
                             {data.hero.title[lang]}
                         </h1>
                         <div className="min-h-[132px] h-fit  bg-white bg-opacity-20   backdrop-blur-[4px] grid lg:grid-cols-4   justify-center place-items-center items-center  md:grid-cols-4 grid-cols-2 lg:min-w-[853px] w-fit  px-[auto]  rounded-[4px] lg:mt-[136px] mt-0 text-white flex-wrap">
@@ -75,7 +75,7 @@ export default function Home({ apiData }: { apiData: any }) {
                                     <h4 className="lg:text-[32px] md:text-[32px] text-[20px] font-semibold gap-3 lg:text-start text-center">
                                         {item.value}
                                     </h4>
-                                    <p className="lg:text-[16px] md:text-[16px] text-[10px] font-normal max-w-[149px]">
+                                    <p className="lg:text-[16px] md:text-[16px] text-[10px] font-normal max-w-[149px] text-center">
                                         {item.title[lang]}
                                     </p>
                                 </div>

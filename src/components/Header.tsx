@@ -334,13 +334,13 @@ export default function Header({ active, setReset, data }: Props) {
                             text={data?.about[lang]}
                             ARR={[
                                 {
-                                    title: 'Şirkət tarixçəsi',
+                                    title: data?.sstory_of_the_company[lang],
                                     action: () => {
                                         router.push('/about_us');
                                     },
                                 },
                                 {
-                                    title: 'Struktur',
+                                    title: data?.structure[lang],
                                     action: () => {
                                         router.push('/about_us');
                                         localStorage.setItem(
@@ -350,7 +350,7 @@ export default function Header({ active, setReset, data }: Props) {
                                     },
                                 },
                                 {
-                                    title: 'Sertifikatlar',
+                                    title: data?.certificates[lang],
                                     action: () => {
                                         router.push('/about_us');
                                         localStorage.setItem(
@@ -411,20 +411,20 @@ export default function Header({ active, setReset, data }: Props) {
                             text={data?.media[lang]}
                             ARR={[
                                 {
-                                    title: 'Qalereya',
+                                    title: data?.gallery[lang],
                                     action: () => {
                                         router.push('/media');
                                     },
                                 },
                                 {
-                                    title: 'vidiolar',
+                                    title: data?.videos[lang],
                                     action: () => {
                                         router.push('/media/videos/');
                                     },
                                 },
 
                                 {
-                                    title: 'Xəbərlər',
+                                    title: data?.news[lang],
                                     action: () => {
                                         router.push('/news');
                                     },
@@ -444,20 +444,20 @@ export default function Header({ active, setReset, data }: Props) {
                             text={data?.career[lang]}
                             ARR={[
                                 {
-                                    title: 'Vakansiyalar',
+                                    title: data?.vacancies[lang],
                                     action: () => {
                                         router.push('/karyera');
                                     },
                                 },
                                 {
-                                    title: 'Peşəkar inkişaf və təlim',
+                                    title: data?.training[lang],
                                     action: () => {
                                         router.push('/karyera/cours');
                                     },
                                 },
 
                                 {
-                                    title: 'Müraciət blankı.',
+                                    title: data?.application_form[lang],
                                     action: () => {
                                         router.push('/karyera/request_blanck');
                                     },
