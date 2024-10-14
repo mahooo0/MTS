@@ -25,6 +25,8 @@ export default function contact({ apiData }: { apiData: any }) {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
     }, [reset]);
+    console.log(data.translates.home);
+
     return (
         <div className="bg-white">
             <Header
@@ -44,42 +46,37 @@ export default function contact({ apiData }: { apiData: any }) {
             <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                 {data.translates.contact[lang]}
             </h1>
-            <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                        <Image src={location} alt="location" />
-                    </div>
-                    <p className=" text-[16px] font-medium">
-                        {data.contact.address[lang]}
-                    </p>
-                </div>
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                        <Image src={phone} alt="phone" />
-                    </div>
-                    <p className=" text-[16px] font-medium">
-                        <a href={`tel:${data.contact.phone_1}`}>
-                            {' '}
-                            {data.contact.phone_1}{' '}
-                        </a>
-                        /{' '}
-                        <a href={`tel:${data.contact.phone_2}`}>
-                            {' '}
-                            {data.contact.phone_2}{' '}
-                        </a>
-                    </p>
-                </div>
-                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
-                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                        <Image src={mail} alt="mail" />
-                    </div>
-                    <a href={`mailto:${data.contact.email}`}>
+            {data?.representations?.map((item: any) => (
+                <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full max-w-[500px]">
+                        <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                            <Image src={location} alt="location" />
+                        </div>
                         <p className=" text-[16px] font-medium">
-                            {data.contact.email}
+                            {item.address[lang]}
                         </p>
-                    </a>
+                    </div>
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
+                        <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                            <Image src={phone} alt="phone" />
+                        </div>
+                        <p className=" text-[16px] font-medium">
+                            <a href={`tel:${item.phone}`}> {item.phone} </a>
+                        </p>
+                    </div>
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-fit w-full">
+                        <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                            <Image src={mail} alt="mail" />
+                        </div>
+                        <a href={`mailto:${data.contact.email}`}>
+                            <p className=" text-[16px] font-medium">
+                                {item.name[lang]}
+                            </p>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            ))}
+
             <div className=" lg:h-[655px] h-fit  overflow-hidden lg:mt-[40px] mt-10 rounded-lg relative lg:mb-[100px] mb-10 flex flex-col-reverse ">
                 <div
                     className="IfarmeCLass"
@@ -144,7 +141,7 @@ export default function contact({ apiData }: { apiData: any }) {
     );
 }
 export async function getServerSideProps() {
-    const res = await fetch('https://mts.caratcons.az/api/home');
+    const res = await fetch('https://mts.caratcons.az/api/contact');
     const data = await res.json();
     console.log(data);
 

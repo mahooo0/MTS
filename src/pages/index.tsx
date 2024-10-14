@@ -69,7 +69,7 @@ export default function Home({ apiData }: { apiData: any }) {
                         <h1 className="font-bold  lg:text-[48px]  text-[25px] text-white max-w-[633px]">
                             {data.hero.title[lang]}
                         </h1>
-                        <div className="min-h-[132px] h-fit  bg-white bg-opacity-20   backdrop-blur-[4px] grid lg:grid-cols-4   justify-center place-items-center items-center  md:grid-cols-4 grid-cols-2 lg:min-w-[853px] w-fit  px-[auto]  rounded-[4px] lg:mt-[136px] mt-0 text-white flex-wrap">
+                        <div className="min-h-[132px] h-fit  bg-white bg-opacity-20   backdrop-blur-[4px] grid lg:grid-cols-4   justify-center place-items-center items-center  md:grid-cols-4 sm:grid-cols-4   grid-cols-2 lg:min-w-[853px] w-fit  px-[auto]  rounded-[4px] lg:mt-[136px] mt-0 text-white flex-wrap">
                             {data.statistics.map((item: any) => (
                                 <div className="flex flex-col  flex-wrap w-fit  justify-center items-center">
                                     <h4 className="lg:text-[32px] md:text-[32px] text-[20px] font-semibold gap-3 lg:text-start text-center">
