@@ -18,6 +18,7 @@ export default function Header({ active, setReset, data }: Props) {
     const [Loading, setIsLoading] = useState<boolean>(false);
     const [lang, setlang] = useState<any>('az');
     const [services, setserviceS] = useState<any>([]);
+    const [contacts, setcontacts] = useState<any>();
 
     useEffect(() => {
         const lng = localStorage.getItem('language');
@@ -52,7 +53,7 @@ export default function Header({ active, setReset, data }: Props) {
                 setserviceS(NewDATA.services);
                 // setdata(NewDATA);
                 const ARR = [...NewDATA.services];
-
+                setcontacts(NewDATA.contact);
                 // dispatch(setservices(ARR));
             } catch (error) {
                 console.log(error);
@@ -68,9 +69,9 @@ export default function Header({ active, setReset, data }: Props) {
     }
     return (
         <div className="lg:px-[100px] md:px-[100px] px-[30px]   w-full h-[70px] flex flex-row justify-between items-center  absolute top-0 z-[99]">
-            <Image
+            <img
                 onClick={() => router.push('/')}
-                src={Logo_Icon}
+                src={`https://mts.caratcons.az/${contacts?.logo}`}
                 alt="Logo_Icon"
                 className="lg:h-[100px] w-auto cursor-pointer"
             />
@@ -97,14 +98,14 @@ export default function Header({ active, setReset, data }: Props) {
                         text={data?.about[lang]}
                         ARR={[
                             {
-                                title: 'Şirkət tarixçəsi',
+                                title: data?.sstory_of_the_company[lang],
                                 action: () => {
                                     router.push('/about_us');
                                 },
                             },
 
                             {
-                                title: 'Sertifikatlar',
+                                title: data?.certificates[lang],
                                 action: () => {
                                     setReset();
 
@@ -118,7 +119,7 @@ export default function Header({ active, setReset, data }: Props) {
                                 },
                             },
                             {
-                                title: 'Stuktur',
+                                title: data?.structure[lang],
                                 action: () => {
                                     localStorage.setItem(
                                         'scrollto',
@@ -183,20 +184,20 @@ export default function Header({ active, setReset, data }: Props) {
                         text={data?.media[lang]}
                         ARR={[
                             {
-                                title: 'Qalereya',
+                                title: data?.gallery[lang],
                                 action: () => {
                                     router.push('/media');
                                 },
                             },
                             {
-                                title: 'vidiolar',
+                                title: data?.videos[lang],
                                 action: () => {
                                     router.push('/media/videos/');
                                 },
                             },
 
                             {
-                                title: 'Xəbərlər',
+                                title: data?.news[lang],
                                 action: () => {
                                     router.push('/news');
                                 },
@@ -216,20 +217,20 @@ export default function Header({ active, setReset, data }: Props) {
                         text={data?.career[lang]}
                         ARR={[
                             {
-                                title: 'Vakansiyalar',
+                                title: data?.vacancies[lang],
                                 action: () => {
                                     router.push('/karyera');
                                 },
                             },
                             {
-                                title: 'Peşəkar inkişaf və təlim',
+                                title: data?.training[lang],
                                 action: () => {
                                     router.push('/karyera/cours');
                                 },
                             },
 
                             {
-                                title: 'Müraciət blankı.',
+                                title: data?.application_form[lang],
                                 action: () => {
                                     router.push('/karyera/request_blanck');
                                 },

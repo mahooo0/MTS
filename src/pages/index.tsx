@@ -69,7 +69,7 @@ export default function Home({ apiData }: { apiData: any }) {
                         <h1 className="font-bold  lg:text-[48px]  text-[26px] text-white max-w-[633px]">
                             {data.hero.title[lang]}
                         </h1>
-                        <div className="min-h-[132px] h-fit  bg-white bg-opacity-20 flex flex-row backdrop-blur-[4px] lg:min-w-[853px] w-fit justify-around  rounded-[4px] lg:mt-[136px] mt-0 text-white flex-wrap">
+                        <div className="min-h-[132px] h-fit  bg-white bg-opacity-20   backdrop-blur-[4px] grid lg:grid-cols-4   justify-center place-items-center items-center  md:grid-cols-4 grid-cols-2 lg:min-w-[853px] w-fit  px-[auto]  rounded-[4px] lg:mt-[136px] mt-0 text-white flex-wrap">
                             {data.statistics.map((item: any) => (
                                 <div className="flex flex-col  flex-wrap w-fit  justify-center items-center">
                                     <h4 className="lg:text-[32px] md:text-[32px] text-[20px] font-semibold gap-3 lg:text-start text-center">
@@ -120,7 +120,7 @@ export default function Home({ apiData }: { apiData: any }) {
             </div>
             <div className="lg:mt-[100px] mt-[50px] flex justify-center ">
                 <div className=" h-fit flex flex-col justify-center items-center">
-                    <h1 className=" w-[744px] lg:text-[48px] text-[24px] font-semibold text-center">
+                    <h1 className=" max-w-[744px] lg:text-[48px] text-[24px] font-semibold text-center">
                         {data.translates.service_title[lang]}
                     </h1>
                     <div className="flex flex-row gap-5 mt-10 flex-wrap justify-around lg:px-[100px] px-[30px] ">
@@ -202,7 +202,7 @@ export default function Home({ apiData }: { apiData: any }) {
             </div>
 
             <div className="flex lg:flex-row flex-col bg-  justify-between  pt-[80px] lg:px-[100px] px-[30px]">
-                <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20] w-[341px]">
+                <h3 className=" lg:text-[48px] text-[24px] lg:text-left text-center text-[#050B20] max-w-[341px]">
                     {data.translates.our_advantages[lang]}
                 </h3>
                 <div className="flex-wrap flex-row grid gap-10 mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">

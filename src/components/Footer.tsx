@@ -54,7 +54,7 @@ export default function ({
 
     const router = useRouter();
     return (
-        <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41] px-[30px]">
+        <div className=" w-full lg:min-h-[477px] h-fit bg-[#131E41] px-[30px] overflow-hidden">
             <div className="pt-[48px] lg:px-20 px-5 flex flex-row justify-between">
                 <div className=" flex lg:flex-row md:flex-column flex-col-reverse  justify-between w-full flex-wrap gap-[55px]  ">
                     <div className="lg:flex   flex-col text-[16px] text-white font-normal gap-[14px]">
@@ -105,7 +105,7 @@ export default function ({
                             onClick={() => router.push('/services/other')}
                             className="cursor-pointer"
                         >
-                            Digər
+                            {data.others[lang]}
                         </p>
                     </div>
                     <div className="lg:flex  md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
@@ -157,11 +157,11 @@ export default function ({
                             {data.application_form[lang]}
                         </p>
                     </div>
-                    <div className="text-white">
-                        <h4 className="mb-[16px] text-[18px] font-semibold">
+                    <div className="text-white w-fit">
+                        <h4 className="mb-[16px] text-[18px] font-semibold w-fit">
                             {data.contact_info[lang]}
                         </h4>
-                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center w-fit">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={phone} alt="phone" />
                             </div>
@@ -177,20 +177,20 @@ export default function ({
                                 </a>
                             </p>
                         </div>
-                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center w-fit">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={location} alt="location" />
                             </div>
-                            <p className=" text-[16px] font-medium flex flex-wrap lg:w-[291px]  w-[200px]">
+                            <p className=" text-[16px] font-medium flex flex-wrap lg:w-[291px]  max-w-[200px]">
                                 {contact.address[lang]}
                             </p>
                         </div>
-                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center">
+                        <div className="flex flex-row gap-[11.5px] mb-[24px] items-center w-fit">
                             <div className="flex justify-center items-center bg-[#FFFFFF1F] w-11 h-11 rounded-lg">
                                 <Image src={mail} alt="mail" />
                             </div>
                             <a href={`mailto:${contact.email}`}>
-                                <p className=" text-[16px] font-medium flex flex-wrap w-[291px]">
+                                <p className=" text-[16px] font-medium flex flex-wrap max-w-[291px]">
                                     {contact.email}
                                 </p>
                             </a>

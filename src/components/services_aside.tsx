@@ -83,7 +83,7 @@ export default function Services_aside({
                     }
                     return (
                         <Asidemodule
-                            active={currenntService.id === item.id}
+                            active={currenntService?.id === item?.id}
                             action={() => {
                                 dipatch(setcurrentservices(item));
                                 // console.log('AAAAAAAAA', Services, ServiceS);
