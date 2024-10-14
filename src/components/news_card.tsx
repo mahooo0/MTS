@@ -18,9 +18,11 @@ export default function News_card({
     const router = useRouter(); // <-- Using correct useRouter from next/router
     const dispatch = useDispatch();
     function shortenText(text: string, maxLength: number) {
-        return text.length > maxLength
-            ? text.slice(0, maxLength) + '...'
-            : text;
+        if (text) {
+            return text.length > maxLength
+                ? text.slice(0, maxLength) + '...'
+                : text;
+        }
     }
     return (
         <div
