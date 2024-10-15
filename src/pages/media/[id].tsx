@@ -119,25 +119,54 @@ export default function id() {
                                     : ` grid flex-row justify-between w-full grid-cols-4 gap-5 mt-7 mb-[100px] `
                             }
                         >
-                            {blog.images.map((item: any) => (
+                            {grid_cols === 4
+                                ? blog.images.map((item: any) => (
+                                      <div
+                                          className={
+                                              'w-full h-[310px] overflow-hidden rounded-lg '
+                                          }
+                                      >
+                                          <img
+                                              src={`https://mts.caratcons.az/${item}`}
+                                              alt="ship"
+                                              className={
+                                                  // grid_cols === 4
+                                                  //     ? ' aspect-square w-full h-full rounded-lg'
+                                                  //     :
+                                                  'w-full h-full rounded-lg object-fill'
+                                              }
+                                          />
+                                      </div>
+                                  ))
+                                : blog.big_images.map((item: any) => (
+                                      <div className={''}>
+                                          <img
+                                              src={`https://mts.caratcons.az/${item}`}
+                                              alt="ship"
+                                              className={
+                                                  ' aspect-square w-full h-full max-h-[300px] rounded-lg'
+                                              }
+                                          />
+                                      </div>
+                                  ))}
+                            {/* {blog.images.map((item: any) => (
                                 <div
                                     className={
-                                        grid_cols === 4
-                                            ? ''
-                                            : 'w-full h-[310px] overflow-hidden rounded-lg '
+                                        'w-full h-[310px] overflow-hidden rounded-lg '
                                     }
                                 >
                                     <img
                                         src={`https://mts.caratcons.az/${item}`}
                                         alt="ship"
                                         className={
-                                            grid_cols === 4
-                                                ? 'rounded-lg aspect-square w-full h-full rounded-lg'
-                                                : 'w-full h-full rounded-lg object-fill'
+                                            // grid_cols === 4
+                                            //     ? ' aspect-square w-full h-full rounded-lg'
+                                            //     :
+                                             'w-full h-full rounded-lg object-fill'
                                         }
                                     />
                                 </div>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </main>

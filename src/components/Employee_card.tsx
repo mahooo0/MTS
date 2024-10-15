@@ -18,7 +18,7 @@ export default function Employee_card({ data, lng }: { data: any; lng: any }) {
                 <p className="text-[16px] font-normal text-black text-opacity-80">
                     {data.name[lng]}
                 </p>
-                <h5 className="text-[20px] font-semibold">
+                <h5 className="text-[20px] font-semibold max-w-[250px]">
                     {data.profession[lng]}
                 </h5>
             </div>
