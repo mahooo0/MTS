@@ -86,8 +86,8 @@ export default function contact({ apiData }: { apiData: any }) {
                 {data.translates.reprathentation[lang]}
             </h1>
             {data?.representations?.map((item: any) => (
-                <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[15px] bg-[#F6F7F8] rounded-lg  w-full  lg:w-[400px]">
+                <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5">
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[15px] bg-[#F6F7F8] rounded-lg  w-full  ">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                             <Image src={location} alt="location" />
                         </div>
@@ -95,7 +95,7 @@ export default function contact({ apiData }: { apiData: any }) {
                             {item.address[lang]}
                         </p>
                     </div>
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-[240px] w-full ">
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg w-full ">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                             <Image src={phone} alt="phone" />
                         </div>
@@ -103,7 +103,7 @@ export default function contact({ apiData }: { apiData: any }) {
                             <a href={`tel:${item.phone}`}> {item.phone} </a>
                         </p>
                     </div>
-                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg lg:w-[170px] w-full">
+                    <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg  w-full">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
                             <Image src={mail} alt="mail" />
                         </div>
