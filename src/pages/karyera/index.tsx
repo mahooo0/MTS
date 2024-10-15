@@ -125,7 +125,7 @@ export default function news() {
                     <h1 className="text-[36px] font-semibold text-center mt-[100px]">
                         {data.translates.career[lang]}
                     </h1>
-                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center  gap-5 mt-10  mb-8">
+                    <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 justify-center  gap-5 mt-10  mb-8">
                         {data.vacancies.map((item: any) => (
                             <div
                                 onClick={() => {

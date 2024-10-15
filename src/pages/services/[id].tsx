@@ -104,7 +104,7 @@ export default function Services_id() {
                 </div>
 
                 <div
-                    className="text-[16px] font-normal text-black text-opacity-80 text-start   felx flex-col lg:w-[75%] w-full mt-11 pb-[100px]  "
+                    className="text-[16px] font-normal text-black text-opacity-80 text-start   felx flex-col lg:w-[75%] w-full mt-14 pb-[100px]  "
                     dangerouslySetInnerHTML={{
                         __html: currenntService.description[lang],
                     }}

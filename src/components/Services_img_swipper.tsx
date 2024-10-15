@@ -60,7 +60,7 @@ const Services_img_swipper = ({ data }: { data: any }) => {
                 ))}
             </Swiper>
 
-            <div className="flex flex-row  absolute lg:bottom-0 md:bottom-0 -bottom-[40%] right-0  gap-3">
+            <div className="flex flex-row  absolute lg:bottom-0 md:bottom-0 bottom-[-43px] right-0  gap-3">
                 <button
                     onClick={handlePrev}
                     style={{ transform: 'rotate(180deg)' }}

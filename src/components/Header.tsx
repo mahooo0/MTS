@@ -73,7 +73,7 @@ export default function Header({ active, setReset, data }: Props) {
                 onClick={() => router.push('/')}
                 src={`https://mts.caratcons.az/${contacts?.logo}`}
                 alt="Logo_Icon"
-                className="lg:h-[100px] w-auto cursor-pointer"
+                className=" w-auto cursor-pointer "
             />
             <ul className="lg:flex hidden  flex-row gap-[28px] h-full  items-center cursor-pointer">
                 <li

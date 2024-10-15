@@ -121,9 +121,9 @@ export default function Id() {
                 </div>
                 <div className="lg:px-[100px] md:px-[60px] px-[30px] mt-12 flex flex-col items-center">
                     <img
-                        src={`https://mts.caratcons.az/${currentNew.image}`}
+                        src={`https://mts.caratcons.az/${currentNew.cover_image}`}
                         alt="news_image"
-                        className="w-full h-[500px]"
+                        className="w-full max-h-[500px]"
                     />
                     <div className="lg:h-[172px] md:h-[150px] h-[100px] lg:w-[80%] md:w-[80%] w-full bg-white bg-opacity-80 lg:p-6 md:p-6 p-0 flex flex-col lg:gap-4 md:gap-4 gap-2 lg:-mt-[110px] md:-mt-[110px] mt-0 z-20 rounded-lg">
                         <h4 className=" lg:text-[32px] md:text-[24px] text-[16px] font-semibold">
