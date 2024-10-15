@@ -83,7 +83,7 @@ export default function contact({ apiData }: { apiData: any }) {
                 </div>
             </div>
             <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                {data.translates.contact[lang]}
+                {data.translates.reprathentation[lang]}
             </h1>
             {data?.representations?.map((item: any) => (
                 <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between">
