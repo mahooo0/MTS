@@ -44,6 +44,45 @@ export default function contact({ apiData }: { apiData: any }) {
                 <h6 className=" opacity-60">{data.translates.contact[lang]}</h6>
             </div>
             <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
+                {data.translates.main_ofis[lang]}
+            </h1>
+            <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5">
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[15px] bg-[#F6F7F8] rounded-lg  w-full ">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                        <Image src={location} alt="location" />
+                    </div>
+                    <p className=" text-[16px] font-medium">
+                        {data.contact.address[lang]}
+                    </p>
+                </div>
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg w-full ">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                        <Image src={phone} alt="phone" />
+                    </div>
+                    <p className=" text-[16px] font-medium">
+                        <a href={`tel:${data.contact.phone_1}`}>
+                            {' '}
+                            {data.contact.phone_1}{' '}
+                        </a>
+                        /{' '}
+                        <a href={`tel:${data.contact.phone_2}`}>
+                            {' '}
+                            {data.contact.phone_2}{' '}
+                        </a>
+                    </p>
+                </div>
+                <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg w-full">
+                    <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
+                        <Image src={mail} alt="mail" />
+                    </div>
+                    <a href={`mailto:${data.contact.email}`}>
+                        <p className=" text-[16px] font-medium">
+                            {data.contact.email}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <h1 className="lg:text-[48px] md:text-[38px] text-[32px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                 {data.translates.contact[lang]}
             </h1>
             {data?.representations?.map((item: any) => (
