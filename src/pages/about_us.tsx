@@ -72,7 +72,7 @@ function about_us({ apiData }: { apiData: any }) {
                             className=" object-cover lg:h-full md:h-3/5 w-full h-1/2 lg:mb-0 mb-6 lg:mt-0 mt-6"
                         />
                     </div>
-                    <div className="bg-[#F7F7F8] lg:h-[128px]  h-fit  lg:w-3/5 w-full md:justify-around lg:absolute z-30 bottom-0 left-[100px] border-b border-black flex lg:justify-between justify-around items-center lg:pr-[40px] pr-0 lg:flex-row md:flex-row flex-row ">
+                    <div className="bg-[#F7F7F8] lg:h-[128px]  h-fit  lg:w-3/5 w-full md:justify-around lg:absolute z-30 bottom-0 left-[100px] border-b border-black grid lg:justify-between justify-around items-center lg:pr-[40px] pr-0 lg:flex-row md:flex-row flex-row   lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-4 grid-cols-2   place-items-center">
                         {data.statistics.map((item: any) => (
                             <div className="flex flex-col  flex-wrap w-fit lg:mt-0 mt-4">
                                 <h4 className="lg:text-[32px] md:text-[32px] text-[24px] font-semibold gap-3 lg:text-start text-center">
