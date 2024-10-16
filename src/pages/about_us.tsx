@@ -195,7 +195,7 @@ function about_us({ apiData }: { apiData: any }) {
                         <Sertificat /> */}
                     </div>
                 </div>
-                <div className="pt-[100px]  bg-[#F3F7FF] ">
+                <div className="pt-[100px]  bg-[#F3F7FF] " id="tesekkurname">
                     <h2 className="text-[40px] font-semibold text-center mb-[40px]">
                         {data.translates.acknowledgments[lang]}
                     </h2>
@@ -205,9 +205,9 @@ function about_us({ apiData }: { apiData: any }) {
                         ))}
                     </div>
                 </div>{' '}
-                <div className="py-[100px]  bg-[#FFFFFF] ">
+                <div className="py-[100px]  bg-[#FFFFFF] " id="əməkdalar">
                     <h2 className="text-[40px] font-semibold text-center">
-                        {data.translates.certificates[lang]}
+                        {data.translates.Partners[lang]}
                     </h2>
                     <div className="mt-[48px] lg:px-[100px] md:px-[60px] px-[30px] flex flex-row gap-5 flex-wrap justify-center">
                         {data.partners.map((item: any) => (

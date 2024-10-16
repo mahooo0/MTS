@@ -131,6 +131,32 @@ export default function Header({ active, setReset, data }: Props) {
                                         : router.push('/about_us');
                                 },
                             },
+                            {
+                                title: data?.acknowledgments[lang],
+                                action: () => {
+                                    localStorage.setItem(
+                                        'scrollto',
+                                        'tesekkurname'
+                                    );
+                                    setReset();
+                                    active === 2
+                                        ? ''
+                                        : router.push('/about_us');
+                                },
+                            },
+                            {
+                                title: data?.Partners[lang],
+                                action: () => {
+                                    localStorage.setItem(
+                                        'scrollto',
+                                        'əməkdalar'
+                                    );
+                                    setReset();
+                                    active === 2
+                                        ? ''
+                                        : router.push('/about_us');
+                                },
+                            },
                         ]}
                     />
                 </li>

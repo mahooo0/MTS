@@ -255,9 +255,12 @@ export default function Projectsid() {
                 <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     {data.project.title[lang]}
                 </h1>
-                <div className="text-[16px] opacity-80  lg:px-[100px] md:px-[60px] px-[30px]">
-                    {data.project.description[lang]}
-                </div>
+                <div
+                    className="text-[16px] opacity-80  lg:px-[100px] md:px-[60px] px-[30px]"
+                    dangerouslySetInnerHTML={{
+                        __html: data.project.description[lang],
+                    }}
+                ></div>
                 <div className="flex flex-col lg:pl-[100px] md:pl-[60px] pl-[30px] mb-[100px]">
                     <p className="mt-12 mb-4 text-[12px] font-normal">
                         Paylaş:
