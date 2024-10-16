@@ -149,7 +149,7 @@ export default function Header({ active, setReset, data }: Props) {
                                 action: () => {
                                     localStorage.setItem(
                                         'scrollto',
-                                        'əməkdalar'
+                                        'tesekkurname'
                                     );
                                     setReset();
                                     active === 2
@@ -404,10 +404,36 @@ export default function Header({ active, setReset, data }: Props) {
                                         );
                                     },
                                 },
+                                {
+                                    title: data?.acknowledgments[lang],
+                                    action: () => {
+                                        localStorage.setItem(
+                                            'scrollto',
+                                            'tesekkurname'
+                                        );
+                                        setReset();
+                                        active === 2
+                                            ? ''
+                                            : router.push('/about_us');
+                                    },
+                                },
+                                {
+                                    title: data?.Partners[lang],
+                                    action: () => {
+                                        localStorage.setItem(
+                                            'scrollto',
+                                            'tesekkurname'
+                                        );
+                                        setReset();
+                                        active === 2
+                                            ? ''
+                                            : router.push('/about_us');
+                                    },
+                                },
                             ]}
                         />
                     </li>
-                    <li
+                    {/* <li
                         className={
                             active === 3
                                 ? 'h-fit flex items-center text-[#2961B1] border-[#2961B1]  '
@@ -442,8 +468,17 @@ export default function Header({ active, setReset, data }: Props) {
                                 },
                             ]}
                         />
+                    </li> */}
+                    <li
+                        onClick={() => router.push('/services')}
+                        className={
+                            active === 3
+                                ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        {data?.our_services[lang]}
                     </li>
-
                     <li
                         className={
                             active === 6
