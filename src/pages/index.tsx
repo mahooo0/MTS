@@ -115,6 +115,7 @@ export default function Home({ apiData }: { apiData: any }) {
                         img={`${baseurl}${item.image}`}
                         alt={item.image_alt[lang]}
                         Title={item.image_title[lang]}
+                        id={item.id}
                     />
                 ))}
             </div>

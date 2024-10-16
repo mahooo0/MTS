@@ -123,7 +123,7 @@ export default function Id() {
                     <img
                         src={`https://mts.caratcons.az/${currentNew.cover_image}`}
                         alt="news_image"
-                        className="w-full max-h-[500px]"
+                        className="w-full max-h-[500px] object-cover"
                     />
                     <div className="lg:h-[172px] md:h-[150px] h-[100px] lg:w-[80%] md:w-[80%] w-full bg-white bg-opacity-80 lg:p-6 md:p-6 p-0 flex flex-col lg:gap-4 md:gap-4 gap-2 lg:-mt-[110px] md:-mt-[110px] mt-0 z-20 rounded-lg">
                         <h4 className=" lg:text-[32px] md:text-[24px] text-[16px] font-semibold">
@@ -156,7 +156,7 @@ export default function Id() {
                         }}
                     />
                 </div>
-                <News_img_Swiper data={currentNew.images} />
+                {/* <News_img_Swiper data={currentNew.images} /> */}
                 <div
                     className="text-[16px] mt-[53px] font-normal top-[53px] lg:px-[100px] md:px-[60px] px-[30px] "
                     dangerouslySetInnerHTML={{

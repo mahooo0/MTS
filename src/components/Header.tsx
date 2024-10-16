@@ -134,7 +134,7 @@ export default function Header({ active, setReset, data }: Props) {
                         ]}
                     />
                 </li>
-                <li
+                {/* <li
                     className={
                         active === 3
                             ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
@@ -170,6 +170,16 @@ export default function Header({ active, setReset, data }: Props) {
                             },
                         ]}
                     />
+                </li> */}
+                <li
+                    onClick={() => router.push('/services')}
+                    className={
+                        active === 3
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
+                    }
+                >
+                    {data?.our_services[lang]}
                 </li>
 
                 <li
@@ -238,7 +248,16 @@ export default function Header({ active, setReset, data }: Props) {
                         ]}
                     />
                 </li>
-
+                <li
+                    onClick={() => router.push('/Projects')}
+                    className={
+                        active === 8
+                            ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                            : '  font-medium'
+                    }
+                >
+                    {data?.Projects[lang]}
+                </li>
                 <li
                     onClick={() => router.push('/contact')}
                     className={
@@ -465,7 +484,16 @@ export default function Header({ active, setReset, data }: Props) {
                             ]}
                         />
                     </li>
-
+                    <li
+                        onClick={() => router.push('/Projects')}
+                        className={
+                            active === 9
+                                ? 'h-full flex items-center text-[#2961B1] border-[#2961B1]  '
+                                : '  font-medium'
+                        }
+                    >
+                        {data?.Projects[lang]}
+                    </li>
                     <li
                         onClick={() => router.push('/contact')}
                         className={

@@ -35,7 +35,7 @@ const CustomSwiper = ({ data }: { data: any }) => {
     };
 
     return (
-        <div className="relative lg:px-[205px] md:px-[100px] px-[0px] mt-10">
+        <div className="relative lg:px-[100px] md:px-[60px] px-0 mt-10 max-h-[400px] overflow-hidden">
             <Swiper
                 ref={swiperRef}
                 onSlideChange={handleSwiperChange}
@@ -48,13 +48,13 @@ const CustomSwiper = ({ data }: { data: any }) => {
                         <img
                             src={`https://mts.caratcons.az/${item}`}
                             alt="container_png"
-                            className="w-full h-[372px]"
+                            className="w-full h-[350px] object-cover"
                         />
                     </SwiperSlide>
                 ))}
             </Swiper>
 
-            <div className="flex flex-row  absolute bottom-0 lg:right-[205px] md:right-[105px]  right-0 gap-3">
+            <div className="flex flex-row  absolute bottom-0 lg:right-[100px] md:right-[60px]  right-0 gap-3">
                 <button
                     onClick={handlePrev}
                     style={{ transform: 'rotate(180deg)' }}

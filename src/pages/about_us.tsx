@@ -9,12 +9,13 @@ import Footer from '@/components/Footer';
 import Employee_card from '@/components/Employee_card';
 import Sertificat from '@/components/Sertificats';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function about_us({ apiData }: { apiData: any }) {
     const [reset, setreset] = useState<boolean>(false);
     const [lang, setlang] = useState<string>('az');
     const baseurl = 'https://mts.caratcons.az/';
-
+    const router = useRouter();
     useEffect(() => {
         const id = localStorage.getItem('scrollto');
         if (id) {
@@ -93,7 +94,6 @@ function about_us({ apiData }: { apiData: any }) {
                         }}
                     />
                 </div>
-
                 <div className="p-5 bg-white relative " id="structure">
                     <div className="pt-[100px] flex flex-col justify-center items-center bg-[#F3F7FF] pb-[100px] relative">
                         <Image
@@ -181,7 +181,6 @@ function about_us({ apiData }: { apiData: any }) {
                         />
                     </div>
                 </div>
-
                 <div className="pt-[100px]  bg-[#F6F7F8] " id="sertificatlar">
                     <h2 className="text-[40px] font-semibold text-center mb-[40px]">
                         {data.translates.certificates[lang]}
@@ -196,59 +195,39 @@ function about_us({ apiData }: { apiData: any }) {
                         <Sertificat /> */}
                     </div>
                 </div>
-                {/* <div className="pt-[100px]  bg-[#F3F7FF] ">
+                <div className="pt-[100px]  bg-[#F3F7FF] ">
                     <h2 className="text-[40px] font-semibold text-center mb-[40px]">
-                        {data.translates.certificates[lang]}
+                        {data.translates.acknowledgments[lang]}
                     </h2>
                     <div className="flex items-center justify-evenly  flex-wrap pb-[100px] gap-[20px] lg:px-[100px] md:px-[60px]  px-[30px] ">
-                        {data.certificates.map((item: any) => (
+                        {data.acknowledgments.map((item: any) => (
                             <Sertificat data={item} lang={lang} />
                         ))}
                     </div>
-                </div>
+                </div>{' '}
                 <div className="py-[100px]  bg-[#FFFFFF] ">
                     <h2 className="text-[40px] font-semibold text-center">
                         {data.translates.certificates[lang]}
                     </h2>
                     <div className="mt-[48px] lg:px-[100px] md:px-[60px] px-[30px] flex flex-row gap-5 flex-wrap justify-center">
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
-                        <div className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg">
-                            <img src="https://s3-alpha-sig.figma.com/img/b860/2bdd/8a2f18eedca239767727c8be83e5db4f?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TxuBhl6lTr97RIbwoxoQLHh3JLlFTQyZ4k4HedYl6uTbHKgKXXvUGIwMPKhUbUj6UV321u2L9V~vieUkba9CNQ2qCfRRc2qb5Qd~HkOLxfIKttXDaTjnxRhbtbydlUz4iRPb5wkAeDag1JW2rhjn-wW59MXuUD0h1PQ21kOg8q-kVqipP857HnDQbnkQMj2wCRW9dSXbT-kKaxurwphYjcdjBjodRztB5-HoBz-kFDxwkD-iyRrQ9lgphrXRelZm6ybyKzpfeOox9CG0M7W533XGgh2ijAmtf-VyBtWmtbu7O4XBaRJKaI7iH7PgCp5cfo08M7-UUJzrJ76svQY0hA__" />
-                            <p>Dolta QSC</p>
-                        </div>
+                        {data.partners.map((item: any) => (
+                            <div
+                                className="w-[190px] h-[146px] bg-[#F3F7FF] flex flex-col justify-center items-center rounded-lg"
+                                onClick={() =>
+                                    router.push(`/partners/${item.id}`)
+                                }
+                            >
+                                <img
+                                    src={`https://mts.caratcons.az/${item.image}`}
+                                    className="w-[80%] h-[70px] object-cover"
+                                />
+                                <p className="w-[80%] text-center mt-3">
+                                    {item.title[lang]}
+                                </p>
+                            </div>
+                        ))}
                     </div>
-                </div> */}
+                </div>
             </main>
 
             <Footer data={data.translates} contact={data.contact} lang={lang} />

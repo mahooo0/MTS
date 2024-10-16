@@ -68,10 +68,10 @@ export default function news() {
                         {data.translates.news[lang]}
                     </h6>
                 </div>
-                <h1 className=" lg:text-[48px] md:text-[36px] text-[24px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
+                {/* <h1 className=" lg:text-[48px] md:text-[36px] text-[24px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
                     {data.translates.news[lang]}
-                </h1>
-                <NewsSwiper data={data.latest_blogs} lang={lang} />
+                </h1> */}
+                {/* <NewsSwiper data={data.latest_blogs} lang={lang} /> */}
                 <div className="mt-[82px] flex flex-col lg:items-start items-center ">
                     <h1 className="lg:text-[48px] md:text-[36px] text-[24px]  font-semibold text-[#050B20] mb-[48px]  lg:ml-[100px] md:ml-[60px] ml-[0px]">
                         {data.translates.other_news[lang]}

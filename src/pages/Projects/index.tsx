@@ -11,6 +11,7 @@ import ProjectCard from '@/components/ProjectCard';
 
 export default function Projects() {
     const [data, setdata] = useState<any>({});
+    const [Projects, setProjects] = useState<any>({});
     const [page, setpage] = useState<number>(1);
     const [category_id, setcategory_id] = useState<number>(0);
     const [lang, setlang] = useState<string>('az');
@@ -20,37 +21,26 @@ export default function Projects() {
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
         setlang(lng);
-        const cat = localStorage.getItem('category');
-        if (cat === 'Təlim') {
-            setcategory_id(4);
-        }
     }, [reset]);
     useEffect(() => {
         (async () => {
             try {
                 setIsLoading(true);
-                if (category_id === 0) {
-                    const res = await fetch(
-                        `https://mts.caratcons.az/api/gallery?page=${page}`
-                    );
-                    const newdata = await res.json();
-                    const NewDATA = await newdata.data;
-                    setdata(NewDATA);
-                } else {
-                    const res = await fetch(
-                        `https://mts.caratcons.az/api/gallery?page=${page}&category_id=${category_id}`
-                    );
-                    const newdata = await res.json();
-                    const NewDATA = await newdata.data;
-                    setdata(NewDATA);
-                }
+
+                const res = await fetch(
+                    `https://mts.caratcons.az/api/projects?page=${page}`
+                );
+                const newdata = await res.json();
+                const NewDATA = await newdata.data;
+                setdata(NewDATA);
+                setProjects(NewDATA.projects);
             } catch (error) {
                 console.log(error);
             } finally {
                 setIsLoading(false);
             }
         })();
-    }, [category_id, page]);
+    }, [page]);
 
     if (isLoading) {
         return <div></div>;
@@ -59,7 +49,7 @@ export default function Projects() {
         <div className="bg-white">
             <Header
                 setReset={() => setreset((prew) => !prew)}
-                active={6}
+                active={8}
                 data={data.translates}
             />
 
@@ -84,12 +74,15 @@ export default function Projects() {
                 </h1>
                 <div className="mt-[40px] flex justify-center  bg-[#ffffff]">
                     <div className="w-[581px] min-h-[187px] flex flex-col justify-center mb-5">
-                        <h1 className="text-[32px] font-semibold text-center">
+                        {/* <h1 className="text-[32px] font-semibold text-center">
                             {data.translates.Categories[lang]}
-                        </h1>
+                        </h1> */}
                         <div className="flex flex-row flex-wrap   justify-center gap-4 mt-10 ">
                             <button
-                                onClick={() => setcategory_id(0)}
+                                onClick={() => {
+                                    setProjects(data.projects);
+                                    setcategory_id(0);
+                                }}
                                 className={`px-6 py-3 rounded-lg border border-black border-opacity-10 ${
                                     0 === category_id
                                         ? 'bg-[#2961B1] text-white'
@@ -98,7 +91,45 @@ export default function Projects() {
                             >
                                 {data.translates.all_galeries[lang]}
                             </button>
-                            {[...data.categories].reverse().map((item: any) => (
+                            <button
+                                onClick={() => {
+                                    setcategory_id(1);
+
+                                    setProjects(
+                                        data.projects.filter(
+                                            (item: any) =>
+                                                item.status === 'Davam edir'
+                                        )
+                                    );
+                                }}
+                                className={`px-6 py-3 rounded-lg border border-black border-opacity-10 ${
+                                    1 === category_id
+                                        ? 'bg-[#2961B1] text-white'
+                                        : ''
+                                }  hover:border-none`}
+                            >
+                                {data.translates.Continue[lang]}
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setcategory_id(2);
+
+                                    setProjects(
+                                        data.projects.filter(
+                                            (item: any) =>
+                                                item.status === 'Bitib'
+                                        )
+                                    );
+                                }}
+                                className={`px-6 py-3 rounded-lg border border-black border-opacity-10 ${
+                                    2 === category_id
+                                        ? 'bg-[#2961B1] text-white'
+                                        : ''
+                                }  hover:border-none`}
+                            >
+                                {data.translates.end[lang]}
+                            </button>
+                            {/* {[...data.categories].reverse().map((item: any) => (
                                 <button
                                     key={item.id} // It's important to have a unique key for React lists
                                     onClick={() => setcategory_id(item.id)}
@@ -110,14 +141,14 @@ export default function Projects() {
                                 >
                                     {item.name[lang]}
                                 </button>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <div className="lg:px-[100px] md:px-[60px] px-[30px]  mt-10 grid flex-row lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 justify-between gap-5 mb-10">
-                        {data.galleries.map((item: any) => (
-                            <ProjectCard />
+                    <div className="lg:px-[100px] lg:w-full md:w-full w-fit md:px-[60px] px-[30px] place- mt-10 grid flex-row lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 justify-between gap-5 mb-10">
+                        {Projects.map((item: any) => (
+                            <ProjectCard data={item} lang={lang} />
                         ))}
                     </div>
                 </div>
