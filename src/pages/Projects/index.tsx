@@ -66,11 +66,11 @@ export default function Projects() {
                         className=" opacity-60"
                     />
                     <h6 className=" opacity-60">
-                        {data.translates.gallery[lang]}
+                        {data.translates.Partners[lang]}
                     </h6>
                 </div>
                 <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    {data.translates.gallery[lang]}
+                    {data.translates.Partners[lang]}
                 </h1>
                 <div className="mt-[40px] flex justify-center  bg-[#ffffff]">
                     <div className="w-[581px] min-h-[187px] flex flex-col justify-center mb-5">
@@ -89,7 +89,7 @@ export default function Projects() {
                                         : ''
                                 }  hover:border-none`}
                             >
-                                {data.translates.all_galeries[lang]}
+                                {data.translates.all_projects[lang]}
                             </button>
                             <button
                                 onClick={() => {
@@ -108,7 +108,7 @@ export default function Projects() {
                                         : ''
                                 }  hover:border-none`}
                             >
-                                {data.translates.Continue[lang]}
+                                {data.translates.continued_projects[lang]}
                             </button>
                             <button
                                 onClick={() => {
@@ -127,7 +127,7 @@ export default function Projects() {
                                         : ''
                                 }  hover:border-none`}
                             >
-                                {data.translates.end[lang]}
+                                {data.translates.finished_projects[lang]}
                             </button>
                             {/* {[...data.categories].reverse().map((item: any) => (
                                 <button
