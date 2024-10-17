@@ -97,7 +97,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                             className=" opacity-60"
                         />
                         <h6 className=" opacity-60">
-                            {data.translates?.gallery[lang]}
+                            {data.translates?.Partners[lang]}
                         </h6>
                     </div>
                     <div className="flex flex-wrap gap-7 items-center self-start mt-10 max-md:max-w-full">

@@ -116,7 +116,7 @@ export default function Projectsid() {
                         className=" opacity-60"
                     />
                     <h6 className=" opacity-60">
-                        {data.translates?.Partners[lang]}
+                        {data.translates?.Projects[lang]}
                     </h6>
                 </div>
 

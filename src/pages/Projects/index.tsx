@@ -66,11 +66,11 @@ export default function Projects() {
                         className=" opacity-60"
                     />
                     <h6 className=" opacity-60">
-                        {data.translates.Partners[lang]}
+                        {data.translates.Projects[lang]}
                     </h6>
                 </div>
                 <h1 className="text-[48px] font-semibold text-[#050B20] mb-[48px] mt-[28px] lg:ml-[100px] md:ml-[60px] ml-[30px]">
-                    {data.translates.Partners[lang]}
+                    {data.translates.Projects[lang]}
                 </h1>
                 <div className="mt-[40px] flex justify-center  bg-[#ffffff]">
                     <div className="w-[581px] min-h-[187px] flex flex-col justify-center mb-5">
