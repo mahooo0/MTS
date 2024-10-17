@@ -149,7 +149,7 @@ export default function Header({ active, setReset, data }: Props) {
                                 action: () => {
                                     localStorage.setItem(
                                         'scrollto',
-                                        'tesekkurname'
+                                        'əməkdalar'
                                     );
                                     setReset();
                                     active === 2
@@ -422,7 +422,7 @@ export default function Header({ active, setReset, data }: Props) {
                                     action: () => {
                                         localStorage.setItem(
                                             'scrollto',
-                                            'tesekkurname'
+                                            'əməkdalar'
                                         );
                                         setReset();
                                         active === 2
