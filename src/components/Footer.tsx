@@ -82,10 +82,15 @@ export default function ({
                         </p>
                     </div>
                     <div className="lg:flex   flex-col text-[16px] w-[150px] text-white font-normal gap-[14px]">
-                        <h4 className="mb-[16px] text-[18px] font-semibold">
+                        <h4
+                            className="mb-[16px] text-[18px] font-semibold cursor-pointer"
+                            onClick={() => {
+                                router.push('/services');
+                            }}
+                        >
                             {data.our_services[lang]}
                         </h4>
-                        {services
+                        {/* {services
                             .filter((item: any) => {
                                 const result = item.type === 'Digər';
                                 return !result;
@@ -99,14 +104,14 @@ export default function ({
                                 >
                                     {item.name[lang]}
                                 </p>
-                            ))}
+                            ))} */}
 
-                        <p
+                        {/* <p
                             onClick={() => router.push('/services/other')}
                             className="cursor-pointer"
                         >
                             {data.others[lang]}
-                        </p>
+                        </p> */}
                     </div>
                     <div className="lg:flex  md:flex flex-col   text-[16px] text-white font-normal gap-[14px]">
                         <h4 className="mb-[16px] text-[18px] font-semibold">

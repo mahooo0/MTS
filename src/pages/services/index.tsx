@@ -71,7 +71,7 @@ export default function () {
                         {data.translates.our_services[lang]}
                     </h6>
                 </div>
-                <div
+                {/* <div
                     className="w-full lg:h-[380px] h-fit rounded-lg overflow-hidden mt-10"
                     style={{
                         backgroundImage: `url('/images/trubı.png')`,
@@ -92,7 +92,7 @@ export default function () {
                             }}
                         />
                     </div>
-                </div>
+                </div> */}
 
                 <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-2  lg:justify-between justify-center mb-[100px] ">
                     {data.services
