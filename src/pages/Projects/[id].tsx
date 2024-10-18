@@ -155,7 +155,7 @@ export default function Projectsid() {
                                 {data.translates.ProjectDetails[lang]}
                             </h6>
                             <div className="flex flex-col gap-3 mt-7">
-                                <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black">
+                                {/* <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black">
                                     <div className=" w-[48px] h-[48px] flex justify-center items-center bg-[#2961B1] rounded-lg">
                                         <svg
                                             width="24"
@@ -197,7 +197,7 @@ export default function Projectsid() {
                                             {data.project.category.name[lang]}
                                         </h6>
                                     </div>
-                                </div>{' '}
+                                </div>{' '} */}
                                 <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black ">
                                     <div className=" w-[48px] h-[48px] flex justify-center items-center bg-[#2961B1] rounded-lg">
                                         <svg
