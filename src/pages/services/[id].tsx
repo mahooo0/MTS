@@ -96,9 +96,10 @@ export default function Services_id() {
                 <div className="flex justify-start lg:flex-row flex-col-reverse gap-5">
                     <Services_img_swipper data={currenntService.images} />
                     <Services_aside
+                        translates={data.translates}
+                        lang={lang}
                         currenntService={currenntService}
                         action={() => {}}
-                        lang={lang}
                         Services={Services}
                     />
                 </div>

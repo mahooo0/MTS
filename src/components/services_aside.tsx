@@ -53,7 +53,9 @@ export default function Services_aside({
     Services,
     action,
     lang,
+    translates,
 }: {
+    translates: any;
     Services: any;
     currenntService: any;
     action: () => void;
@@ -70,9 +72,11 @@ export default function Services_aside({
 
     return (
         <div className="lg:w-fit w-full h-fit bg-[#F7F8FA]  border rounded-lg  lg:mt-10 mt-14 flex flex-col text-center ">
-            <h5 className="text-[20px] font-semibold mt-5">Xidmətlərimiz</h5>
+            <h5 className="text-[20px] font-semibold mt-5">
+                {translates.our_services[lang]}
+            </h5>
             <p className="text-[14px] font-normal mt-2">
-                Gəmi təmiri xidmətlərimizə daxildir:
+                {translates.services_DESc[lang]}
             </p>
             <div className="px-[9px] flex flex-col gap-[6px] pb-6 pt-6">
                 {Services.map((item: any) => {
@@ -112,7 +116,7 @@ export default function Services_aside({
                         router.push(`/services/other`);
                     }}
                 >
-                    Digər
+                    {translates.others[lang]}
                 </Asidemodule>
             </div>
         </div>

@@ -21,7 +21,15 @@ const validationSchema = Yup.object({
     azerbaijanPhone: Yup.string().required('Telefon nömrəsi vacibdir'),
 });
 
-export default function Request_blanck({ data }: { data: any }) {
+export default function Request_blanck({
+    data,
+    translates,
+    lang,
+}: {
+    data: any;
+    translates: any;
+    lang: string;
+}) {
     const [cv, setcv] = useState<any>();
     const [img, setimg] = useState<any>();
     const cvinpt = useRef<any>();
@@ -89,7 +97,7 @@ export default function Request_blanck({ data }: { data: any }) {
                             <div>
                                 <Field
                                     name="firstName"
-                                    placeholder="Ad"
+                                    placeholder={translates.name[lang]}
                                     className="h-[56px] w-full focus:outline-none bg-white rounded-lg p-[17px] text-[16px] font-normal"
                                 />
                                 <ErrorMessage
@@ -102,7 +110,7 @@ export default function Request_blanck({ data }: { data: any }) {
                             <div>
                                 <Field
                                     name="lastName"
-                                    placeholder="Soyad"
+                                    placeholder={translates.subname[lang]}
                                     className="h-[56px] w-full focus:outline-none bg-white rounded-lg p-[17px] text-[16px] font-normal"
                                 />
                                 <ErrorMessage
@@ -161,7 +169,7 @@ export default function Request_blanck({ data }: { data: any }) {
                             />
                             <div>
                                 <label className="text-[14px] font-normal opacity-60 mt-5">
-                                    CV üçün klik edin
+                                    {translates.clickCv[lang]}
                                 </label>
                                 <div
                                     className="w-full h-[92px] flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg border-dashed border-2 mt-[12px] border-[#2961B1] cursor-pointer"
@@ -169,7 +177,7 @@ export default function Request_blanck({ data }: { data: any }) {
                                 >
                                     <div className="flex flex-row text-[#2961B1] text-[16px] font-medium gap-3">
                                         <Image src={cv_icon} alt="cv_icon" />
-                                        CV faylın seç
+                                        {translates.add_Cv[lang]}
                                     </div>
                                     <p className="text-[14px] font-normal text-center opacity-60 mt-2">
                                         {cv
@@ -202,7 +210,7 @@ export default function Request_blanck({ data }: { data: any }) {
                             />
                             <div>
                                 <label className="text-[14px] font-normal opacity-60 mt-5">
-                                    Şəkil üçün klik edin
+                                    {translates.Clickformg[lang]}
                                 </label>
                                 <div
                                     className="w-full h-[92px] flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg border-dashed border-2 mt-[12px] border-[#2961B1] cursor-pointer"
@@ -213,7 +221,7 @@ export default function Request_blanck({ data }: { data: any }) {
                                             src={image_icon}
                                             alt="image_icon"
                                         />
-                                        Dəyişmək üçün kliklə
+                                        {translates.ClickForSwitch[lang]}
                                     </div>
                                     <p className="text-[14px] font-normal opacity-60 mt-2">
                                         {img

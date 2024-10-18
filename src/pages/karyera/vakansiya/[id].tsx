@@ -102,7 +102,11 @@ export default function vakancyid() {
                     {/* <Blue_to_blue text="Muraciet et" action={() => {}} /> */}
                 </div>
                 <div className="mt-5 mb-[100px]">
-                    <Request_blanck data={CurrenVacansy} />
+                    <Request_blanck
+                        data={CurrenVacansy}
+                        translates={data.translates}
+                        lang={lang}
+                    />
                 </div>
             </main>
             <Footer data={data.translates} lang={lang} contact={data.contact} />

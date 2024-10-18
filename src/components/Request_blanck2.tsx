@@ -9,7 +9,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-export default function Request_blanck2() {
+export default function Request_blanck2({
+    lang,
+    translates,
+}: {
+    translates: any;
+    lang: string;
+}) {
     const [cv, setcv] = useState<any>();
     const [img, setimg] = useState<any>();
     const cvinpt = useRef<any>();
@@ -75,7 +81,7 @@ export default function Request_blanck2() {
                 <input
                     type="text"
                     name="fullName"
-                    placeholder="Ad Soyad"
+                    placeholder={translates.fullname[lang]}
                     className="h-[56px] w-full focus:outline-none bg-white rounded-lg p-[17px] text-[16px] font-normal"
                     onChange={formik.handleChange}
                     value={formik.values.fullName}
@@ -83,7 +89,7 @@ export default function Request_blanck2() {
                 <input
                     type="text"
                     name="vacancyName"
-                    placeholder="Müraciət etdiyiniz vakansiyanın adı"
+                    placeholder={translates.vakancyName[lang]}
                     className="h-[56px] w-full focus:outline-none bg-white rounded-lg p-[17px] text-[16px] font-normal"
                     onChange={formik.handleChange}
                     value={formik.values.vacancyName}
@@ -149,7 +155,7 @@ export default function Request_blanck2() {
                 />
                 <div>
                     <label className="text-[14px] font-normal opacity-60 mt-5">
-                        CV üçün klik edin
+                        {translates.clickCv[lang]}
                     </label>
                     <div
                         className="w-full h-[92px] flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg border-dashed border-2 mt-[12px] border-[#2961B1]"
@@ -161,7 +167,7 @@ export default function Request_blanck2() {
                             }
                         >
                             <Image src={cv_icon} alt="cv_icon" />
-                            CV faylın seç
+                            {translates.add_Cv[lang]}
                         </div>
                         <p className="text-[14px] font-normal text-center opacity-60 mt-2">
                             {cv
@@ -172,7 +178,7 @@ export default function Request_blanck2() {
                 </div>
                 <div>
                     <label className="text-[14px] font-normal opacity-60 mt-5">
-                        Şəkil üçün klik edin
+                        {translates.Clickformg[lang]}
                     </label>
                     <div
                         className="w-full h-[92px] flex flex-col justify-center items-center bg-[#FFFFFF] rounded-lg border-dashed border-2 mt-[12px] border-[#2961B1]"
@@ -180,7 +186,7 @@ export default function Request_blanck2() {
                     >
                         <div className="flex flex-row text-[#2961B1] text-[16px] font-medium gap-3 cursor-pointer">
                             <Image src={image_icon} alt="image_icon" />
-                            Dəyişmək üçün kliklə
+                            {translates.ClickForSwitch[lang]}
                         </div>
                         <p className="text-[14px] font-normal text-center opacity-60 mt-2">
                             {img ? img.name : '  PNG, JPG (Max 3 mb)'}

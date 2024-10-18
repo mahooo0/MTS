@@ -9,10 +9,12 @@ export default function Services_card({
     data,
     lang,
     ser,
+    translates,
 }: {
     data: any;
     lang: any;
     ser: any;
+    translates: any;
 }) {
     console.log(ser);
     function shortenText(text: string, maxLength: number): string {
@@ -48,7 +50,7 @@ export default function Services_card({
                 }}
             >
                 <div className="bg-white bg-opacity-10 flex px-4 justify-between items-center text-white h-11 rounded-[100px] w-[98%]">
-                    <p>Ətraflı bax</p>
+                    <p>{translates.seemore[lang]}</p>
                     <Image src={whiteStrelka} alt="white strelka" />
                 </div>
             </div>

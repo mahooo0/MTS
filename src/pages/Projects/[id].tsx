@@ -94,7 +94,34 @@ export default function Projectsid() {
         );
     };
     console.log(data);
-
+    let status;
+    if (!isLoading && data) {
+        if (data.project.status === 'Davam edir') {
+            switch (lang) {
+                case 'az':
+                    status = 'Davam edir';
+                    break;
+                case 'en':
+                    status = 'Cantinue';
+                    break;
+                case 'ru':
+                    status = 'Продолжается';
+                    break;
+            }
+        } else {
+            switch (lang) {
+                case 'az':
+                    status = 'Bitib';
+                    break;
+                case 'en':
+                    status = 'Аinished';
+                    break;
+                case 'ru':
+                    status = 'законченный';
+                    break;
+            }
+        }
+    }
     return (
         <div className="bg-white">
             <Header
@@ -201,7 +228,7 @@ export default function Projectsid() {
                                             {data.translates.Status[lang]}
                                         </p>
                                         <h6 className="text-[18px] font-medium text-[#2961B1]">
-                                            {data.project.status}
+                                            {status}
                                         </h6>
                                     </div>
                                 </div>{' '}

@@ -52,7 +52,7 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                         <Field
                             type="text"
                             name="fullName"
-                            placeholder="Ad və soyad"
+                            placeholder={data.fullname[leng]}
                             required
                             className="w-full h-[55px] rounded-lg bg-[#F5F5F5] p-4 focus:outline-none focus:border-transparent"
                         />
@@ -101,7 +101,7 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                             className="h-[112px] w-full rounded-lg bg-[#F5F5F5] p-4 focus:outline-none focus:border-transparent resize-none overflow-auto"
                         />
                         <ErrorMessage
-                            name="message"
+                            name={data.message[leng]}
                             component="div"
                             className="text-red-500 text-sm"
                         />
@@ -111,7 +111,8 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                             type="submit"
                             className="flex flex-row gap-2 items-center w-full h-[50px] bg-[#2961B1] text-white text-[20px] font-[500px] justify-center rounded-lg mt-3"
                         >
-                            Göndər <Image src={strelka2} alt="strelka2" />
+                            {data.send[leng]}{' '}
+                            <Image src={strelka2} alt="strelka2" />
                         </button>
                     </div>
                 </Form>

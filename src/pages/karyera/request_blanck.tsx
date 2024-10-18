@@ -179,7 +179,10 @@ export default function news() {
                         <h1 className="text-[36px] font-semibold pt-[60px] ">
                             Müraciət blankı
                         </h1>
-                        <Request_blanck2 />
+                        <Request_blanck2
+                            translates={data.translates}
+                            lang={lang}
+                        />
                     </div>
                 </div>
             </main>

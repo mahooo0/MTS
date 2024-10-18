@@ -99,6 +99,7 @@ export default function () {
                         .filter((item: any, i: number) => i < 5)
                         .map((item: any) => (
                             <Services_card
+                                translates={data.translates}
                                 data={item}
                                 lang={lang}
                                 ser={data.services}

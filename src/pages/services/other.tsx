@@ -69,6 +69,7 @@ export default function Services_id({ apiData }: { apiData: any }) {
                 <div className="flex justify-start lg:flex-row flex-col-reverse gap-5 pb-[100px]">
                     <FAQ lang={lang} Services={Services} />
                     <Services_aside
+                        translates={data.translates}
                         currenntService={Services.find((item: any) => {
                             return item.type === 'Digər';
                         })}
