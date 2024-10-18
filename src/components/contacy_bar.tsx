@@ -97,11 +97,11 @@ export default function ContactForm({ data, leng }: { data: any; leng: any }) {
                         <Field
                             as="textarea"
                             name="message"
-                            placeholder="Mesaj"
+                            placeholder={data.message[leng]}
                             className="h-[112px] w-full rounded-lg bg-[#F5F5F5] p-4 focus:outline-none focus:border-transparent resize-none overflow-auto"
                         />
                         <ErrorMessage
-                            name={data.message[leng]}
+                            name="message"
                             component="div"
                             className="text-red-500 text-sm"
                         />
