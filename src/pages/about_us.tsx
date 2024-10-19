@@ -181,6 +181,67 @@ function about_us({ apiData }: { apiData: any }) {
                         />
                     </div>
                 </div>
+                {/* <section className="flex overflow-hidden flex-col rounded-lg bg-slate-900 mx-5 mt-[100px]">
+                    <div className="flex relative flex-col justify-center items-start px-16 py-20 w-full min-h-[642px] max-md:px-5 max-md:max-w-full">
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b54d65df8c47bf093785f73ea726b43a88c87602278e547fe2c08fe86da64688?placeholderIfAbsent=true&apiKey=c6f3c7bb740649e5a32c147b3037a1c2"
+                            alt=""
+                            className="object-cover absolute inset-0 size-full"
+                        />
+                        <div className="flex relative flex-wrap gap-10 items-center">
+                            <div className="flex overflow-hidden flex-col self-stretch my-auto rounded-lg min-w-[240px] w-[401px]">
+                                <img
+                                    loading="lazy"
+                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/8ea59be88c4d5a7ef7b6a5a8709892be3bd33523c01f4d915dbc38e1f1a2d040?placeholderIfAbsent=true&apiKey=c6f3c7bb740649e5a32c147b3037a1c2"
+                                    alt="Leadership portrait"
+                                    className="object-contain w-full aspect-[0.83]"
+                                />
+                            </div>
+                            <article className="flex flex-col self-stretch my-auto text-white min-w-[240px] w-[698px] max-md:max-w-full">
+                                <h1 className="text-4xl font-semibold max-md:max-w-full">
+                                    Rəhbərliyin müraciəti{' '}
+                                </h1>
+                                <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+                                    <h2 className="text-xl font-medium max-md:max-w-full">
+                                        Hörmətli həmkarlar,
+                                    </h2>
+                                    <p className="mt-5 text-base max-md:max-w-full">
+                                        "Marine Technical Solutions" QSC
+                                        Azərbaycanda fəaliyyət göstərən,
+                                        gəmilərdə təmirtikinti və texniki xidmət
+                                        göstərən özəl şirkətdir. Hazırda
+                                        şirkətimizdə 120-dən çox peşəkar
+                                        mütəxəssis çalışır. Şirkət baş ofis və 3
+                                        nümayəndəlikdən ibarətdir. Bizim əsas
+                                        fəaliyyətimiz: gəmilərdə əsaslı təmir,
+                                        tikinti, əlavə konstruksiya,yaşayış
+                                        konteynerlərinin quraşdırılması, üzən
+                                        tərsanə (dok) xidmətinin
+                                        göstərilməsindən ibarətdir.
+                                        Üstünlüklərimiz: 24 saat texniki xidmət,
+                                        müştərilərimiz qarşısında olan
+                                        öhdəliyimizi daha mükəmməl və qüsursuz
+                                        yerinə yetirməkdir. Gördüyümüz təmir
+                                        işlərinə 6 aydan 12 ayadək zəmanət
+                                        veririk. Şirkətimiz son 1 il ərzində
+                                        daha da inkişaf edərək daxili və
+                                        beynəlxalq uyğunluq şəhadətnamələrinə
+                                        nail olmuşdur. Bu da işimizin səmərəli
+                                        olmasına öz töhfəsini verir. Hal-hazırda
+                                        dövlət və özəl şirkətlərin gəmilərinə
+                                        göstərdiyimiz xidmətlərə görə aldığımız
+                                        təşəkkürnamələr əməkdaşlarımız üçün
+                                        qürur vericidir. Bizi seçən müştərilərə
+                                        öz təşəkkürümüzü bildiririk. Hörmətlə,
+                                        "Marine Technical Solutions" QSC-nin
+                                        rəhbəri
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section> */}
                 <div className="pt-[100px]  bg-[#F6F7F8] " id="sertificatlar">
                     <h2 className="text-[40px] font-semibold text-center mb-[40px]">
                         {data.translates.certificates[lang]}
