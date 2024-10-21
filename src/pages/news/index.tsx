@@ -74,7 +74,7 @@ export default function news() {
                 {/* <NewsSwiper data={data.latest_blogs} lang={lang} /> */}
                 <div className="mt-[82px] flex flex-col lg:items-start items-center ">
                     <h1 className="lg:text-[48px] md:text-[36px] text-[24px]  font-semibold text-[#050B20] mb-[48px]  lg:ml-[100px] md:ml-[60px] ml-[0px]">
-                        {data.translates.other_news[lang]}
+                        {data.translates.news[lang]}
                     </h1>
                     <div className="w-full flex flex-col justify-center items-center">
                         <div className=" grid w-full lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5 mb-10">

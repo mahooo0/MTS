@@ -177,7 +177,7 @@ export default function news() {
                     </div>
                     <div className=" text-center bg-[#F7F8FA] rounded-lg mt-[100px]">
                         <h1 className="text-[36px] font-semibold pt-[60px] ">
-                            Müraciət blankı
+                            {data.translates.application_form[lang]}
                         </h1>
                         <Request_blanck2
                             translates={data.translates}

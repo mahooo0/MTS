@@ -170,9 +170,7 @@ export default function Request_blanck2({
                             {translates.add_Cv[lang]}
                         </div>
                         <p className="text-[14px] font-normal text-center opacity-60 mt-2">
-                            {cv
-                                ? cv.name
-                                : ' Yüklədiyiniz fayl PDF, DOC, DOCX formatında olmalı (max 3 mb)'}
+                            {cv ? cv.name : '  PDF, DOC, DOCX  (max 3 mb)'}
                         </p>
                     </div>
                 </div>
@@ -196,7 +194,7 @@ export default function Request_blanck2({
                 <div></div>
                 <div className="flex lg:justify-end justify-center mb-10">
                     <Blue_to_blue
-                        text={'Göndər'}
+                        text={translates.send[lang]}
                         action={formik.handleSubmit}
                     />
                 </div>

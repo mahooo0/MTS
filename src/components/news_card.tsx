@@ -43,7 +43,7 @@ export default function News_card({
                     alt="kater_png"
                     className={`w-full h-full ${
                         ison ? 'scale-110' : ''
-                    } transition-transform duration-500 rounded-lg`}
+                    } transition-transform duration-500 rounded-lg object-cover`}
                 />
                 <div className="w-[134px] h-[36px] text-white flex justify-center items-center rounded-lg bg-black bg-opacity-15 top-3 left-3 text-[14px] font-medium absolute">
                     {data.date}
