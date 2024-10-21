@@ -89,7 +89,10 @@ export default function contact({ apiData }: { apiData: any }) {
                 <div className="flex lg:flex-row flex-col lg:px-[100px] md:px-[60px] px-[30px] justify-between gap-5">
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[15px] bg-[#F6F7F8] rounded-lg  w-full  ">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                            <Image src={location} alt="location" />
+                            <img
+                                src={`https://mts.caratcons.az/${item.address_icon}`}
+                                alt="location"
+                            />
                         </div>
                         <p className=" text-[16px] font-medium">
                             {item.address[lang]}
@@ -97,7 +100,10 @@ export default function contact({ apiData }: { apiData: any }) {
                     </div>
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg w-full ">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                            <Image src={phone} alt="phone" />
+                            <img
+                                src={`https://mts.caratcons.az/${item.phone_icon}`}
+                                alt="phone"
+                            />
                         </div>
                         <p className=" text-[16px] font-medium">
                             <a href={`tel:${item.phone}`}> {item.phone} </a>
@@ -105,7 +111,10 @@ export default function contact({ apiData }: { apiData: any }) {
                     </div>
                     <div className="flex flex-row gap-[11.5px] mb-[24px] items-center pr-[75px] bg-[#F6F7F8] rounded-lg  w-full">
                         <div className="flex justify-center items-center bg-[#7DB3FF] min-w-11 h-11 rounded-lg">
-                            <Image src={mail} alt="mail" />
+                            <img
+                                src={`https://mts.caratcons.az/${item.name_icon}`}
+                                alt="mail"
+                            />
                         </div>
                         <a href={`mailto:${data.contact.email}`}>
                             <p className=" text-[16px] font-medium">
