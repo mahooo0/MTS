@@ -223,7 +223,11 @@ function about_us({ apiData }: { apiData: any }) {
                     </h2>
                     <div className="flex items-center justify-evenly  flex-wrap pb-[100px] gap-[20px] lg:px-[100px] md:px-[60px]  px-[30px] ">
                         {data.certificates.map((item: any) => (
-                            <Sertificat data={item} lang={lang} />
+                            <Sertificat
+                                data={item}
+                                lang={lang}
+                                translates={data.translates}
+                            />
                         ))}
                         {/* <Sertificat />
                         <Sertificat />
@@ -237,7 +241,11 @@ function about_us({ apiData }: { apiData: any }) {
                     </h2>
                     <div className="flex items-center justify-evenly  flex-wrap pb-[100px] gap-[20px] lg:px-[100px] md:px-[60px]  px-[30px] ">
                         {data.acknowledgments.map((item: any) => (
-                            <Sertificat data={item} lang={lang} />
+                            <Sertificat
+                                data={item}
+                                lang={lang}
+                                translates={data.translates}
+                            />
                         ))}
                     </div>
                 </div>{' '}

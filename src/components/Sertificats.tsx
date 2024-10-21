@@ -3,7 +3,15 @@ import React from 'react';
 import image1 from '../../public/images/sertificat.png';
 import link from '../../public/svg/link.svg';
 import { Blue_to_blue, Blue_to_White } from './btns';
-export default function Sertificat({ data, lang }: { data: any; lang: any }) {
+export default function Sertificat({
+    data,
+    lang,
+    translates,
+}: {
+    data: any;
+    lang: any;
+    translates: any;
+}) {
     console.log(data);
     const baseurl = 'https://mts.caratcons.az/';
     console.log(`${baseurl}${data.pdf}`);
@@ -41,7 +49,7 @@ export default function Sertificat({ data, lang }: { data: any; lang: any }) {
                     download={`${baseurl}${data.pdf}`}
                 >
                     <Blue_to_blue
-                        text="PDF yüklə"
+                        text={translates.PDF[lang]}
                         action={() => {}}
                         icon={false}
                     />
