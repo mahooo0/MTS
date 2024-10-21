@@ -181,7 +181,10 @@ function about_us({ apiData }: { apiData: any }) {
                         />
                     </div>
                 </div>
-                <section className="flex overflow-hidden flex-col rounded-lg bg-slate-900 mx-5 mt-[100px]">
+                <section
+                    className="flex overflow-hidden flex-col rounded-lg bg-slate-900 mx-5 mt-[100px]"
+                    id="administration"
+                >
                     <div className="flex relative flex-col justify-center items-start px-16 py-20 w-full min-h-[642px] max-md:px-5 max-md:max-w-full">
                         <img
                             loading="lazy"
