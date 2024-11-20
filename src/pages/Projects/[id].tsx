@@ -14,6 +14,7 @@ import wp_icon from '../../../public/svg/wp.svg';
 import link_icon from '../../../public/svg/link.svg';
 import ProductSwipper from '@/components/projectsSwipper';
 import { useRouter } from 'next/router';
+import CustomAbsoluteSwiper from '@/components/fixenimagesSwipper';
 export default function Projectsid() {
     const [data, setdata] = useState<any>({});
     const [page, setpage] = useState<number>(1);
@@ -23,7 +24,9 @@ export default function Projectsid() {
     const [isLoading, setIsLoading] = useState(true);
     const baseurl = 'https://mts.caratcons.az/';
     const router = useRouter();
-
+    const [currentimgid, setcurrentimgid] = useState<number>(1);
+    const [currentsection, setcurrentsection] = useState<any>(null);
+    const [isopen, setisopen] = useState<boolean>(false);
     const { id } = router.query;
     useEffect(() => {
         const lng = localStorage.getItem('language') || 'en';
@@ -147,58 +150,34 @@ export default function Projectsid() {
                     </h6>
                 </div>
 
-                <div className=" relative  ">
-                    <CustomSwiper data={data.project.images} />
-                    <div className=" lg:absolute md:absolute  top-0 left-0 lg:pl-[120px] md:pl-[80px] pl-[30px] w-full flex items-center z-10 h-[90%] lg:justify-start md:justify-start  justify-center">
-                        <div className="  w-[320px] bg-white rounded-lg h-[95%]  right-[100px] px-[20px] py-[30px] ">
-                            <h6 className="text-[#050B20] font-[700] text-[20px]">
+                <div className=" relative   mt-[28px]">
+                    {/* <CustomSwiper data={data.project.images} /> */}
+                    <div className="w-full  lg:px-[100px] md:px-[60px] px-[30px] flex flex-row flex-wrap gap-3 justify-center ">
+                        {data.project.images.map(
+                            (item: any, i: number, list: any) => {
+                                console.log('item', item);
+                                return (
+                                    <img
+                                        src={baseurl + item}
+                                        alt=""
+                                        onClick={() => {
+                                            setcurrentimgid(i);
+                                            setcurrentsection(list);
+                                            setisopen(true);
+                                        }}
+                                        className="w-[300px] h-[360px] object-cover rounded-lg"
+                                    />
+                                );
+                            }
+                        )}
+                    </div>
+                    <div className=" mt-[24px]  top-0 left-0 lg:px-[100px] md:px-[60px] px-[30px] w-full flex items-center z-10 h-fit lg:justify-start md:justify-start  justify-center">
+                        <div className="  w-full bg-[#F5F5F5]  rounded-lg h-[95%]  right-[100px] px-[20px] py-[30px] ">
+                            {/* <h6 className="text-[#050B20] font-[700] text-[20px]">
                                 {data.translates.ProjectDetails[lang]}
-                            </h6>
-                            <div className="flex flex-col gap-3 mt-7">
-                                {/* <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black">
-                                    <div className=" w-[48px] h-[48px] flex justify-center items-center bg-[#2961B1] rounded-lg">
-                                        <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M2.5 6.5C2.5 4.61438 2.5 3.67157 3.08579 3.08579C3.67157 2.5 4.61438 2.5 6.5 2.5C8.38562 2.5 9.32843 2.5 9.91421 3.08579C10.5 3.67157 10.5 4.61438 10.5 6.5C10.5 8.38562 10.5 9.32843 9.91421 9.91421C9.32843 10.5 8.38562 10.5 6.5 10.5C4.61438 10.5 3.67157 10.5 3.08579 9.91421C2.5 9.32843 2.5 8.38562 2.5 6.5Z"
-                                                stroke="white"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M13.5 17.5C13.5 15.6144 13.5 14.6716 14.0858 14.0858C14.6716 13.5 15.6144 13.5 17.5 13.5C19.3856 13.5 20.3284 13.5 20.9142 14.0858C21.5 14.6716 21.5 15.6144 21.5 17.5C21.5 19.3856 21.5 20.3284 20.9142 20.9142C20.3284 21.5 19.3856 21.5 17.5 21.5C15.6144 21.5 14.6716 21.5 14.0858 20.9142C13.5 20.3284 13.5 19.3856 13.5 17.5Z"
-                                                stroke="white"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M2.5 17.5C2.5 15.6144 2.5 14.6716 3.08579 14.0858C3.67157 13.5 4.61438 13.5 6.5 13.5C8.38562 13.5 9.32843 13.5 9.91421 14.0858C10.5 14.6716 10.5 15.6144 10.5 17.5C10.5 19.3856 10.5 20.3284 9.91421 20.9142C9.32843 21.5 8.38562 21.5 6.5 21.5C4.61438 21.5 3.67157 21.5 3.08579 20.9142C2.5 20.3284 2.5 19.3856 2.5 17.5Z"
-                                                stroke="white"
-                                                stroke-width="1.5"
-                                            />
-                                            <path
-                                                d="M13.5 6.5C13.5 4.61438 13.5 3.67157 14.0858 3.08579C14.6716 2.5 15.6144 2.5 17.5 2.5C19.3856 2.5 20.3284 2.5 20.9142 3.08579C21.5 3.67157 21.5 4.61438 21.5 6.5C21.5 8.38562 21.5 9.32843 20.9142 9.91421C20.3284 10.5 19.3856 10.5 17.5 10.5C15.6144 10.5 14.6716 10.5 14.0858 9.91421C13.5 9.32843 13.5 8.38562 13.5 6.5Z"
-                                                stroke="white"
-                                                stroke-width="1.5"
-                                            />
-                                        </svg>
-                                    </div>
-                                    <div className="flex flex-col gap-1">
-                                        <p className="text-[12px] font-normal text-opacity-60">
-                                            {
-                                                data.translates
-                                                    .ProjectsCategory[lang]
-                                            }{' '}
-                                        </p>
-                                        <h6 className="text-[18px] font-medium text-[#2961B1]">
-                                            {data.project.category.name[lang]}
-                                        </h6>
-                                    </div>
-                                </div>{' '} */}
-                                <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black ">
+                            </h6> */}
+                            <div className="flex lg:flex-row md:flex-row flex-col  gap-3 ">
+                                <div className="flex flex-row h-[60px] pr-[40px] gap-3 border-r w-fit   border-opacity-10 border-black  items-center">
                                     <div className=" w-[48px] h-[48px] flex justify-center items-center bg-[#2961B1] rounded-lg">
                                         <svg
                                             width="24"
@@ -227,12 +206,12 @@ export default function Projectsid() {
                                         <p className="text-[12px] font-normal text-opacity-60">
                                             {data.translates.Status[lang]}
                                         </p>
-                                        <h6 className="text-[18px] font-medium text-[#2961B1]">
+                                        <h6 className="text-[18px] text-nowrap font-medium text-[#2961B1]">
                                             {status}
                                         </h6>
                                     </div>
                                 </div>{' '}
-                                <div className="flex flex-row h-[60px] w-full gap-3 border-b border-opacity-10 border-black">
+                                <div className="flex flex-row h-[60px] w-full gap-3  border-opacity-10 border-black items-center">
                                     <div className=" w-[48px] h-[48px] flex justify-center items-center bg-[#2961B1] rounded-lg">
                                         <svg
                                             width="24"
@@ -321,6 +300,12 @@ export default function Projectsid() {
                 </div>
             </main>
             <Footer data={data.translates} lang={lang} contact={data.contact} />
+            <CustomAbsoluteSwiper
+                onclose={() => setisopen(false)}
+                images={currentsection}
+                isOpen={isopen}
+                currentIndex={currentimgid}
+            />
         </div>
     );
 }

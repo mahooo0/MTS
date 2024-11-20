@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import strelka from '../../../public/svg/strelka_black.svg';
 import Footer from '@/components/Footer';
+import CustomAbsoluteSwiper from '@/components/fixenimagesSwipper';
 
 function PartnerPage() {
     const projectSections = [
@@ -36,6 +37,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
     ];
     const [data, setdata] = useState<any>({});
     const [page, setpage] = useState<number>(1);
+    const [currentimgid, setcurrentimgid] = useState<number>(1);
+    const [currentsection, setcurrentsection] = useState<any>(null);
+    const [isopen, setisopen] = useState<boolean>(false);
     const [category_id, setcategory_id] = useState<number>(0);
     const [lang, setlang] = useState<string>('az');
     const [reset, setreset] = useState<boolean>(false);
@@ -75,6 +79,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
     if (isLoading) {
         return <div></div>;
     }
+    console.log('data:', data.projects);
+
     return (
         <>
             <Header
@@ -124,7 +130,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                             key={index}
                             className="flex flex-col mt-24 max-md:mt-10 max-md:max-w-full"
                         >
-                            <div className="flex flex-col self-center max-w-full text-center w-[231px]">
+                            <div className="flex flex-col self-center  text-center min-w-[231px] max-w-[50%]">
                                 <h2 className="self-center text-4xl font-semibold text-slate-950">
                                     {section.title[lang]}
                                 </h2>
@@ -134,20 +140,31 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                             </div>
                             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
                                 <div className="flex flex-col w-full max-md:max-w-full">
-                                    <div className="flex overflow-hidden flex-col w-full rounded-3xl max-md:max-w-full">
+                                    {/* <div className="flex overflow-hidden flex-col w-full rounded-3xl max-md:max-w-full">
                                         <img
                                             loading="lazy"
                                             src={`https://mts.caratcons.az/${section.image}`}
                                             alt={`Main image for ${section.meta_title}`}
                                             className="object-cover w-full aspect-[2.81] max-md:max-w-full"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="flex flex-wrap gap-5 items-center mt-5 w-full max-md:max-w-full">
                                         {section.images.map(
-                                            (img: any, imgIndex: number) => (
+                                            (
+                                                img: any,
+                                                imgIndex: number,
+                                                list: any
+                                            ) => (
                                                 <div
+                                                    onClick={() => {
+                                                        setcurrentimgid(
+                                                            imgIndex
+                                                        );
+                                                        setcurrentsection(list);
+                                                        setisopen(true);
+                                                    }}
                                                     key={imgIndex}
-                                                    className="flex overflow-hidden flex-col grow shrink self-stretch my-auto rounded-3xl min-w-[240px] w-[488px] max-md:max-w-full"
+                                                    className="flex overflow-hidden flex-col grow shrink self-stretch my-auto rounded-lg min-w-[240px] w-[400px] h-[312px] max-md:max-w-full"
                                                 >
                                                     <img
                                                         loading="lazy"
@@ -157,7 +174,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                                         } for ${
                                                             section.meta_description
                                                         }`}
-                                                        className="object-cover w-full aspect-[1.96] max-md:max-w-full"
+                                                        className="object-cover w-full h-full aspect-[1.96] max-md:max-w-full"
                                                     />
                                                 </div>
                                             )
@@ -181,6 +198,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                     data={data.translates}
                     lang={lang}
                     contact={data.contact}
+                />
+                <CustomAbsoluteSwiper
+                    onclose={() => setisopen(false)}
+                    images={currentsection}
+                    isOpen={isopen}
+                    currentIndex={currentimgid}
                 />
             </div>
         </>

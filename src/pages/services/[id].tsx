@@ -10,9 +10,13 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import CustomAbsoluteSwiper from '@/components/fixenimagesSwipper';
 
 export default function Services_id() {
     const [data, setdata] = useState<any>();
+    const [currentimgid, setcurrentimgid] = useState<number>(1);
+    const [currentsection, setcurrentsection] = useState<any>(null);
+    const [isopen, setisopen] = useState<boolean>(false);
     // let currenntService = useSelector(
     //     (state: any) => state.counter.Currentservice
     // );
@@ -94,7 +98,26 @@ export default function Services_id() {
                     {currenntService.title[lang]}
                 </h1>
                 <div className="flex justify-start lg:flex-row flex-col-reverse gap-5">
-                    <Services_img_swipper data={currenntService.images} />
+                    {/* <Services_img_swipper data={currenntService.images} /> */}
+                    <div className="w-full  flex lg:flex-row flex-col gap-3">
+                        {currenntService.images.map(
+                            (item: any, i: number, list: any) => {
+                                console.log('item', item);
+                                return (
+                                    <img
+                                        src={baseurl + item}
+                                        onClick={() => {
+                                            setcurrentimgid(i);
+                                            setcurrentsection(list);
+                                            setisopen(true);
+                                        }}
+                                        className="lg:w-1/2 w-full rounded-lg"
+                                        alt=""
+                                    />
+                                );
+                            }
+                        )}
+                    </div>
                     <Services_aside
                         translates={data.translates}
                         lang={lang}
@@ -113,6 +136,12 @@ export default function Services_id() {
             </main>
             {/* <Footer /> */}
             <Footer data={data.translates} lang={lang} contact={data.contact} />
+            <CustomAbsoluteSwiper
+                onclose={() => setisopen(false)}
+                images={currentsection}
+                isOpen={isopen}
+                currentIndex={currentimgid}
+            />
         </div>
     );
 }
