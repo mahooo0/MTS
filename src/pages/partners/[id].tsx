@@ -148,7 +148,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                             className="object-cover w-full aspect-[2.81] max-md:max-w-full"
                                         />
                                     </div> */}
-                                    <div className="flex flex-wrap gap-5 items-center mt-5 w-full max-md:max-w-full">
+                                    <div className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 items-center mt-5 w-full max-md:max-w-full justify-items-center">
                                         {section.images.map(
                                             (
                                                 img: any,
