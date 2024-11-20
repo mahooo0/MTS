@@ -160,7 +160,7 @@ export default function Id() {
                             __html: currentNew.description[lang],
                         }}
                     />
-                    <div className="flex flex-row gap-3  justify-between ">
+                    <div className="flex flex-row gap-3  justify-center ">
                         {data.blog.images.map(
                             (item: any, i: number, list: any) => {
                                 if (i < 4) {
