@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -17,7 +17,19 @@ const CustomAbsoluteSwiper: React.FC<CustomAbsoluteSwiperProps> = ({
 }) => {
     if (!isOpen) return null;
     const baseurl = 'https://mts.caratcons.az/';
+    let swiperRef = useRef<any>();
 
+    const handleNext = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideNext();
+        }
+    };
+
+    const handlePrev = () => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slidePrev();
+        }
+    };
     return (
         <div
             style={{
@@ -33,6 +45,8 @@ const CustomAbsoluteSwiper: React.FC<CustomAbsoluteSwiperProps> = ({
             className="flex h-[100vh] justify-center items-center relative "
         >
             <Swiper
+                className="z-[50]"
+                ref={swiperRef}
                 initialSlide={currentIndex}
                 spaceBetween={30}
                 slidesPerView={1}
@@ -66,6 +80,21 @@ const CustomAbsoluteSwiper: React.FC<CustomAbsoluteSwiperProps> = ({
                     alt="close"
                     width={40}
                     className=" absolute z-[999999999990] top-5 right-5 "
+                />
+            </div>
+            <div className="flex flex-row justify-between w-full absolute z-[40] px-8">
+                <img
+                    onClick={handlePrev}
+                    src={'/svg/strelka1.svg'}
+                    alt="strelka"
+                    style={{ transform: 'rotate(180deg)' }}
+                    className="lg:w-[60px] w-[30px]"
+                />
+                <img
+                    src={'/svg/strelka1.svg'}
+                    alt="strelka"
+                    className="lg:w-[60px] w-[30px]"
+                    onClick={handleNext}
                 />
             </div>
         </div>

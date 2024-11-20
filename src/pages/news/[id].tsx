@@ -14,11 +14,15 @@ import { Blue_to_blue } from '@/components/btns';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import CustomAbsoluteSwiper from '@/components/fixenimagesSwipper';
 
 export default function Id() {
     const [lang, setlang] = useState<string>('az');
     const [data, setdata] = useState<any>();
     const [reset, setreset] = useState<boolean>(false);
+    const [currentimgid, setcurrentimgid] = useState<number>(1);
+    const [currentsection, setcurrentsection] = useState<any>(null);
+    const [isopen, setisopen] = useState<boolean>(false);
     const router = useRouter();
     const { id } = router.query;
 
@@ -90,6 +94,7 @@ export default function Id() {
             }
         );
     };
+    console.log('data:', data);
 
     return (
         <div className="bg-white">
@@ -120,12 +125,12 @@ export default function Id() {
                     <h6 className=" opacity-60">{currentNew.title[lang]}</h6>
                 </div>
                 <div className="lg:px-[100px] md:px-[60px] px-[30px] mt-12 flex flex-col items-center">
-                    <img
+                    {/* <img
                         src={`https://mts.caratcons.az/${currentNew.cover_image}`}
                         alt="news_image"
                         className="w-full max-h-[500px] object-cover"
-                    />
-                    <div className="lg:h-[172px] md:h-[150px] h-[100px] lg:w-[80%] md:w-[80%] w-full bg-white bg-opacity-80 lg:p-6 md:p-6 p-0 flex flex-col lg:gap-4 md:gap-4 gap-2 lg:-mt-[110px] md:-mt-[110px] mt-0 z-20 rounded-lg">
+                    /> */}
+                    <div className="min-h-[172px] h-fit  w-full bg-white  shadow-2xl lg:p-6 md:p-6 p-0 flex flex-col lg:gap-4 md:gap-4 gap-2   mt-6 z-20 rounded-lg">
                         <h4 className=" lg:text-[32px] md:text-[24px] text-[16px] font-semibold">
                             {currentNew.title[lang]}
                         </h4>
@@ -155,6 +160,26 @@ export default function Id() {
                             __html: currentNew.description[lang],
                         }}
                     />
+                    <div className="flex flex-row gap-3  justify-between ">
+                        {data.blog.images.map(
+                            (item: any, i: number, list: any) => {
+                                if (i < 4) {
+                                    return (
+                                        <img
+                                            onClick={() => {
+                                                setcurrentimgid(i);
+                                                setcurrentsection(list);
+                                                setisopen(true);
+                                            }}
+                                            src={baseurl + item}
+                                            alt=""
+                                            className="w-1/4 h-[360px] rounded-lg mt-[28px]"
+                                        />
+                                    );
+                                }
+                            }
+                        )}
+                    </div>
                 </div>
                 {/* <News_img_Swiper data={currentNew.images} /> */}
                 <div
@@ -211,6 +236,12 @@ export default function Id() {
                 </div>
             </main>
             <Footer data={data.translates} lang={lang} contact={data.contact} />
+            <CustomAbsoluteSwiper
+                onclose={() => setisopen(false)}
+                images={currentsection}
+                isOpen={isopen}
+                currentIndex={currentimgid}
+            />
         </div>
     );
 }
