@@ -10,13 +10,15 @@ import { useAppDispatch } from '@/redux/store';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import CustomAbsoluteSwiper from '@/components/fixenimagesSwipper';
 
 export default function id() {
-    const [grid_cols, setgrid_cols] = useState<2 | 4>(2);
+    const [grid_cols, setgrid_cols] = useState<2 | 4>(4);
     const [reset, setreset] = useState<boolean>(false);
     const [lang, setlang] = useState<string>('az');
     const [data, setdata] = useState<any>();
-
+    const [isopen, setisopen] = useState<boolean>(false);
+    const [currentimgid, setcurrentimgid] = useState<number>(1);
     const baseurl = 'https://mts.caratcons.az/';
     useEffect(() => {
         const Id = localStorage.getItem('scrollto');
@@ -57,7 +59,7 @@ export default function id() {
     } else {
         const blog = data.gallery;
         return (
-            <div>
+            <div className="relative">
                 <Header
                     setReset={() => setreset((prew) => !prew)}
                     active={6}
@@ -90,7 +92,7 @@ export default function id() {
                     <div className="lg:px-[100px] md:px-[60px] px-[30px]">
                         <div className="w-full lg:flex  hidden   justify-end">
                             <div className="flex flex-row gap-3">
-                                <Image
+                                {/* <Image
                                     className={
                                         grid_cols === 2
                                             ? ' border-b border-black '
@@ -99,8 +101,8 @@ export default function id() {
                                     src={grid2}
                                     alt="grid2"
                                     onClick={() => setgrid_cols(2)}
-                                />
-                                <Image
+                                /> */}
+                                {/* <Image
                                     className={
                                         grid_cols === 4
                                             ? ' border-b border-black '
@@ -109,46 +111,60 @@ export default function id() {
                                     src={grid4}
                                     alt="grid4"
                                     onClick={() => setgrid_cols(4)}
-                                />
+                                /> */}
                             </div>
                         </div>
                         <div
                             className={
                                 grid_cols === 2
                                     ? ` grid flex-row justify-between w-full lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-5 mt-7 mb-[100px] `
-                                    : ` grid flex-row justify-between w-full grid-cols-4 gap-5 mt-7 mb-[100px] `
+                                    : ` grid flex-row justify-between w-full lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-7 mb-[100px] `
                             }
                         >
                             {grid_cols === 4
-                                ? blog.images.map((item: any) => (
-                                      <div
-                                          className={
-                                              'w-full h-[310px] overflow-hidden rounded-lg '
-                                          }
-                                      >
-                                          <img
-                                              src={`https://mts.caratcons.az/${item}`}
-                                              alt="ship"
+                                ? blog.images.map(
+                                      (item: any, index: number) => (
+                                          <div
                                               className={
-                                                  // grid_cols === 4
-                                                  //     ? ' aspect-square w-full h-full rounded-lg'
-                                                  //     :
-                                                  'w-full h-full rounded-lg object-fill'
+                                                  'w-full h-[310px] overflow-hidden rounded-lg '
                                               }
-                                          />
-                                      </div>
-                                  ))
-                                : blog.big_images.map((item: any) => (
-                                      <div className={''}>
-                                          <img
-                                              src={`https://mts.caratcons.az/${item}`}
-                                              alt="ship"
-                                              className={
-                                                  ' aspect-square w-full h-full max-h-[300px] rounded-lg'
-                                              }
-                                          />
-                                      </div>
-                                  ))}
+                                              onClick={() => {
+                                                  setcurrentimgid(index);
+                                                  setisopen(true);
+                                              }}
+                                          >
+                                              <img
+                                                  src={`https://mts.caratcons.az/${item}`}
+                                                  alt="ship"
+                                                  className={
+                                                      // grid_cols === 4
+                                                      //     ? ' aspect-square w-full h-full rounded-lg'
+                                                      //     :
+                                                      'w-full h-full rounded-lg object-fill'
+                                                  }
+                                              />
+                                          </div>
+                                      )
+                                  )
+                                : blog.big_images.map(
+                                      (item: any, index: number) => (
+                                          <div
+                                              className={''}
+                                              onClick={() => {
+                                                  setcurrentimgid(index);
+                                                  setisopen(true);
+                                              }}
+                                          >
+                                              <img
+                                                  src={`https://mts.caratcons.az/${item}`}
+                                                  alt="ship"
+                                                  className={
+                                                      ' aspect-square w-full h-full max-h-[300px] rounded-lg'
+                                                  }
+                                              />
+                                          </div>
+                                      )
+                                  )}
                             {/* {blog.images.map((item: any) => (
                                 <div
                                     className={
@@ -174,6 +190,12 @@ export default function id() {
                     data={data.translates}
                     contact={data.contact}
                     lang={lang}
+                />
+                <CustomAbsoluteSwiper
+                    onclose={() => setisopen(false)}
+                    images={data.gallery.images}
+                    isOpen={isopen}
+                    currentIndex={currentimgid}
                 />
             </div>
         );
